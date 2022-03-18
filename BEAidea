@@ -1,0 +1,52 @@
+                                                             CARACTERISTICAS DE LOS DATOS
+
+
+
+Productos:____ Denominacion
+         |                                                   
+         |                 |materias primas       
+         |                 |dimenciones        
+         |________________ |tiempo                      
+                           |precio 
+                           |dificultad            
+
+materia prima se da en las inverciones por unidad, no por dinero para saber cuanto vale cada unidad en la medida dada y trabajar con ese valor
+Relacionar: materia prima - dimenciones
+            materia prima - tiempo
+            materia prima - precio
+            dimenciones - tiempo
+            dimenciones - precio
+            tiempo - precio
+            tiempo - dificultad
+            precio - dificultad
+
+  
+                _ Constantes:|                                    renta                                             
+               |             |Anuales:_____                       materia prima   
+               |             |Mensuales:___\   fijo___________    empleados 
+               |             |Semanales:___ -> proporcional___\__ licencias
+               |             |Diarios:_____/   variante_______/   servicios externos 
+               |                                                  transportacion
+               |                                                  otros
+Inversiones:___|                   / materia prima 
+               \_ Acumulativas:___/- transportacion
+               |                  \- servicios externos
+               |                   \ otros                                 
+               |                                                                                 
+                \_ Extraordinarias:|                 / Productividad (-tiempo)
+                                   |Beneficiosas:___/- Gastos (-consumo) 
+                                   |                \- Calidad (+valor)
+                                   |                 \ Rendimiento (+durabilidad)
+                                   |                                                
+                                   |                 / Accidente
+                                   |Obligatorias:___/- Reparacion
+                                                    \- Sustitucion
+                                                     \ Otros 
+                                        
+                                        
+                                        
+                                       
+Historial y Estadísticas:
+Operaciones y Consultas
+Propuestas y proyecciones     
+Respuestas Rápidas
