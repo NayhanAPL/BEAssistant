@@ -15,34 +15,34 @@ namespace BEAssistant
             InitializeComponent();
         }
 
-        private void ButtonEstadisticas_Clicked(object sender, EventArgs e)
+        private async void ButtonEstadisticas_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushModalAsync(new TabbedEstadisticas());
         }
 
-        private void ButtonElementos_Clicked(object sender, EventArgs e)
+        private async void ButtonElementos_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushModalAsync(new TabbedProductos());
         }
 
-        private void ButtonOperaciones_Clicked(object sender, EventArgs e)
+        private async void ButtonOperaciones_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushModalAsync(new TabbedConsultas());
         }
 
-        private void ButtonInverciones_Clicked(object sender, EventArgs e)
+        private async void ButtonInverciones_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushModalAsync(new TabbedInversiones());
         }
 
-        private void ButtonPropuestas_Clicked(object sender, EventArgs e)
+        private async void ButtonPropuestas_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushModalAsync(new TabbedPropuestas());
         }
 
-        private void ButtonRespuestasR_Clicked(object sender, EventArgs e)
+        private async void ButtonRespuestasR_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushModalAsync(new TabbedRespRapida());
         }
     }
 }

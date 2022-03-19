@@ -4,7 +4,7 @@
              x:Class="BEAssistant.MainPage">
 
     <StackLayout>
-        <Frame BackgroundColor="White" Padding="14" CornerRadius="0" HasShadow="True" >
+        <Frame BackgroundColor="White" Padding="10" CornerRadius="0" HasShadow="True" >
             <StackLayout>
                 <Label Text="B.E.A" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
                 <Label Text="Business Economy Assistant" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Body"/>
@@ -12,15 +12,15 @@
         </Frame>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"></RowDefinition>
-                <RowDefinition Height="150"></RowDefinition>
-                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition Height="130"></RowDefinition>
+                <RowDefinition Height="130"></RowDefinition>
+                <RowDefinition Height="130"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition Width="200"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Row="0" Grid.Column="0" Text="Elementos" x:Name="ButtonElementos" Clicked="ButtonElementos_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
+            <Button Grid.Row="0" Grid.Column="0" Text="Productos" x:Name="ButtonElementos" Clicked="ButtonElementos_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
             <Button Grid.Row="0" Grid.Column="1" Text="Inversiones" x:Name="ButtonInverciones" Clicked="ButtonInverciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
             <Button Grid.Row="1" Grid.Column="0" Text="Historial y Estadísticas" x:Name="ButtonEstadisticas" Clicked="ButtonEstadisticas_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
             <Button Grid.Row="1" Grid.Column="1" Text="Operaciones y Consultas" x:Name="ButtonOperaciones" Clicked="ButtonOperaciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
