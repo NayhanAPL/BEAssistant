@@ -16,7 +16,7 @@ namespace BEAssistant
         }
 
         private async void ButtonEstadisticas_Clicked(object sender, EventArgs e)
-        {
+        {           
             await Navigation.PushModalAsync(new TabbedEstadisticas());
         }
 
