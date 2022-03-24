@@ -19,7 +19,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="UpdateInverciones.xaml.cs">
+      <DependentUpon>UpdateInverciones.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="DescripcionInversion.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UpdateInverciones.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="TabbedConsultas.xaml">
