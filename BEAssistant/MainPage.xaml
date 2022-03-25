@@ -2,35 +2,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BEAssistant.MainPage">
-
-    <StackLayout>
-        <Frame BackgroundColor="White" Padding="10" CornerRadius="0" HasShadow="True" >
-            <StackLayout>
-                <Label Text="B.E.A" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
-                <Label Text="Business Economy Assistant" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Body"/>
-            </StackLayout>
-        </Frame>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="130"></RowDefinition>
-                <RowDefinition Height="130"></RowDefinition>
-                <RowDefinition Height="130"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"></ColumnDefinition>
-                <ColumnDefinition Width="200"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Row="0" Grid.Column="0" Text="Productos" x:Name="ButtonElementos" Clicked="ButtonElementos_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
-            <Button Grid.Row="0" Grid.Column="1" Text="Inversiones" x:Name="ButtonInverciones" Clicked="ButtonInverciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
-            <Button Grid.Row="1" Grid.Column="0" Text="Historial y Estadísticas" x:Name="ButtonEstadisticas" Clicked="ButtonEstadisticas_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
-            <Button Grid.Row="1" Grid.Column="1" Text="Operaciones y Consultas" x:Name="ButtonOperaciones" Clicked="ButtonOperaciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
-            <Button Grid.Row="2" Grid.Column="0" Text="Propuestas y proyecciones" x:Name="ButtonPropuestas" Clicked="ButtonPropuestas_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
-            <Button Grid.Row="2" Grid.Column="1" Text="Respuestas Rápidas" x:Name="ButtonRespuestasR" Clicked="ButtonRespuestasR_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
-        </Grid>
-        <Label Text="El valor de su empresa es de:" TextColor="Black" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-        <Label x:Name="lavelValorEmpresa" Text="0.0 $" TextColor="Green" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-        <Label Text="Su progreso es:" TextColor="Black" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-        <Label x:Name="LabelCrecimientoEmpresa" Text="0 $" TextColor="Green" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-    </StackLayout>
-
+    <ScrollView>
+        <StackLayout>
+            <Frame BackgroundColor="White" Padding="10" CornerRadius="0" HasShadow="True" >
+                <StackLayout>
+                    <Label Text="B.E.A" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+                    <Label Text="Business Economy Assistant" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Body"/>
+                </StackLayout>
+            </Frame>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="130"></RowDefinition>
+                    <RowDefinition Height="130"></RowDefinition>
+                    <RowDefinition Height="130"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Text="Productos" x:Name="ButtonElementos" Clicked="ButtonElementos_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
+                <Button Grid.Row="0" Grid.Column="1" Text="Inversiones" x:Name="ButtonInverciones" Clicked="ButtonInverciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
+                <Button Grid.Row="1" Grid.Column="0" Text="Historial y Estadísticas" x:Name="ButtonEstadisticas" Clicked="ButtonEstadisticas_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
+                <Button Grid.Row="1" Grid.Column="1" Text="Operaciones y Consultas" x:Name="ButtonOperaciones" Clicked="ButtonOperaciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
+                <Button Grid.Row="2" Grid.Column="0" Text="Propuestas y proyecciones" x:Name="ButtonPropuestas" Clicked="ButtonPropuestas_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
+                <Button Grid.Row="2" Grid.Column="1" Text="Respuestas Rápidas" x:Name="ButtonRespuestasR" Clicked="ButtonRespuestasR_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
+            </Grid>
+            <Label Text="El valor de su empresa es de:" TextColor="Black" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label x:Name="lavelValorEmpresa" Text="0.0 $" TextColor="Green" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="Su progreso es:" TextColor="Black" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label x:Name="LabelCrecimientoEmpresa" Text="0 $" TextColor="Green" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
