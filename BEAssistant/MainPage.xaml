@@ -30,7 +30,7 @@
             <Label Text="El valor de su empresa es de:" TextColor="Black" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
             <Label x:Name="lavelValorEmpresa" Text="0.0 $" TextColor="Green" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
             <Label Text="Su progreso es:" TextColor="Black" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-            <Label x:Name="LabelCrecimientoEmpresa" Text="0 $" TextColor="Green" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label x:Name="LabelCrecimientoEmpresa" Text="0 %" TextColor="Green" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

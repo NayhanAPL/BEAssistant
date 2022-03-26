@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="DescripcionProducto.xaml.cs">
+      <DependentUpon>DescripcionProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UpdateInverciones.xaml.cs">
       <DependentUpon>UpdateInverciones.xaml</DependentUpon>
     </Compile>
@@ -26,6 +29,12 @@
 
   <ItemGroup>
     <EmbeddedResource Update="DescripcionInversion.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DescripcionProducto.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MateriaPrimaProductos.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="UpdateInverciones.xaml">
