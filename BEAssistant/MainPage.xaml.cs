@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BEAssistant.xamlThings;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,6 +14,25 @@ namespace BEAssistant
         public MainPage()
         {
             InitializeComponent();
+            Iniciar();
+        }
+
+        private async void Iniciar()
+        {
+            bool yaCierreDiario = false;
+            var eventos = await App.Database.GetEventos();
+            //await App.Database.DeleteEventos(eventos[0]);
+            foreach (var item in eventos)
+            { if (item.Evento == "CierreDiario") yaCierreDiario = true; }
+            if(!yaCierreDiario)
+            {
+                await App.Database.SaveEventos(new Eventos()
+                {
+                    Evento = "CierreDiario"
+                });
+                DependencyService.Get<IDemoServices>().Start();
+            }
+
         }
 
         private async void ButtonEstadisticas_Clicked(object sender, EventArgs e)

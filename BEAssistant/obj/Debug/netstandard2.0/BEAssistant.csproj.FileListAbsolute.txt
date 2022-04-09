@@ -2,7 +2,6 @@ C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\bin\Debug\netstandard2.0\BE
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\bin\Debug\netstandard2.0\BEAssistant.dll
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\bin\Debug\netstandard2.0\ref\BEAssistant.dll
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\bin\Debug\netstandard2.0\BEAssistant.pdb
-C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\BEAssistant.csproj.AssemblyReference.cache
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\BEAssistant.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\MainPage.xaml.g.cs

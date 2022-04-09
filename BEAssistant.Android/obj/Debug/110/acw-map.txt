@@ -1,3 +1,6 @@
+BEAssistant.Droid.DemoServices, BEAssistant.Android;crc6437827aec14b7d55b.DemoServices
+BEAssistant.Droid.DemoServices;crc6437827aec14b7d55b.DemoServices
+beassistant.droid.DemoServices;crc6437827aec14b7d55b.DemoServices
 BEAssistant.Droid.MainActivity, BEAssistant.Android;crc6437827aec14b7d55b.MainActivity
 BEAssistant.Droid.MainActivity;crc6437827aec14b7d55b.MainActivity
 beassistant.droid.MainActivity;crc6437827aec14b7d55b.MainActivity

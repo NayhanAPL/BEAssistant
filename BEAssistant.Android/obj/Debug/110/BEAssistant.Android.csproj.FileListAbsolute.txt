@@ -620,3 +620,4 @@ C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\andro
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\android\assets\System.Threading.Tasks.Extensions.dll
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\android\assets\SQLite-net.dll
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\android\src\crc6437827aec14b7d55b\RoundedEntryRendererAndroid.java
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\android\src\crc6437827aec14b7d55b\DemoServices.java
