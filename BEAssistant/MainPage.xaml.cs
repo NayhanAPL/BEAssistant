@@ -13,10 +13,13 @@ namespace BEAssistant
     {
         public MainPage()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjE2NDkwQDMyMzAyZTMxMmUzMEJiVVRWcDlESXdzVVRwLzlQd0xWalFmMFhlNG1VQWlRaWZjc2VJOTcwK0E9");
+            
             InitializeComponent();
             
             Iniciar();
         }
+
         private async void Iniciar()
         {
             RegistroConstante();

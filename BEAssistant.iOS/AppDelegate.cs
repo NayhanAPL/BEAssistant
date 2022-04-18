@@ -1,8 +1,9 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.SfChart.XForms.iOS.Renderers;
 using UIKit;
 
 namespace BEAssistant.iOS
@@ -24,7 +25,8 @@ namespace BEAssistant.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-
+            SfChartRenderer.Init();
+            Rg.Plugins.Popup.Popup.Init();
             return base.FinishedLaunching(app, options);
         }
     }

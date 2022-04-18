@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GTEIUAzRo2CQ2FfHUfdd8RK/wVX7JDvsVJAvM0HIe1AjGTzBHo4v/m6MOs4FtylFsBt08TRA+5qP2Fj2hAMH0A==",
+  "dgSpecHash": "XxOIIi+O6mLt9klqwZM1SX5URvlIJ1bvyWr2hvfmrfYCh6JSus+Ovxoiz1pIMhL/piw+jgBjnn34Z7kS/VCLJQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Nayhan\\source\\repos\\BEAssistant\\BEAssistant.iOS\\BEAssistant.iOS.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,7 @@
     "C:\\Users\\Nayhan\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.9\\microsoft.extensions.logging.abstractions.3.1.9.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\microsoft.extensions.options\\3.1.9\\microsoft.extensions.options.3.1.9.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.9\\microsoft.extensions.primitives.3.1.9.nupkg.sha512",
+    "C:\\Users\\Nayhan\\.nuget\\packages\\rg.plugins.popup\\2.1.0\\rg.plugins.popup.2.1.0.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\sqlite\\3.13.0\\sqlite.3.13.0.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\sqlite-net-pcl\\1.7.335\\sqlite-net-pcl.1.7.335.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.2\\sqlitepclraw.bundle_e_sqlite3.2.0.2.nupkg.sha512",
@@ -34,8 +35,12 @@
     "C:\\Users\\Nayhan\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3.ios\\2.0.2\\sqlitepclraw.lib.e_sqlite3.ios.2.0.2.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\sqlitepclraw.provider.dynamic_cdecl\\2.0.3\\sqlitepclraw.provider.dynamic_cdecl.2.0.3.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\sqlitepclraw.provider.internal\\2.0.2\\sqlitepclraw.provider.internal.2.0.2.nupkg.sha512",
+    "C:\\Users\\Nayhan\\.nuget\\packages\\syncfusion.licensing\\17.2.0.51\\syncfusion.licensing.17.2.0.51.nupkg.sha512",
+    "C:\\Users\\Nayhan\\.nuget\\packages\\syncfusion.xamarin.core\\17.2.0.51\\syncfusion.xamarin.core.17.2.0.51.nupkg.sha512",
+    "C:\\Users\\Nayhan\\.nuget\\packages\\syncfusion.xamarin.sfchart\\17.2.0.51\\syncfusion.xamarin.sfchart.17.2.0.51.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\system.collections.immutable\\1.7.1\\system.collections.immutable.1.7.1.nupkg.sha512",
+    "C:\\Users\\Nayhan\\.nuget\\packages\\system.componentmodel\\4.3.0\\system.componentmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
@@ -45,7 +50,35 @@
     "C:\\Users\\Nayhan\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\Nayhan\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512",
+    "C:\\Users\\Nayhan\\.nuget\\packages\\xamarin.forms.pancakeview\\2.3.0.759\\xamarin.forms.pancakeview.2.3.0.759.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Degradación del paquete detectada: Syncfusion.Licensing de 20.1.0.48 a 17.2.0.51. Haga referencia al paquete directamente desde el proyecto para seleccionar una versión diferente. \r\n BEAssistant.iOS -> BEAssistant -> Syncfusion.Licensing (>= 20.1.0.48) \r\n BEAssistant.iOS -> Syncfusion.Licensing (>= 17.2.0.51)",
+      "libraryId": "Syncfusion.Licensing",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Degradación del paquete detectada: Syncfusion.Xamarin.SfChart de 20.1.0.48 a 17.2.0.51. Haga referencia al paquete directamente desde el proyecto para seleccionar una versión diferente. \r\n BEAssistant.iOS -> BEAssistant -> Syncfusion.Xamarin.SfChart (>= 20.1.0.48) \r\n BEAssistant.iOS -> Syncfusion.Xamarin.SfChart (>= 17.2.0.51)",
+      "libraryId": "Syncfusion.Xamarin.SfChart",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    }
+  ]
 }

@@ -56,9 +56,21 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "Rg.Plugins.Popup": {
+              "target": "Package",
+              "version": "[2.0.0.13, )"
+            },
             "SQLite": {
               "target": "Package",
               "version": "[3.13.0, )"
+            },
+            "Syncfusion.Licensing": {
+              "target": "Package",
+              "version": "[20.1.0.48, )"
+            },
+            "Syncfusion.Xamarin.SfChart": {
+              "target": "Package",
+              "version": "[20.1.0.48, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",
@@ -67,6 +79,10 @@
             "Xamarin.Forms": {
               "target": "Package",
               "version": "[5.0.0.2012, )"
+            },
+            "Xamarin.Forms.PancakeView": {
+              "target": "Package",
+              "version": "[2.3.0.759, )"
             },
             "sqlite-net-pcl": {
               "target": "Package",

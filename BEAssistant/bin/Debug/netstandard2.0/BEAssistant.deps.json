@@ -11,9 +11,13 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "3.1.9",
           "NETStandard.Library": "2.0.3",
+          "Rg.Plugins.Popup": "2.0.0.13",
           "SQLite": "3.13.0",
+          "Syncfusion.Licensing": "20.1.0.48",
+          "Syncfusion.Xamarin.SfChart": "20.1.0.48",
           "Xamarin.Essentials": "1.6.1",
           "Xamarin.Forms": "5.0.0.2012",
+          "Xamarin.Forms.PancakeView": "2.3.0.759",
           "sqlite-net-pcl": "1.7.335",
           "Xamarin.Forms.Platform.iOS": "2.0.0.0"
         },
@@ -256,9 +260,21 @@
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
+      "Microsoft.NETCore.Targets/1.1.0": {},
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Rg.Plugins.Popup/2.0.0.13": {
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Rg.Plugins.Popup.dll": {
+            "assemblyVersion": "2.0.0.13",
+            "fileVersion": "2.0.0.13"
+          }
         }
       },
       "SQLite/3.13.0": {},
@@ -316,6 +332,38 @@
           }
         }
       },
+      "Syncfusion.Licensing/20.1.0.48": {
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.Licensing.dll": {
+            "assemblyVersion": "20.1.0.48",
+            "fileVersion": "20.1.0.48"
+          }
+        }
+      },
+      "Syncfusion.Xamarin.Core/20.1.0.48": {
+        "dependencies": {
+          "Syncfusion.Licensing": "20.1.0.48",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.Core.XForms.dll": {
+            "assemblyVersion": "20.1451.0.48",
+            "fileVersion": "20.1451.0.48"
+          }
+        }
+      },
+      "Syncfusion.Xamarin.SfChart/20.1.0.48": {
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "20.1.0.48",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.SfChart.XForms.dll": {
+            "assemblyVersion": "20.1451.0.48",
+            "fileVersion": "20.1451.0.48"
+          }
+        }
+      },
       "System.Buffers/4.5.1": {
         "runtime": {
           "lib/netstandard2.0/System.Buffers.dll": {
@@ -332,6 +380,17 @@
           "lib/netstandard2.0/System.Collections.Immutable.dll": {
             "assemblyVersion": "1.2.5.0",
             "fileVersion": "4.700.20.21406"
+          }
+        }
+      },
+      "System.ComponentModel/4.3.0": {
+        "dependencies": {
+          "System.Runtime": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.ComponentModel.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.6.24705.1"
           }
         }
       },
@@ -373,6 +432,12 @@
             "assemblyVersion": "4.1.4.0",
             "fileVersion": "4.6.26515.6"
           }
+        }
+      },
+      "System.Runtime/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
       "System.Runtime.CompilerServices.Unsafe/4.7.1": {
@@ -446,6 +511,18 @@
           "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "5.0.0.671"
+          }
+        }
+      },
+      "Xamarin.Forms.PancakeView/2.3.0.759": {
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Xamarin.Forms.PancakeView.dll": {
+            "assemblyVersion": "2.0.1.0",
+            "fileVersion": "2.0.1.0"
           }
         }
       },
@@ -730,12 +807,26 @@
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
     },
+    "Microsoft.NETCore.Targets/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
+      "path": "microsoft.netcore.targets/1.1.0",
+      "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
+    },
     "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Rg.Plugins.Popup/2.0.0.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eT5nhJdSBPGlPh5qCbwCwstegcREHKav0EXa4FOYP5MttPWTAQMERDuT6PzxbHykTisfS8w+1J+pXTANVN8i6w==",
+      "path": "rg.plugins.popup/2.0.0.13",
+      "hashPath": "rg.plugins.popup.2.0.0.13.nupkg.sha512"
     },
     "SQLite/3.13.0": {
       "type": "package",
@@ -786,6 +877,27 @@
       "path": "sqlitepclraw.provider.e_sqlite3/2.0.3",
       "hashPath": "sqlitepclraw.provider.e_sqlite3.2.0.3.nupkg.sha512"
     },
+    "Syncfusion.Licensing/20.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-f+nrjyw08N1OIUmDbn+zv2MKDf03o5yf5j/Ypk2DIZDfQuIKp5t9zyxOtfL3Ya7oNUtmSPJQ5zNuAzZln4JreA==",
+      "path": "syncfusion.licensing/20.1.0.48",
+      "hashPath": "syncfusion.licensing.20.1.0.48.nupkg.sha512"
+    },
+    "Syncfusion.Xamarin.Core/20.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VjJoDhx6PrQiTe6hMx92okWPAzaA/O0LVDXNOLV9hB3H/7s49z5XxM8DYnu6f7HjCLG81Wdw39U8N+Z3KVuB1Q==",
+      "path": "syncfusion.xamarin.core/20.1.0.48",
+      "hashPath": "syncfusion.xamarin.core.20.1.0.48.nupkg.sha512"
+    },
+    "Syncfusion.Xamarin.SfChart/20.1.0.48": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/s1RfKB69L1IHW2RM3f3/JPw8Uw9+MER0LAvhLh3Y9u6x/KGr5yQ3E+MDSju8L/BUR2kISnecDnshjFHapQ9pg==",
+      "path": "syncfusion.xamarin.sfchart/20.1.0.48",
+      "hashPath": "syncfusion.xamarin.sfchart.20.1.0.48.nupkg.sha512"
+    },
     "System.Buffers/4.5.1": {
       "type": "package",
       "serviceable": true,
@@ -799,6 +911,13 @@
       "sha512": "sha512-B43Zsz5EfMwyEbnObwRxW5u85fzJma3lrDeGcSAV1qkhSRTNY5uXAByTn9h9ddNdhM+4/YoLc/CI43umjwIl9Q==",
       "path": "system.collections.immutable/1.7.1",
       "hashPath": "system.collections.immutable.1.7.1.nupkg.sha512"
+    },
+    "System.ComponentModel/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VyGn1jGRZVfxnh8EdvDCi71v3bMXrsu8aYJOwoV7SNDLVhiEqwP86pPMyRGsDsxhXAm2b3o9OIqeETfN5qfezw==",
+      "path": "system.componentmodel/4.3.0",
+      "hashPath": "system.componentmodel.4.3.0.nupkg.sha512"
     },
     "System.ComponentModel.Annotations/4.7.0": {
       "type": "package",
@@ -827,6 +946,13 @@
       "sha512": "sha512-QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
       "path": "system.numerics.vectors/4.5.0",
       "hashPath": "system.numerics.vectors.4.5.0.nupkg.sha512"
+    },
+    "System.Runtime/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+      "path": "system.runtime/4.3.0",
+      "hashPath": "system.runtime.4.3.0.nupkg.sha512"
     },
     "System.Runtime.CompilerServices.Unsafe/4.7.1": {
       "type": "package",
@@ -869,6 +995,13 @@
       "sha512": "sha512-Rqc6xvWR/sf+Db5+qRCFmuYTWVp04QWRfwPto2/JHbShSy4Ed53Q2jpoFzsoloXkJA6saD236PlaWAhT6vI4gw==",
       "path": "xamarin.forms/5.0.0.2012",
       "hashPath": "xamarin.forms.5.0.0.2012.nupkg.sha512"
+    },
+    "Xamarin.Forms.PancakeView/2.3.0.759": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TGVsLJuGd/PKlyhmcBxZnHhHqyhYppzyrdb2q/sy+S6dQYkeGM8A+HmIIHVhbi7r8Sjasa/HRBkOmTSYQOZzhQ==",
+      "path": "xamarin.forms.pancakeview/2.3.0.759",
+      "hashPath": "xamarin.forms.pancakeview.2.3.0.759.nupkg.sha512"
     },
     "Xamarin.Forms.Platform.iOS/2.0.0.0": {
       "type": "reference",
