@@ -12,9 +12,11 @@ namespace BEAssistant
     public partial class MainPage : ContentPage
     {
         public MainPage()
-        {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjE2NDkwQDMyMzAyZTMxMmUzMEJiVVRWcDlESXdzVVRwLzlQd0xWalFmMFhlNG1VQWlRaWZjc2VJOTcwK0E9");
-            
+        {   //17.
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjE4ODcwQDMxMzcyZTMyMmUzMGNvc0k5ZIJXSFhhNVoxSGVYaUJKUTR4akFTRkZRaDRRZ1NiU25kT3cxVGs9");
+            //20.
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjE4ODQwQDMyMzAyZTMxMmUzMGR2VzNJYmJacGtpZ0ZZckdOV1JWYUJlVVB1NlRPY201aGhiWUI0YnlLanM9");
+
             InitializeComponent();
             
             Iniciar();
