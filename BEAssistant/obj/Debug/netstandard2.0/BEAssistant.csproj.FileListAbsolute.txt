@@ -66,3 +66,4 @@ C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\bin\Debug\netstandard2.0\zh
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\BEAssistant.csproj.CopyComplete
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\BEAssistant.csproj.AssemblyReference.cache
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupAlert.xaml.g.cs
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\PopupDonus.xaml.g.cs
