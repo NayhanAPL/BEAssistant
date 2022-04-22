@@ -108,7 +108,7 @@ namespace BEAssistant
                             await App.Database.SaveCierreDiario(new CierresDiarios()
                             {
                                 Fecha = new DateTime(year: timeRevisar.Year, month: timeRevisar.Month, day: timeRevisar.Day),
-                                Ganancia = ganacia,
+                                Ingreso = ganacia,
                                 GastoC = gastoC,
                                 GastoA = gastoA,
                                 GastoE = gastoE
