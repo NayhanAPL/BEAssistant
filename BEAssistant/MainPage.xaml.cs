@@ -24,6 +24,7 @@ namespace BEAssistant
 
         private async void Iniciar()
         {
+
             RegistroConstante();
             var d = await App.Database.GetCierreDiario();
             var m = await App.Database.GetCierreMensual();
@@ -144,8 +145,6 @@ namespace BEAssistant
 
                     }
                 }
-
-                
             }            
         }
 
@@ -160,21 +159,23 @@ namespace BEAssistant
                 {
                     DateTime ultimoReg = new DateTime();
                     var listaReg = await App.Database.GetIdInvRegConstante(elemC.Id);
-                    if (listaReg.Count == 0) ultimoReg = elemC.Fecha;
-                    if (listaReg.Count > 0) ultimoReg = listaReg[listaReg.Count - 1].Fecha;
-
-                    ultimoReg = IncFrecuencia(elemC.Frecuencia, ultimoReg);
-                    
-                    while (ultimoReg.DayOfYear < TimeActual.DayOfYear - 1 && ultimoReg.Year == TimeActual.Year 
-                        || ultimoReg.DayOfYear < TimeActual.DayOfYear - 1 + 365 && ultimoReg.Year < TimeActual.Year)
+                    if (listaReg.Count > 0)
                     {
-                        await App.Database.SaveRegConstante(new ReConstante() { 
-                        IdInv = elemC.Id,
-                        Costo = listaReg[listaReg.Count - 1].Costo,
-                        Unidades = listaReg[listaReg.Count - 1].Unidades,
-                        Fecha = new DateTime(year: ultimoReg.Year, month: ultimoReg.Month, day: ultimoReg.Day)
-                        });
-                        IncFrecuencia(elemC.Frecuencia, ultimoReg);
+                        ultimoReg = listaReg[listaReg.Count - 1].Fecha;
+                        ultimoReg = IncFrecuencia(elemC.Frecuencia, ultimoReg);
+
+                        while ((ultimoReg.DayOfYear < TimeActual.DayOfYear && ultimoReg.Year == TimeActual.Year)
+                            || (ultimoReg.DayOfYear < TimeActual.DayOfYear + 365 && ultimoReg.Year < TimeActual.Year))
+                        {
+                            await App.Database.SaveRegConstante(new ReConstante()
+                            {
+                                IdInv = elemC.Id,
+                                Costo = listaReg[listaReg.Count - 1].Costo,
+                                Unidades = listaReg[listaReg.Count - 1].Unidades,
+                                Fecha = new DateTime(year: ultimoReg.Year, month: ultimoReg.Month, day: ultimoReg.Day)
+                            });
+                            ultimoReg = IncFrecuencia(elemC.Frecuencia, ultimoReg);
+                        }
                     }
                 }
             }
