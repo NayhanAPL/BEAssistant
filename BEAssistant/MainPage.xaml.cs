@@ -167,13 +167,84 @@ namespace BEAssistant
                         while ((ultimoReg.DayOfYear < TimeActual.DayOfYear && ultimoReg.Year == TimeActual.Year)
                             || (ultimoReg.DayOfYear < TimeActual.DayOfYear + 365 && ultimoReg.Year < TimeActual.Year))
                         {
-                            await App.Database.SaveRegConstante(new ReConstante()
+                            if (elemC.Categoria == ConstCategoria.Proporcional)
                             {
-                                IdInv = elemC.Id,
-                                Costo = listaReg[listaReg.Count - 1].Costo,
-                                Unidades = listaReg[listaReg.Count - 1].Unidades,
-                                Fecha = new DateTime(year: ultimoReg.Year, month: ultimoReg.Month, day: ultimoReg.Day)
-                            });
+                                int registro = 0;
+                                var dependencia = await App.Database.GetIdInvDependenciaConstante(elemC.Id);
+                                if (dependencia[0].Clase == "inAcumulativa")
+                                {
+                                    var registros = await App.Database.GetIdInvRegAcumulativa(dependencia[0].IdItem);
+                                    var periodo = registros.FindAll(x => TimeActual - x.Fecha <= TimeActual - ultimoReg);
+                                    double suma = 0;
+                                    periodo.ForEach(x => suma += x.Costo * x.Unidades);
+                                    registro = Convert.ToInt32((dependencia[0].Porcentaje * suma));
+                                }
+                                else if (dependencia[0].Clase == "inConstante")
+                                {
+                                    var registros = await App.Database.GetIdInvRegConstante(dependencia[0].IdItem);
+                                    var periodo = registros.FindAll(x => TimeActual - x.Fecha <= TimeActual - ultimoReg);
+                                    double suma = 0;
+                                    periodo.ForEach(x => suma += x.Costo * x.Unidades);
+                                    registro = Convert.ToInt32((dependencia[0].Porcentaje * suma));
+                                }
+                                else if (dependencia[0].Clase == "inExtraordinaria")
+                                {
+                                    var registros = await App.Database.GetIdInvRegExtraordinaria(dependencia[0].IdItem);
+                                    var periodo = registros.FindAll(x => TimeActual - x.Fecha <= TimeActual - ultimoReg);
+                                    double suma = 0;
+                                    periodo.ForEach(x => suma += x.Costo * x.Unidades);
+                                    registro = Convert.ToInt32((dependencia[0].Porcentaje * suma));
+                                }
+                                else if (dependencia[0].Clase == "Product")
+                                {
+                                    var registros = await App.Database.GetByIdProVenta(dependencia[0].IdItem);
+                                    var periodo = registros.FindAll(x => TimeActual - x.Fecha <= TimeActual - ultimoReg);
+                                    double suma = 0;
+                                    periodo.ForEach(x => suma += x.Precio * x.Unidades);
+                                    registro = Convert.ToInt32((dependencia[0].Porcentaje * suma));
+                                }
+                                else
+                                {
+                                    var registros = await App.Database.GetCierreDiario();
+                                    var periodo = registros.FindAll(x => TimeActual - x.Fecha <= TimeActual - ultimoReg);
+                                    double sumaIngreso = 0;
+                                    double sumaGasto = 0;
+                                    periodo.ForEach(x => sumaIngreso += x.Ingreso);
+                                    periodo.ForEach(x => sumaGasto += (x.GastoA + x.GastoC + x.GastoE));
+                                    
+                                    if (dependencia[0].Clase == "Ganancia")
+                                    {
+                                        registro = Convert.ToInt32((dependencia[0].Porcentaje * (sumaIngreso - sumaGasto)));
+                                    }
+                                    if (dependencia[0].Clase == "Gasto")
+                                    {
+                                        registro = Convert.ToInt32((dependencia[0].Porcentaje * sumaGasto));
+                                    }
+                                    if (dependencia[0].Clase == "Ingreso")
+                                    {
+                                        registro = Convert.ToInt32((dependencia[0].Porcentaje * sumaIngreso));                     
+                                    }
+                                }
+                                if (registro != 0) registro /= 100;
+                                await App.Database.SaveRegConstante(new ReConstante()
+                                {
+                                    IdInv = elemC.Id,
+                                    Costo = registro,
+                                    Unidades = 1,
+                                    Fecha = new DateTime(year: ultimoReg.Year, month: ultimoReg.Month, day: ultimoReg.Day)
+                                });
+                            }                                    
+                            if(elemC.Categoria == ConstCategoria.Independiente)
+                            {
+                                await App.Database.SaveRegConstante(new ReConstante()
+                                {
+                                    IdInv = elemC.Id,
+                                    Costo = listaReg[listaReg.Count - 1].Costo,
+                                    Unidades = listaReg[listaReg.Count - 1].Unidades,
+                                    Fecha = new DateTime(year: ultimoReg.Year, month: ultimoReg.Month, day: ultimoReg.Day)
+                                });
+                            }
+                            
                             ultimoReg = IncFrecuencia(elemC.Frecuencia, ultimoReg);
                         }
                     }
@@ -214,27 +285,22 @@ namespace BEAssistant
         {
             await Navigation.PushModalAsync(new TabbedEstadisticas());
         }
-
         private async void ButtonElementos_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new TabbedProductos());
         }
-
         private async void ButtonOperaciones_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new TabbedConsultas());
         }
-
         private async void ButtonInverciones_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new TabbedInversiones());
         }
-
         private async void ButtonPropuestas_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new TabbedPropuestas());
         }
-
         private async void ButtonRespuestasR_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new TabbedRespRapida());
