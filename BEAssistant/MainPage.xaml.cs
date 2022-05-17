@@ -1,4 +1,6 @@
-﻿using BEAssistant.xamlThings;
+﻿using BEAssistant.popups;
+using BEAssistant.xamlThings;
+using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +26,7 @@ namespace BEAssistant
 
         private async void Iniciar()
         {
-
+            RevisarCaducidad();
             RegistroConstante();
             var d = await App.Database.GetCierreDiario();
             var m = await App.Database.GetCierreMensual();
@@ -148,6 +150,86 @@ namespace BEAssistant
             }            
         }
 
+        private async void RevisarCaducidad()
+        {
+            bool Mostrarmensaje = false;
+            string mensaje = ""; 
+            DateTime TimeActual = DateTime.Now;
+            TimeActual = TimeActual.ToLocalTime();
+            int diaActual = TimeActual.DayOfYear * TimeActual.Year;
+            var stock = await App.Database.GetStock();
+            var regA = await App.Database.GetByTipoReAcumulativa((int)TiposAcumulativa.MateriaPrima);
+            var regC = await App.Database.GetByTipoReConstante((int)TiposConstante.MateriaPrima);
+            foreach (var item in stock)
+            {
+                if(item.TipoInv == "Acumulativa")
+                {
+                    double unidadesUtiles = 0;
+                    var spesifiA = regA.FindAll(x => x.IdInv == item.IdInv);
+                    for (int i = spesifiA.Count - 1; i >= 0; i--)
+                    {
+                        int dias = (spesifiA[i].Fecha.DayOfYear * spesifiA[i].Fecha.Year) + item.Duracion;
+                        if (dias >= diaActual)
+                        {
+                            Stock upStock = new Stock
+                            {
+                                Id = item.Id,
+                                IdInv = item.IdInv,
+                                TipoInv = item.TipoInv,
+                                CantActual = unidadesUtiles,
+                                Duracion = item.Duracion
+                            };
+                            await App.Database.SaveUpStock(upStock);
+                            Mostrarmensaje = true;
+                            var inv = await App.Database.GetIdInvAcumulativa(item.IdInv);
+                            mensaje = mensaje + $"La compra de {inv.Nombre} el {spesifiA[i].Fecha} caducó. El stock de {inv.Nombre} es de {unidadesUtiles} unidades. Se perdieron {(spesifiA[i].Unidades - unidadesUtiles)} unidades\n";
+                        }
+                        else
+                        {
+                            unidadesUtiles += spesifiA[i].Unidades;
+                            if (unidadesUtiles >= item.CantActual) break;
+                        }
+                    }
+                }
+                if (item.TipoInv == "Constante")
+                {
+                    double unidadesUtiles = 0;
+                    var spesifiC = regC.FindAll(x => x.IdInv == item.IdInv);
+                    for (int i = spesifiC.Count - 1; i >= 0; i--)
+                    {
+                        int dias = (spesifiC[i].Fecha.DayOfYear * spesifiC[i].Fecha.Year) + item.Duracion;
+                        if (dias >= diaActual)
+                        {
+                            Stock upStock = new Stock
+                            {
+                                Id = item.Id,
+                                IdInv = item.IdInv,
+                                TipoInv = item.TipoInv,
+                                CantActual = unidadesUtiles,
+                                Duracion = item.Duracion
+                            };
+                            await App.Database.SaveUpStock(upStock);
+
+                            Mostrarmensaje = true;
+                            var inv = await App.Database.GetIdInvConstante(item.IdInv);
+                            mensaje = mensaje + $"La compra de {inv.Nombre} el {spesifiC[i].Fecha} caducó. El stock de {inv.Nombre} es de {unidadesUtiles} unidades. Se perdieron {(spesifiC[i].Unidades - unidadesUtiles)} unidades\n";
+                        }
+                        else
+                        {
+                            unidadesUtiles += spesifiC[i].Unidades;
+                            if (unidadesUtiles >= item.CantActual) break;
+                        }
+                    }
+                }
+            }
+            if (Mostrarmensaje)
+            {
+                popups.PopupAlert.PopupLabelTitulo = "Reporte de caducidad";
+                popups.PopupAlert.PopupLabelText = mensaje;
+                await Navigation.PushPopupAsync(new PopupAlert());
+            }
+        }
+
         private async void RegistroConstante()
         {
             DateTime TimeActual = DateTime.Now;
@@ -244,7 +326,19 @@ namespace BEAssistant
                                     Fecha = new DateTime(year: ultimoReg.Year, month: ultimoReg.Month, day: ultimoReg.Day)
                                 });
                             }
-                            
+                            if(elemC.Tipo == TiposConstante.MateriaPrima)
+                            {
+                                var stock = await App.Database.GetIdInvCStock(elemC.Id);
+                                Stock upStock = new Stock
+                                {
+                                    Id = stock[0].Id,
+                                    IdInv = stock[0].IdInv,
+                                    TipoInv = stock[0].TipoInv,
+                                    CantActual = stock[0].CantActual += Convert.ToInt32(listaReg[listaReg.Count - 1].Unidades),
+                                    Duracion = stock[0].Duracion
+                                };
+                                await App.Database.SaveUpStock(upStock);
+                            }
                             ultimoReg = IncFrecuencia(elemC.Frecuencia, ultimoReg);
                         }
                     }
