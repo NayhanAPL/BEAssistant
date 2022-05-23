@@ -169,7 +169,7 @@ namespace BEAssistant
                     for (int i = spesifiA.Count - 1; i >= 0; i--)
                     {
                         int dias = (spesifiA[i].Fecha.DayOfYear * spesifiA[i].Fecha.Year) + item.Duracion;
-                        if (dias >= diaActual)
+                        if (dias <= diaActual)
                         {
                             Stock upStock = new Stock
                             {
