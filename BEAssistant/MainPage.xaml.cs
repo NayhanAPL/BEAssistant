@@ -171,7 +171,7 @@ namespace BEAssistant
                         int dias = (spesifiA[i].Fecha.DayOfYear * spesifiA[i].Fecha.Year) + item.Duracion;
                         if (dias <= diaActual)
                         {
-                            Stock upStock = new Stock
+                            StockClass upStock = new StockClass
                             {
                                 Id = item.Id,
                                 IdInv = item.IdInv,
@@ -200,7 +200,7 @@ namespace BEAssistant
                         int dias = (spesifiC[i].Fecha.DayOfYear * spesifiC[i].Fecha.Year) + item.Duracion;
                         if (dias >= diaActual)
                         {
-                            Stock upStock = new Stock
+                            StockClass upStock = new StockClass
                             {
                                 Id = item.Id,
                                 IdInv = item.IdInv,
@@ -329,7 +329,7 @@ namespace BEAssistant
                             if(elemC.Tipo == TiposConstante.MateriaPrima)
                             {
                                 var stock = await App.Database.GetIdInvCStock(elemC.Id);
-                                Stock upStock = new Stock
+                                StockClass upStock = new StockClass
                                 {
                                     Id = stock[0].Id,
                                     IdInv = stock[0].IdInv,
