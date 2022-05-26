@@ -64,6 +64,10 @@
               "target": "Package",
               "version": "[17.2.0.51, )"
             },
+            "Xam.Plugins.Messaging": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.6.1, )"
@@ -158,6 +162,10 @@
             "Syncfusion.Xamarin.SfChart": {
               "target": "Package",
               "version": "[20.1.0.48, )"
+            },
+            "Xam.Plugins.Messaging": {
+              "target": "Package",
+              "version": "[5.2.0, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",
