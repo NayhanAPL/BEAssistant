@@ -171,13 +171,14 @@ namespace BEAssistant
                         int dias = (spesifiA[i].Fecha.DayOfYear * spesifiA[i].Fecha.Year) + item.Duracion;
                         if (dias <= diaActual)
                         {
-                            StockClass upStock = new StockClass
+                            StockBea upStock = new StockBea
                             {
                                 Id = item.Id,
                                 IdInv = item.IdInv,
                                 TipoInv = item.TipoInv,
                                 CantActual = unidadesUtiles,
-                                Duracion = item.Duracion
+                                Duracion = item.Duracion,
+                                Categoria = item.Categoria
                             };
                             await App.Database.SaveUpStock(upStock);
                             Mostrarmensaje = true;
@@ -200,13 +201,14 @@ namespace BEAssistant
                         int dias = (spesifiC[i].Fecha.DayOfYear * spesifiC[i].Fecha.Year) + item.Duracion;
                         if (dias >= diaActual)
                         {
-                            StockClass upStock = new StockClass
+                            StockBea upStock = new StockBea
                             {
                                 Id = item.Id,
                                 IdInv = item.IdInv,
                                 TipoInv = item.TipoInv,
                                 CantActual = unidadesUtiles,
-                                Duracion = item.Duracion
+                                Duracion = item.Duracion,
+                                Categoria = item.Categoria
                             };
                             await App.Database.SaveUpStock(upStock);
 
@@ -329,13 +331,14 @@ namespace BEAssistant
                             if(elemC.Tipo == TiposConstante.MateriaPrima)
                             {
                                 var stock = await App.Database.GetIdInvCStock(elemC.Id);
-                                StockClass upStock = new StockClass
+                                StockBea upStock = new StockBea
                                 {
                                     Id = stock[0].Id,
                                     IdInv = stock[0].IdInv,
                                     TipoInv = stock[0].TipoInv,
                                     CantActual = stock[0].CantActual += Convert.ToInt32(listaReg[listaReg.Count - 1].Unidades),
-                                    Duracion = stock[0].Duracion
+                                    Duracion = stock[0].Duracion,
+                                    Categoria = stock[0].Categoria
                                 };
                                 await App.Database.SaveUpStock(upStock);
                             }
