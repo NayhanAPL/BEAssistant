@@ -689,14 +689,14 @@ C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\andro
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\android\assets\Xamarin.Android.Support.Annotations.dll
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\android\assets\Xamarin.Android.Support.Compat.dll
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\android\assets\Xamarin.Android.Support.Core.Utils.dll
-C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\jl\688e104d-a8a7-4ffe-a633-22df7dcc22ad.jar
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\stamp\_AndroidXJetifyJavaLibraryRules.stamp
-C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\proguard\6023b66a-d7e8-4734-8644-73fa7f522370.cfg
-C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\proguard\866a5c99-78a5-4f9e-b465-4088bca38d53.txt
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\stamp\_AndroidXJetifyProguardRules.stamp
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\_AndroidXJetifyProguardRules.jetify
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\stamp\_AndroidXCecilfy.stamp
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\stamp\_AndroidXJetifyManifest.stamp
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\_AndroidXJetifyManifest.jetify
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\stamp\_CopyIntermediateAssemblies.stamp
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\jl\0143a6c0-43af-4cbb-af3a-35f6e6d6be75.jar
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\proguard\47a2e605-6ac9-4c31-87c1-e48a3babd6cd.cfg
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\proguard\6783d9b2-91fc-4f38-8de1-b4c140dbb6d4.txt
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\android\assets\Plugin.Messaging.pdb
