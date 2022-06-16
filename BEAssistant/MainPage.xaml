@@ -20,7 +20,7 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" Text="Productos" x:Name="ButtonElementos" Clicked="ButtonElementos_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
+                <Button Grid.Row="0" Grid.Column="0" Text="Productos Y ventas" x:Name="ButtonElementos" Clicked="ButtonElementos_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
                 <Button Grid.Row="0" Grid.Column="1" Text="Inversiones y gastos" x:Name="ButtonInverciones" Clicked="ButtonInverciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
                 <Button Grid.Row="1" Grid.Column="0" Text="Historial y Estadísticas" x:Name="ButtonEstadisticas" Clicked="ButtonEstadisticas_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
                 <Button Grid.Row="1" Grid.Column="1" Text="Consultas" x:Name="ButtonOperaciones" Clicked="ButtonOperaciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
