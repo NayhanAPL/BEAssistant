@@ -20,12 +20,12 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" Text="Productos Y ventas" x:Name="ButtonElementos" Clicked="ButtonElementos_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
-                <Button Grid.Row="0" Grid.Column="1" Text="Inversiones y gastos" x:Name="ButtonInverciones" Clicked="ButtonInverciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
+                <Button Grid.Row="0" Grid.Column="0" Text="Productos Y Ventas" x:Name="ButtonElementos" Clicked="ButtonElementos_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
+                <Button Grid.Row="0" Grid.Column="1" Text="Inversiones y Gastos" x:Name="ButtonInverciones" Clicked="ButtonInverciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
                 <Button Grid.Row="1" Grid.Column="0" Text="Historial y Estadísticas" x:Name="ButtonEstadisticas" Clicked="ButtonEstadisticas_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
                 <Button Grid.Row="1" Grid.Column="1" Text="Consultas" x:Name="ButtonOperaciones" Clicked="ButtonOperaciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
-                <Button Grid.Row="2" Grid.Column="0" Text="Propuestas" x:Name="ButtonPropuestas" Clicked="ButtonPropuestas_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
-                <Button Grid.Row="2" Grid.Column="1" Text="Operaciones Rápidas" x:Name="ButtonRespuestasR" Clicked="ButtonRespuestasR_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
+                <Button Grid.Row="2" Grid.Column="0" Text="Propuestas y Asesoría" x:Name="ButtonPropuestas" Clicked="ButtonPropuestas_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
+                <Button Grid.Row="2" Grid.Column="1" Text="Operaciones y Consultas" x:Name="ButtonRespuestasR" Clicked="ButtonRespuestasR_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
             </Grid>
             <Label Text="El valor de su empresa es de:" TextColor="Black" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
             <Label x:Name="lavelValorEmpresa" Text="0.0 $" TextColor="Green" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
