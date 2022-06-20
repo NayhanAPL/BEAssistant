@@ -26,6 +26,7 @@ namespace BEAssistant
 
         private async void Iniciar()
         {
+            CrearInventario();
             RevisarCaducidad();
             RegistroConstante();
             var d = await App.Database.GetCierreDiario();
@@ -39,6 +40,21 @@ namespace BEAssistant
                 await App.Database.SaveFechaInicio(new FechaInicio
                 {
                     inicio = TimeActual
+                });
+                // Donde se agregan las opciones 
+                await App.Database.SaveOpciones(new Opciones
+                {
+                    Activo = false,
+                    Nombre = ""
+                });
+                //primer inventario
+                await App.Database.SaveInventario(new Inventario()
+                {
+                    ConsCaduco = 0,
+                    ConsExedente = 0,
+                    ConsUtil = 0,
+                    Materias = "",
+                    Fecha = TimeActual,
                 });
             }
             else
@@ -72,13 +88,11 @@ namespace BEAssistant
                         if (lastDate[0].Fecha.DayOfYear < TimeActual.DayOfYear - 1 && lastDate[0].Fecha.Year == TimeActual.Year) actualizar = true;
                         if (lastDate[0].Fecha.DayOfYear < TimeActual.DayOfYear - 1 + 365 && lastDate[0].Fecha.Year < TimeActual.Year) actualizar = true;
                         timeRevisar = lastDate[0].Fecha;
-                        timeRevisar.AddDays(1);
+                        timeRevisar = timeRevisar.AddDays(1);
                     }
                     limiteDeRevicion = TimeActual;
                     if (actualizar)
                     {
-
-
                         var cons = await App.Database.GetRegConstante();
                         var acum = await App.Database.GetRegAcumulativa();
                         var extra = await App.Database.GetRegExtraordinaria();
@@ -102,7 +116,6 @@ namespace BEAssistant
                             if (extra.Count > 0)
                             { var elems = extra.FindAll(x => x.Fecha.DayOfYear == timeRevisar.DayOfYear && x.Fecha.Year == timeRevisar.Year);
                                 foreach (var item in elems) { gastoE += (item.Costo * item.Unidades); } }
-
 
                             if (venta.Count > 0)
                             { var elems = venta.FindAll(x => x.Fecha.DayOfYear == timeRevisar.DayOfYear && x.Fecha.Year == timeRevisar.Year);
@@ -149,17 +162,56 @@ namespace BEAssistant
                 }
             }            
         }
+        private async void CrearInventario()
+        {
+            int dia = 0;
+            DateTime fecha = new DateTime();
+            var primerDia = await App.Database.GetIdFechaInicio(1);
+            if (primerDia != null)
+            {
+                var elem = await App.Database.GetLastItemInventario();
+                if (elem.Count > 0) 
+                { 
+                    dia = elem[0].Fecha.Year * 365 + elem[0].Fecha.DayOfYear; 
+                    fecha = elem[0].Fecha; 
+                }
+                else
+                {
+                    dia = primerDia.inicio.Year * 365 + primerDia.inicio.DayOfYear;
+                    fecha = primerDia.inicio;
+                }
 
+                DateTime TimeActual = DateTime.Now;
+                TimeActual = TimeActual.ToLocalTime();
+                int DiaHoy = TimeActual.Year * 365 + TimeActual.DayOfYear;
+                dia++;
+                while (dia <= DiaHoy)
+                {
+                    await App.Database.SaveInventario(new Inventario()
+                    {
+                        ConsCaduco = 0,
+                        ConsExedente = 0,
+                        ConsUtil = 0,
+                        Materias = "",
+                        Fecha = fecha,
+                    });
+                    dia++;
+                    fecha = fecha.AddDays(1);
+                }
+            }
+              
+        }
         private async void RevisarCaducidad()
         {
             bool Mostrarmensaje = false;
-            string mensaje = ""; 
+            string mensaje = "";
             DateTime TimeActual = DateTime.Now;
             TimeActual = TimeActual.ToLocalTime();
             int diaActual = TimeActual.DayOfYear * TimeActual.Year;
             var stock = await App.Database.GetStock();
             var regA = await App.Database.GetByTipoReAcumulativa((int)TiposAcumulativa.MateriaPrima);
             var regC = await App.Database.GetByTipoReConstante((int)TiposConstante.MateriaPrima);
+            var listInven = await App.Database.GetInventario();
             foreach (var item in stock)
             {
                 if(item.TipoInv == "Acumulativa")
@@ -182,6 +234,30 @@ namespace BEAssistant
                                 UnidadesEstimadas = item.UnidadesEstimadas
                             };
                             await App.Database.SaveUpStock(upStock);
+                            // Inventario
+                            var invenDia = listInven.FindAll(x => x.Fecha.DayOfYear == TimeActual.DayOfYear && x.Fecha.Year == TimeActual.Year);
+                            var inversion = await App.Database.GetIdInvAcumulativa(item.IdInv);
+                            int posInven = invenDia.FindIndex(x => x.Materias == inversion.Nombre);
+                            if (posInven != -1)
+                            {
+                                invenDia[posInven].ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles);
+                                await App.Database.SaveUpInventario(invenDia[posInven]);
+                            }
+                            else
+                            {
+                                var fecha = spesifiA[i].Fecha;
+                                fecha.AddDays(item.Duracion);
+                                await App.Database.SaveInventario(new Inventario()
+                                {
+                                    Materias = inversion.Nombre,
+                                    ConsUtil = 0,
+                                    ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles),
+                                    ConsExedente = 0,
+                                    Fecha = fecha
+                                });
+                            }
+                           
+
                             Mostrarmensaje = true;
                             var inv = await App.Database.GetIdInvAcumulativa(item.IdInv);
                             mensaje = mensaje + $"La compra de {inv.Nombre} el {spesifiA[i].Fecha} caducó. El stock de {inv.Nombre} es de {unidadesUtiles} unidades. Se perdieron {(spesifiA[i].Unidades - unidadesUtiles)} unidades\n";
@@ -200,7 +276,7 @@ namespace BEAssistant
                     for (int i = spesifiC.Count - 1; i >= 0; i--)
                     {
                         int dias = (spesifiC[i].Fecha.DayOfYear * spesifiC[i].Fecha.Year) + item.Duracion;
-                        if (dias >= diaActual)
+                        if (dias <= diaActual)
                         {
                             Stocker upStock = new Stocker
                             {
@@ -213,7 +289,32 @@ namespace BEAssistant
                                 UnidadesEstimadas = item.UnidadesEstimadas
                             };
                             await App.Database.SaveUpStock(upStock);
-
+                            // Inventario
+                            var invenDia = listInven.FindAll(x => x.Fecha.DayOfYear == TimeActual.DayOfYear && x.Fecha.Year == TimeActual.Year);
+                            var inversion = await App.Database.GetIdInvConstante(item.IdInv);
+                            int posInven = invenDia.FindIndex(x => x.Materias == inversion.Nombre);
+                            if (posInven != -1)
+                            { 
+                                invenDia[posInven].ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles);
+                                await App.Database.SaveUpInventario(invenDia[posInven]);
+                            }
+                            else
+                            {
+                                var fecha = spesifiC[i].Fecha;
+                                fecha.AddDays(item.Duracion);
+                                await App.Database.SaveInventario(new Inventario()
+                                {
+                                    Materias = inversion.Nombre,
+                                    ConsUtil = 0,
+                                    ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles),
+                                    ConsExedente = 0,
+                                    Fecha = fecha
+                                });
+                                invenDia[posInven].Materias = inversion.Nombre;
+                                invenDia[posInven].ConsUtil = 0;
+                                invenDia[posInven].ConsExedente = 0;
+                                invenDia[posInven].ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles);
+                            }
                             Mostrarmensaje = true;
                             var inv = await App.Database.GetIdInvConstante(item.IdInv);
                             mensaje = mensaje + $"La compra de {inv.Nombre} el {spesifiC[i].Fecha} caducó. El stock de {inv.Nombre} es de {unidadesUtiles} unidades. Se perdieron {(spesifiC[i].Unidades - unidadesUtiles)} unidades\n";
@@ -233,7 +334,6 @@ namespace BEAssistant
                 await Navigation.PushPopupAsync(new PopupAlert());
             }
         }
-
         private async void RegistroConstante()
         {
             DateTime TimeActual = DateTime.Now;
@@ -391,7 +491,7 @@ namespace BEAssistant
         }
         private async void ButtonOperaciones_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new TabbedConsultas());
+            await Navigation.PushModalAsync(new TabbedOpciones());
         }
         private async void ButtonInverciones_Clicked(object sender, EventArgs e)
         {
@@ -403,7 +503,7 @@ namespace BEAssistant
         }
         private async void ButtonRespuestasR_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new TabbedRespRapida());
+            await Navigation.PushModalAsync(new TabbedOperaciones());
         }
     }
 }

@@ -12,12 +12,10 @@ C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\Xa
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\BEAssistant.dll
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\ref\BEAssistant.dll
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\BEAssistant.pdb
-C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\TabbedConsultas.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\TabbedEstadisticas.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\TabbedInversiones.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\TabbedProductos.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\TabbedPropuestas.xaml.g.cs
-C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\TabbedRespRapida.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\DescripcionInversion.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\UpdateInverciones.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\DescripcionProducto.xaml.g.cs
@@ -82,3 +80,6 @@ C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\po
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupVerStock.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupStockSelected.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupSubAlert.xaml.g.cs
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\TabbedOpciones.xaml.g.cs
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\TabbedOperaciones.xaml.g.cs
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupInventario.xaml.g.cs

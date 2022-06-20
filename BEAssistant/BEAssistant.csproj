@@ -36,6 +36,12 @@
     <Compile Update="popups\PopupGanancia.xaml.cs">
       <DependentUpon>PopupGanancia.xaml</DependentUpon>
     </Compile>
+    <Compile Update="TabbedOpciones.xaml.cs">
+      <DependentUpon>TabbedOpciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="TabbedOperaciones.xaml.cs">
+      <DependentUpon>TabbedOperaciones.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UpdateInverciones.xaml.cs">
       <DependentUpon>UpdateInverciones.xaml</DependentUpon>
     </Compile>
@@ -87,6 +93,9 @@
     <EmbeddedResource Update="popups\PopupGanancia.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="popups\popupInventario.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="popups\popupproductSelected.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -114,7 +123,7 @@
     <EmbeddedResource Update="UpdateInverciones.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="TabbedConsultas.xaml">
+    <EmbeddedResource Update="TabbedOpciones.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="TabbedEstadisticas.xaml">
@@ -129,7 +138,7 @@
     <EmbeddedResource Update="TabbedPropuestas.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="TabbedRespRapida.xaml">
+    <EmbeddedResource Update="TabbedOperaciones.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="UpdateProductos.xaml">
