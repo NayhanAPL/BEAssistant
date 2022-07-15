@@ -207,7 +207,7 @@ namespace BEAssistant
             string mensaje = "";
             DateTime TimeActual = DateTime.Now;
             TimeActual = TimeActual.ToLocalTime();
-            int diaActual = TimeActual.DayOfYear * TimeActual.Year;
+            int diaActual = TimeActual.DayOfYear + TimeActual.Year * 365;
             var stock = await App.Database.GetStock();
             var regA = await App.Database.GetByTipoReAcumulativa((int)TiposAcumulativa.MateriaPrima);
             var regC = await App.Database.GetByTipoReConstante((int)TiposConstante.MateriaPrima);
@@ -220,7 +220,7 @@ namespace BEAssistant
                     var spesifiA = regA.FindAll(x => x.IdInv == item.IdInv);
                     for (int i = spesifiA.Count - 1; i >= 0; i--)
                     {
-                        int dias = (spesifiA[i].Fecha.DayOfYear * spesifiA[i].Fecha.Year) + item.Duracion;
+                        int dias = (spesifiA[i].Fecha.DayOfYear + spesifiA[i].Fecha.Year * 365) + item.Duracion;
                         if (dias <= diaActual)
                         {
                             Stocker upStock = new Stocker
@@ -275,7 +275,7 @@ namespace BEAssistant
                     var spesifiC = regC.FindAll(x => x.IdInv == item.IdInv);
                     for (int i = spesifiC.Count - 1; i >= 0; i--)
                     {
-                        int dias = (spesifiC[i].Fecha.DayOfYear * spesifiC[i].Fecha.Year) + item.Duracion;
+                        int dias = (spesifiC[i].Fecha.DayOfYear + spesifiC[i].Fecha.Year * 365) + item.Duracion;
                         if (dias <= diaActual)
                         {
                             Stocker upStock = new Stocker
