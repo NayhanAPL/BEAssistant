@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BEAssistant.TabbedOperaciones">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Consultas">
+        <ScrollView>
+            <StackLayout Margin="0,20,0,0">
+                <Button Text="Contactos" x:Name="Contactos" Clicked="Contactos_Clicked" HorizontalOptions="CenterAndExpand" WidthRequest="400" FontSize="20" FontAttributes="Bold" TextColor="DarkSlateGray" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
+                <Button Text="Ver Stock" x:Name="VerStock" Clicked="VerStock_Clicked" HorizontalOptions="CenterAndExpand" WidthRequest="400" FontSize="20" FontAttributes="Bold" TextColor="DarkSlateGray" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
+                <Button Text="Inventario" x:Name="Inventario" Clicked="Inventario_Clicked" HorizontalOptions="CenterAndExpand" WidthRequest="400" FontSize="20" FontAttributes="Bold" TextColor="DarkSlateGray" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+  <ContentPage Title="Tab 2" />
+  <ContentPage Title="Tab 3" />
+</TabbedPage>

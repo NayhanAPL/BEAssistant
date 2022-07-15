@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages:PopupPage  xmlns:Pages="http://rotorgames.com" 
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  x:Class="BEAssistant.popups.popupSubAlert"
+                  BackgroundClicked="PopupPage_BackgroundClicked"
+                  >
+    <StackLayout Padding="0" x:Name="stackPopup" WidthRequest="375" HorizontalOptions="Center" VerticalOptions="End">
+        <Frame BackgroundColor="DarkSlateGray" x:Name="framePopup" Padding="10" Margin="0,0,0,20" CornerRadius="10">
+            <StackLayout>
+                <Label Text="" TextColor="White" FontSize="15" x:Name="textSubAlert"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</Pages:PopupPage>

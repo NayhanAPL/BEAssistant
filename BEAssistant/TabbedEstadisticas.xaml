@@ -1,0 +1,611 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" 
+             xmlns:local="clr-namespace:BEAssistant" 
+             x:Class="BEAssistant.TabbedEstadisticas"
+             CurrentPageChanged="TabbedPage_CurrentPageChanged">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Generales">
+        <ContentPage.BindingContext>
+            <local:VMG/>
+        </ContentPage.BindingContext>
+        <ScrollView>
+            <StackLayout Margin="10,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="245"></RowDefinition>
+                        <RowDefinition Height="245"></RowDefinition>
+                        <RowDefinition Height="245"></RowDefinition>
+                        <RowDefinition Height="340"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <chart:SfChart Grid.Row="0">
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend>
+                                <chart:ChartLegend.LabelStyle>
+                                    <chart:ChartLegendLabelStyle Font="16" TextColor="Black"/>
+                                </chart:ChartLegend.LabelStyle>
+                            </chart:ChartLegend>
+                        </chart:SfChart.Legend>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:DateTimeCategoryAxis IntervalType="Days"/>
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis/>
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:SfChart.Series>
+                            <chart:ColumnSeries EnableAnimation="True" Color="Green" StrokeWidth="1" Label="Ingresos" StrokeColor="#67a268" CornerRadius="5" ItemsSource="{Binding historialGeneral}" YBindingPath="Ingreso" XBindingPath="Fecha"></chart:ColumnSeries>
+                        </chart:SfChart.Series>
+                    </chart:SfChart>
+                    <chart:SfChart Grid.Row="1">
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend>
+                                <chart:ChartLegend.LabelStyle>
+                                    <chart:ChartLegendLabelStyle Font="14" TextColor="Black"/>
+                                </chart:ChartLegend.LabelStyle>
+                            </chart:ChartLegend>
+                        </chart:SfChart.Legend>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:DateTimeCategoryAxis IntervalType="Days"/>
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis/>
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:SfChart.Series>
+                            <chart:ColumnSeries EnableAnimation="True" Color="Green" StrokeWidth="1" Label="Gastos" StrokeColor="#67a268" CornerRadius="5" ItemsSource="{Binding historialGeneral}" YBindingPath="Gasto" XBindingPath="Fecha"></chart:ColumnSeries>
+                         </chart:SfChart.Series>
+                    </chart:SfChart>
+                    <chart:SfChart Grid.Row="2">
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend>
+                                <chart:ChartLegend.LabelStyle>
+                                    <chart:ChartLegendLabelStyle Font="14" TextColor="Black"/>
+                                </chart:ChartLegend.LabelStyle>
+                            </chart:ChartLegend>
+                        </chart:SfChart.Legend>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:DateTimeCategoryAxis IntervalType="Days"/>
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis/>
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:SfChart.Series>
+                            <chart:ColumnSeries EnableAnimation="True" Color="Green" StrokeWidth="1" StrokeColor="#67a268" Label="Ganancias" CornerRadius="5" ItemsSource="{Binding historialGeneral}" YBindingPath="Ganancia" XBindingPath="Fecha"></chart:ColumnSeries>
+                        </chart:SfChart.Series>
+                    </chart:SfChart>
+                    <CarouselView Grid.Row="3" x:Name="ViewTiempos" Margin="10,5" FlowDirection="LeftToRight" PositionChanged="ViewTiempos_PositionChanged">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame BackgroundColor="White" BorderColor="LightGray" CornerRadius="10" HasShadow="True" Padding="17" Margin="0">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="35"></RowDefinition>
+                                                <RowDefinition Height="60"></RowDefinition>
+                                                <RowDefinition Height="30"></RowDefinition>
+                                                <RowDefinition Height="30"></RowDefinition>
+                                                <RowDefinition Height="30"></RowDefinition>
+                                                <RowDefinition Height="30"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Text="{Binding Fecha}" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+
+                                            <StackLayout Grid.Row="1" HorizontalOptions="Center">
+                                                <Label Text="Plan de Ganancias" TextColor="Black" FontSize="17" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding Porcentaje}" TextColor="Green" FontSize="20"/>
+                                                    <Label Text="%" TextColor="Green" FontSize="20"/>
+                                                    <Button BackgroundColor="Green" x:Name="Button" Clicked="Button_Clicked" Text="{Binding Ganancia}" Padding="4" TextColor="White" FontSize="14" Margin="0" HeightRequest="15" CornerRadius="20" WidthRequest="{Binding Porcentaje}"/>
+                                                    <Label Text="{Binding Estimado}" TextColor="Gray" FontSize="20"/>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                            <Grid Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Text="Ingresos" TextColor="Black" FontSize="18" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+                                                <Label Grid.Column="2" Text="{Binding Ingreso}" x:Name="labelganancia" FontSize="18" TextColor="Green" HorizontalOptions="End" HorizontalTextAlignment="End"/>
+                                            </Grid>
+                                            <Grid Grid.Row="3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Text="Inversión Constante" FontSize="18" TextColor="Black" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+                                                <Label Grid.Column="2" Text="{Binding GastoC}" x:Name="labelinvC" FontSize="18" TextColor="Green" HorizontalOptions="End" HorizontalTextAlignment="End"/>
+                                            </Grid>
+                                            <Grid Grid.Row="4">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Text="Inversión Acumulativa" FontSize="18" TextColor="Black" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+                                                <Label Grid.Column="2" Text="{Binding GastoA}" x:Name="labelinvA" FontSize="18" TextColor="Green" HorizontalOptions="End" HorizontalTextAlignment="End"/>
+                                            </Grid>
+                                            <Grid Grid.Row="5">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Text="Inversión Extraordinaria" FontSize="18" TextColor="Black" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+                                                <Label Grid.Column="2" Text="{Binding GastoE}" x:Name="labelinvE" FontSize="18" TextColor="Green" HorizontalOptions="End" HorizontalTextAlignment="End"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Frame>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+                                        <Label Text="{Binding labelArrowLeft}" FontSize="25" VerticalTextAlignment="End" VerticalOptions="End" TextColor="DarkGray"/>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="15"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding labelPoint1Gray}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Gray"/>
+                                            <Label Grid.Column="0" Text="{Binding labelPoint1Green}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Green"/>
+                                        </Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="15"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding labelPoint2Gray}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Gray"/>
+                                            <Label Grid.Column="0" Text="{Binding labelPoint2Green}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Green"/>
+                                        </Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="15"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding labelPoint3Gray}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Gray"/>
+                                            <Label Grid.Column="0" Text="{Binding labelPoint3Green}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Green"/>
+                                        </Grid>
+                                        <Label Text="{Binding labelArrowRigth}" FontSize="25" VerticalTextAlignment="End" VerticalOptions="End" TextColor="DarkGray"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage Title="Productos">
+        <ContentPage.BindingContext>
+            <local:VMP/>
+        </ContentPage.BindingContext>
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="470"></RowDefinition>
+                        <RowDefinition Height="280"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="170"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Margin="10,10,0,10">
+                            <Frame CornerRadius="10" HasShadow="True" BackgroundColor="White" Padding="5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"></RowDefinition>
+                                        <RowDefinition Height="175"></RowDefinition>
+                                        <RowDefinition Height="40"></RowDefinition>
+                                        <RowDefinition Height="175"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Text="Ingresos por denominación" FontSize="15" Margin="0,10,0,0" FontAttributes="Bold" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                                    <chart:SfChart Grid.Row="1" ChartPadding="0" LegendItemClicked="SfChart_LegendItemClicked" Margin="0">
+                                        <chart:SfChart.Legend>
+                                            <chart:ChartLegend DockPosition="Right">
+                                                <chart:ChartLegend.LabelStyle>
+                                                    <chart:ChartLegendLabelStyle Font="18" TextColor="Black" FontAttributes="Bold"/>
+                                                </chart:ChartLegend.LabelStyle>
+                                            </chart:ChartLegend>
+                                        </chart:SfChart.Legend>
+                                        <chart:SfChart.Series>
+                                            <chart:PieSeries EnableAnimation="True" Label="Historial de la denominación" ItemsSource="{Binding historialDenominacion}" XBindingPath="Nombre" YBindingPath="Value" >
+                                                <chart:PieSeries.DataMarker>
+                                                    <chart:ChartDataMarker LabelContent="Percentage">
+                                                        <chart:ChartDataMarker.LabelStyle>
+                                                            <chart:DataMarkerLabelStyle Font="Bold,12" LabelPosition="Outer" BorderThickness="10"/>
+                                                        </chart:ChartDataMarker.LabelStyle>
+                                                    </chart:ChartDataMarker>
+                                                </chart:PieSeries.DataMarker>
+                                                <chart:PieSeries.ColorModel>
+                                                    <chart:ChartColorModel Palette="Custom">
+                                                        <chart:ChartColorModel.CustomBrushes>
+                                                            <Color>#282828</Color>
+                                                            <Color>#218e23</Color>
+                                                            <Color>#2fbd14</Color>
+                                                            <Color>#207320</Color>
+                                                            <Color>#54d255</Color>
+                                                            <Color>#20401a</Color>
+                                                            <Color>#74b169</Color>
+                                                            <Color>#cccccc</Color>
+                                                            <Color>#3a623a</Color>
+                                                            <Color>#8a8a8a</Color>
+                                                            <Color>#a7a7a7</Color>
+                                                            <Color>#787878</Color>
+                                                            <Color>#282828</Color>
+                                                            <Color>#525252</Color>
+                                                            <Color>#000000</Color>
+                                                        </chart:ChartColorModel.CustomBrushes>
+                                                    </chart:ChartColorModel>
+                                                </chart:PieSeries.ColorModel>
+                                            </chart:PieSeries>
+                                        </chart:SfChart.Series>
+                                    </chart:SfChart>
+                                    <Label Grid.Row="2" Text="Ventas por denominación" FontSize="15" FontAttributes="Bold" TextColor="Gray" Margin="10,0,0,0" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                                    <chart:SfChart Grid.Row="3" ChartPadding="0" LegendItemClicked="SfChart_LegendItemClicked_1" Margin="0">
+                                        <chart:SfChart.Legend>
+                                            <chart:ChartLegend DockPosition="Right">
+                                                <chart:ChartLegend.LabelStyle>
+                                                    <chart:ChartLegendLabelStyle Font="18" TextColor="Black" FontAttributes="Bold"/>
+                                                </chart:ChartLegend.LabelStyle>
+                                            </chart:ChartLegend>
+                                        </chart:SfChart.Legend>
+                                        <chart:SfChart.Series>
+                                            <chart:PieSeries EnableAnimation="True" Label="Ventas por denominacion" ItemsSource="{Binding historialDenominacionCant}" XBindingPath="Nombre" YBindingPath="Value" >
+                                                <chart:PieSeries.DataMarker>
+                                                    <chart:ChartDataMarker LabelContent="YValue">
+                                                        <chart:ChartDataMarker.LabelStyle>
+                                                            <chart:DataMarkerLabelStyle Font="Bold,12" LabelPosition="Outer" BorderThickness="10"/>
+                                                        </chart:ChartDataMarker.LabelStyle>
+                                                    </chart:ChartDataMarker>
+                                                </chart:PieSeries.DataMarker>
+                                                <chart:PieSeries.ColorModel>
+                                                    <chart:ChartColorModel Palette="Custom">
+                                                        <chart:ChartColorModel.CustomBrushes>
+                                                            <Color>#282828</Color>
+                                                            <Color>#218e23</Color>
+                                                            <Color>#2fbd14</Color>
+                                                            <Color>#207320</Color>
+                                                            <Color>#54d255</Color>
+                                                            <Color>#20401a</Color>
+                                                            <Color>#74b169</Color>
+                                                            <Color>#cccccc</Color>
+                                                            <Color>#3a623a</Color>
+                                                            <Color>#8a8a8a</Color>
+                                                            <Color>#a7a7a7</Color>
+                                                            <Color>#787878</Color>
+                                                            <Color>#282828</Color>
+                                                            <Color>#525252</Color>
+                                                            <Color>#000000</Color>
+                                                        </chart:ChartColorModel.CustomBrushes>
+                                                    </chart:ChartColorModel>
+                                                </chart:PieSeries.ColorModel>
+                                            </chart:PieSeries>
+                                        </chart:SfChart.Series>
+                                    </chart:SfChart>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                        <CarouselView x:Name="corouserTablaDenom"  PositionChanged="corouserTablaDenom_PositionChanged" FlowDirection="LeftToRight" Grid.Column="1" WidthRequest="170" >
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="40"></RowDefinition>
+                                            <RowDefinition Height="90"></RowDefinition>
+                                            <RowDefinition Height="90"></RowDefinition>
+                                            <RowDefinition Height="90"></RowDefinition>
+                                            <RowDefinition Height="90"></RowDefinition>
+                                            <RowDefinition Height="40"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Denominacion}" TextColor="Gray" Margin="0,10,0,0" FontSize="18" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontAttributes="Bold"/>
+                                        <Frame Grid.Row="1" BackgroundColor="White" CornerRadius="10" HasShadow="True" Margin="5,8,10,8" Padding="5">
+                                            <StackLayout>
+                                                <Label Text="Total de ingresos" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                                                <StackLayout Grid.Row="0" Margin="15,10,0,0" Grid.Column="1" Orientation="Horizontal">
+                                                    <Label Text="$" TextColor="Green" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontAttributes="Bold"/>
+                                                    <Label TextColor="Green" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontAttributes="Bold" Text="{Binding Ingreso}"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame Grid.Row="2" BackgroundColor="White" CornerRadius="10" HasShadow="True" Margin="5,8,10,8" Padding="5">
+                                            <StackLayout>
+                                                <Label Text="Total de Ganancias" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                                                <StackLayout Grid.Row="1" Margin="15,10,0,0" Grid.Column="1" Orientation="Horizontal">
+                                                    <Label Text="$" TextColor="Green" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="16" FontAttributes="Bold"/>
+                                                    <Label TextColor="Green" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontAttributes="Bold" Text="{Binding Ganancia}"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame Grid.Row="3" BackgroundColor="White" CornerRadius="10" HasShadow="True" Margin="5,8,10,8" Padding="5">
+                                            <StackLayout>
+                                                <Label Text="Total de ventas" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                                                <StackLayout Grid.Row="2" Margin="15,10,0,0" Grid.Column="1" Orientation="Horizontal">
+                                                    <Label TextColor="Green" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontAttributes="Bold" Text="{Binding Venta}"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame Grid.Row="4" BackgroundColor="White" CornerRadius="10" HasShadow="True" Margin="5,8,10,8" Padding="5">
+                                            <StackLayout>
+                                                <Label Text="Relevancia en tu negocio" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                                                <StackLayout Grid.Row="3" Margin="15,0,0,0" Grid.Column="1" Orientation="Horizontal">
+                                                    <Label TextColor="Green" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontAttributes="Bold" Text="{Binding Relevancia}"/>
+                                                    <Label Text="%" TextColor="Green" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontAttributes="Bold"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                        <StackLayout Grid.Row="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+                                            <Label Text="{Binding labelArrowLeft}" FontSize="25" VerticalTextAlignment="End" VerticalOptions="End" TextColor="DarkGray"/>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="15"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Text="{Binding labelPoint1Gray}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Gray"/>
+                                                <Label Grid.Column="0" Text="{Binding labelPoint1Green}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Green"/>
+                                            </Grid>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="15"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Text="{Binding labelPoint2Gray}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Gray"/>
+                                                <Label Grid.Column="0" Text="{Binding labelPoint2Green}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Green"/>
+                                            </Grid>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="15"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Text="{Binding labelPoint3Gray}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Gray"/>
+                                                <Label Grid.Column="0" Text="{Binding labelPoint3Green}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Green"/>
+                                            </Grid>
+                                            <Label Text="{Binding labelArrowRigth}" FontSize="25" VerticalTextAlignment="End" VerticalOptions="End" TextColor="DarkGray"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                    </Grid>
+                    <CarouselView Grid.Row="1" x:Name="CorouselProductos" Margin="10,5" FlowDirection="LeftToRight" PositionChanged="CorouselProductos_PositionChanged">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="215"></RowDefinition>
+                                        <RowDefinition Height="65"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Frame  Grid.Row="0" BackgroundColor="White" CornerRadius="10" BorderColor="LightGray" HasShadow="True" Padding="10" Margin="10,10,10,0">
+                                        <StackLayout>
+                                            <Label Text="{Binding Denominacion}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                                            <ListView ItemsSource="{Binding ListPro}" ItemSelected="ListViewproductos_ItemSelected" Margin="5" x:Name="ListViewproductos" HeightRequest="120" SeparatorVisibility="None">
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <ViewCell>
+                                                            <StackLayout>
+                                                                <Frame HasShadow="True" BackgroundColor="White" Padding="0" HeightRequest="100" CornerRadius="10" Margin="5" BorderColor="LightGray">
+                                                                    <Label Text="{Binding Nombre}" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="22" VerticalOptions="Center" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="Gray"/>
+                                                                </Frame>
+                                                            </StackLayout>
+                                                        </ViewCell>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </StackLayout>
+                                    </Frame>
+                                    <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+                                        <Label Text="{Binding labelArrowLeft}" FontSize="25" VerticalTextAlignment="Start" VerticalOptions="Start" TextColor="DarkGray"/>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="15"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding labelPoint1Gray}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Gray"/>
+                                            <Label Grid.Column="0" Text="{Binding labelPoint1Green}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Green"/>
+                                        </Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="15"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding labelPoint2Gray}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Gray"/>
+                                            <Label Grid.Column="0" Text="{Binding labelPoint2Green}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Green"/>
+                                        </Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="15"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding labelPoint3Gray}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Gray"/>
+                                            <Label Grid.Column="0" Text="{Binding labelPoint3Green}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Green"/>
+                                        </Grid>
+                                        <Label Text="{Binding labelArrowRigth}" FontSize="25" VerticalTextAlignment="Start" VerticalOptions="Start" TextColor="DarkGray"/>
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage Title="Inversiones">
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="275"></RowDefinition>
+                    <RowDefinition Height="275"></RowDefinition>
+                    <RowDefinition Height="275"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0">
+                    <Frame BackgroundColor="White" BorderColor="LightGray" HasShadow="True" Margin="0,10" Padding="8">
+                        <StackLayout>
+                            <Label Text="Acumulativas" TextColor="Gray" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center" Margin="0"/>
+                            <ListView Grid.Row="1" x:Name="listViewAcumulativo" ItemSelected="listViewAcumulativo_ItemSelected" SeparatorVisibility="None" RowHeight="170">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout>
+                                                <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10" Margin="10" Padding="8">
+                                                    <Grid Margin="10,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="30"></RowDefinition>
+                                                            <RowDefinition Height="30"></RowDefinition>
+                                                            <RowDefinition Height="30"></RowDefinition>
+                                                            <RowDefinition Height="25"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Grid.Row="0" Text="{Binding Nombre}" TextColor="Black" FontAttributes="Bold" FontSize="20" HorizontalTextAlignment="Center" HorizontalOptions="Center" Margin="0"/>
+                                                        <Grid Grid.Row="1">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Grid.Column="0" Text="Costo" TextColor="Gray" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Start" HorizontalOptions="Start" Margin="0"/>
+                                                            <Label Grid.Column="2" Text="{Binding GastoTotal}" TextColor="Green" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="End" HorizontalOptions="End" Margin="0"/>
+                                                        </Grid>
+                                                        <Grid Grid.Row="2">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Grid.Column="0" Text="Relevancia en tu negocio" TextColor="Gray" FontAttributes="Bold" FontSize="17" HorizontalTextAlignment="Start" HorizontalOptions="Start" Margin="0"/>
+                                                            <Label Grid.Column="2" Text="{Binding Relevancia}" TextColor="Green" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="End" HorizontalOptions="End" Margin="0"/>
+                                                        </Grid>
+                                                        <Label Grid.Row="3" Text="{Binding Descripcion}" TextColor="DarkSlateGray" FontSize="14" HorizontalTextAlignment="Start" HorizontalOptions="Start" Margin="0"/>
+                                                    </Grid>
+                                                </Frame>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <Frame BackgroundColor="White" BorderColor="LightGray" HasShadow="True" Margin="0,10" Padding="8">
+                        <StackLayout>
+                            <Label Text="Constantes" TextColor="Gray" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center" Margin="0"/>
+                            <CarouselView x:Name="CarouselConstante" FlowDirection="LeftToRight">
+                                <CarouselView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"></RowDefinition>
+                                                <RowDefinition Height="120"></RowDefinition>
+                                                <RowDefinition Height="65"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Text="{Binding Nombre}" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center" Margin="0"/>
+                                            <ListView Grid.Row="1" ItemsSource="{Binding ListConstPage3}" SeparatorVisibility="None" RowHeight="125">
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <ViewCell>
+                                                            <StackLayout>
+                                                                <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10" Margin="10" Padding="8">
+                                                                    <Grid Margin="10,0">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="30"></RowDefinition>
+                                                                            <RowDefinition Height="30"></RowDefinition>
+                                                                            <RowDefinition Height="25"></RowDefinition>
+                                                                        </Grid.RowDefinitions>
+                                                                        <Grid Grid.Row="0">
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Label Grid.Column="0" Text="Costo" TextColor="Gray" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Start" HorizontalOptions="Start" Margin="0"/>
+                                                                            <Label Grid.Column="2" Text="{Binding Costo}" TextColor="Green" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="End" HorizontalOptions="End" Margin="0"/>
+                                                                        </Grid>
+                                                                        <Grid Grid.Row="1">
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Label Grid.Column="0" Text="Relevancia de gasto en el mes" TextColor="Gray" FontAttributes="Bold" FontSize="17" HorizontalTextAlignment="Start" HorizontalOptions="Start" Margin="0"/>
+                                                                            <Label Grid.Column="2" Text="{Binding Relevancia}" TextColor="Green" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="End" HorizontalOptions="End" Margin="0"/>
+                                                                        </Grid>
+                                                                        <Label Grid.Row="2" Text="{Binding Descripcion}" TextColor="DarkSlateGray" FontSize="14" HorizontalTextAlignment="End" HorizontalOptions="End" Margin="0"/>
+                                                                    </Grid>
+                                                                </Frame>
+                                                            </StackLayout>
+                                                        </ViewCell>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                            <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+                                                <Label Text="{Binding labelArrowLeft}" FontSize="25" VerticalTextAlignment="Start" VerticalOptions="Start" TextColor="DarkGray"/>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0" Text="{Binding labelPoint1Gray}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Gray"/>
+                                                    <Label Grid.Column="0" Text="{Binding labelPoint1Green}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Green"/>
+                                                </Grid>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0" Text="{Binding labelPoint2Gray}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Gray"/>
+                                                    <Label Grid.Column="0" Text="{Binding labelPoint2Green}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Green"/>
+                                                </Grid>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0" Text="{Binding labelPoint3Gray}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Gray"/>
+                                                    <Label Grid.Column="0" Text="{Binding labelPoint3Green}" FontSize="30" VerticalTextAlignment="Start" VerticalOptions="Start" FontAttributes="Bold" TextColor="Green"/>
+                                                </Grid>
+                                                <Label Text="{Binding labelArrowRigth}" FontSize="25" VerticalTextAlignment="Start" VerticalOptions="Start" TextColor="DarkGray"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CarouselView.ItemTemplate>
+                            </CarouselView>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Grid.Row="2">
+                    <Frame BackgroundColor="White" BorderColor="LightGray" HasShadow="True" Margin="0,10" Padding="8">
+                        <StackLayout>
+                            <Label Text="Extraordinarias" TextColor="Gray" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center" Margin="0"/>
+                            <ListView x:Name="listExtraordinario" SeparatorVisibility="None" RowHeight="175">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame BackgroundColor="White" CornerRadius="8" Margin="10" Padding="8">
+                                                <Grid Margin="10,0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="30"></RowDefinition>
+                                                        <RowDefinition Height="30"></RowDefinition>
+                                                        <RowDefinition Height="30"></RowDefinition>
+                                                        <RowDefinition Height="*"></RowDefinition>
+                                                        <RowDefinition Height="25"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <Label Grid.Row="0" Text="{Binding Nombre}" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center" Margin="0"/>
+                                                    <Grid Grid.Row="1">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Grid.Column="0" Text="Costo" TextColor="Gray" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Start" HorizontalOptions="Start" Margin="0"/>
+                                                        <Label Grid.Column="2" Text="{Binding Costo}" TextColor="Green" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="End" HorizontalOptions="End" Margin="0"/>
+                                                    </Grid>
+                                                    <Grid Grid.Row="2">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Grid.Column="0" Text="Relevancia de gasto en el mes" TextColor="Gray" FontAttributes="Bold" FontSize="17" HorizontalTextAlignment="Start" HorizontalOptions="Start" Margin="0"/>
+                                                        <Label Grid.Column="2" Text="{Binding Relevancia}" TextColor="Green" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="End" HorizontalOptions="End" Margin="0"/>
+                                                    </Grid>
+                                                    <Label Grid.Row="3" Text="{Binding Descripcion}" FontSize="16" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" Margin="0"/>
+                                                    <Label Grid.Row="4" Text="{Binding Fecha}" TextColor="DarkSlateGray" FontSize="14" HorizontalTextAlignment="End" HorizontalOptions="End" Margin="0"/>
+                                                </Grid>
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage>
+</TabbedPage>

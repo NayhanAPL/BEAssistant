@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages:PopupPage  xmlns:Pages="http://rotorgames.com" 
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:BEAssistant"
+                  x:Class="BEAssistant.popups.popupInventario">
+    <StackLayout Padding="0" x:Name="stackPopup" WidthRequest="400" HeightRequest="580" HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame BackgroundColor="White" x:Name="framePopup" Padding="20" Margin="10" CornerRadius="10">
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="280"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Text="Inventario" TextColor="Black" FontSize="22" HorizontalOptions="Center" />
+                        <CarouselView Grid.Row="1" x:Name="CarouselInventarioFechas" PositionChanged="CarouselInventarioFechas_PositionChanged" FlowDirection="LeftToRight">
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="40"></RowDefinition>
+                                            <RowDefinition Height="50"></RowDefinition>
+                                            <RowDefinition Height="180"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" Text="{Binding Fecha}" FontSize="20" TextColor="Black" HorizontalOptions="Center"/>
+                                        <Grid Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="140"></ColumnDefinition>
+                                                <ColumnDefinition Width="55"></ColumnDefinition>
+                                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" FontAttributes="Bold" HorizontalOptions="Start" FontSize="18" TextColor="DarkSlateGray" Text="material"/>
+                                            <Label Grid.Column="1" FontAttributes="Bold" HorizontalOptions="Start" FontSize="18" TextColor="DarkSlateGray" Text="útil"/>
+                                            <Label Grid.Column="2" FontAttributes="Bold" HorizontalOptions="Start" FontSize="18" TextColor="DarkSlateGray" Text="caduco"/>
+                                            <Label Grid.Column="3" FontAttributes="Bold" HorizontalOptions="Start" FontSize="18" TextColor="DarkSlateGray" Text="perdido"/>
+                                        </Grid>
+                                        <ListView Grid.Row="2" Margin="0" HeightRequest="50" SeparatorVisibility="None" ItemsSource="{Binding ListInventario}" x:Name="listviewInventarioDia">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="140"></ColumnDefinition>
+                                                                <ColumnDefinition Width="55"></ColumnDefinition>
+                                                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Grid.Column="0" Text="{Binding Materias}" TextColor="Black" FontSize="17"/>
+                                                            <Label Grid.Column="1" Text="{Binding ConsUtil}" TextColor="Green" FontSize="17"/>
+                                                            <Label Grid.Column="2" Text="{Binding ConsCaduco}" TextColor="Green" FontSize="17"/>
+                                                            <Label Grid.Column="3" Text="{Binding ConsExedente}" TextColor="Green" FontSize="17"/>
+                                                        </Grid>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </Grid>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                        <Button Grid.Row="2" Text="Modificar" x:Name="ModificarInventario" Clicked="ModificarInventario_Clicked" FontSize="18" HorizontalOptions="Center" TextColor="White" CornerRadius="10" BackgroundColor="Green"/>
+                    </Grid>
+                    <StackLayout x:Name="GridUpdate">
+                        <StackLayout>
+                            <Picker SelectedIndexChanged="selectMateria_SelectedIndexChanged" x:Name="selectMateria" Margin="0" VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  "/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <local:RoundedEntry Grid.Column="0" x:Name="EntryUtil" FontAttributes="Bold" Placeholder="Util    " VerticalOptions="Center" PlaceholderColor="Black" TextColor="Green" Keyboard="Numeric"/>
+                                <local:RoundedEntry Grid.Column="1" x:Name="EntryCaduco" FontAttributes="Bold" Placeholder="Caduco  " VerticalOptions="Center" PlaceholderColor="Black" TextColor="Green" Keyboard="Numeric"/>
+                                <local:RoundedEntry Grid.Column="2" x:Name="EntryExedente" FontAttributes="Bold" Placeholder="Exedente" VerticalOptions="Center" PlaceholderColor="Black" TextColor="Green" Keyboard="Numeric"/>
+                            </Grid>
+                        </StackLayout>
+                        <Button Text="guardar" FontAttributes="Bold" x:Name="GuardarCambiosInventario" Clicked="GuardarCambiosInventario_Clicked" FontSize="19" HorizontalOptions="Center" TextColor="Green" CornerRadius="10" BackgroundColor="White"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <Button Grid.Row="0" Text="X" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35" x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
+        </Grid>
+    </StackLayout>
+</Pages:PopupPage>

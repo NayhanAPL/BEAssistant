@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages:PopupPage  xmlns:Pages="http://rotorgames.com" 
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  x:Class="BEAssistant.popups.PopupAlert"
+                  CloseWhenBackgroundIsClicked="False" 
+                >
+
+    <StackLayout Padding="0" x:Name="stackPopup" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
+        <Frame BackgroundColor="White" x:Name="framePopup" Padding="20" Margin="0" CornerRadius="10">
+            <StackLayout>
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                    <Label Text="" x:Name="labelTitulo" FontAttributes="Bold" FontSize="22" Margin="0,0,0,5" TextColor="Black" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+                <Label Text="" x:Name="labelTexto" FontSize="17" TextColor="Black" HorizontalOptions="Center"/>
+                <Button Text="Ok" x:Name="ButtonOk" Margin="0,5,15,0" Clicked="ButtonOk_Clicked" HorizontalOptions="Center" FontSize="23" CornerRadius="5" BackgroundColor="White" FontAttributes="Bold" TextColor="Green"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</Pages:PopupPage>

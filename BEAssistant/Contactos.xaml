@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BEAssistant.Contactos">
+    <ContentPage Title="Cliente">
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0">
+                    <ListView x:Name="listContactosClientes" Scrolled="listContactosClientes_Scrolled" ItemSelected="listContactosClientes_ItemSelected" RowHeight="100" SeparatorColor="Gray">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Button BackgroundColor="DimGray" Text="{Binding Nombre}" TextColor="White" Margin="10,20,0,20" FontSize="35" Padding="10,5,10,10" CornerRadius="30" WidthRequest="60" HeightRequest="60"/>
+                                        <StackLayout>
+                                            <Label Text="{Binding Nombre}" Margin="0" TextColor="Black" FontSize="22" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Numero}" Margin="0" TextColor="DarkSlateGray" FontSize="18" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Correo}" Margin="0" TextColor="DarkSlateGray" FontSize="16" FontAttributes="Italic"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <Label IsVisible="false" Grid.Row="0" x:Name="labelVacioC" Text="Aún no ha añadido ningún Cliente" TextColor="Gray" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Button Grid.Row="0" x:Name="AgregarContactoCliente" Clicked="AgregarContactoCliente_Clicked" Text="+" HorizontalOptions="End" VerticalOptions="End" Margin="15" FontSize="40" TextColor="white" BackgroundColor="Green" CornerRadius="35" WidthRequest="70" HeightRequest="70" Padding="0,5,0,10"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Proveedor">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0">
+                <ListView x:Name="listContactosProveedores" Scrolled="listContactosProveedores_Scrolled" ItemSelected="listContactosProveedores_ItemSelected" RowHeight="100" SeparatorColor="Gray">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Button BackgroundColor="DimGray" Text="{Binding Nombre}" TextColor="White" Margin="10,20,0,20" FontSize="35" Padding="10,5,10,10" CornerRadius="30" WidthRequest="60" HeightRequest="60"/>
+                                    <StackLayout>
+                                        <Label Text="{Binding Nombre}" Margin="0" TextColor="Black" FontSize="22" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Numero}" Margin="0" TextColor="DarkSlateGray" FontSize="18" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Correo}" Margin="0" TextColor="DarkSlateGray" FontSize="16" FontAttributes="Italic"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Label IsVisible="false" Grid.Row="0" x:Name="labelVacioP" Text="Aún no ha añadido ningún Proveedor" TextColor="Gray" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Button Grid.Row="0" x:Name="AgregarContactoProveedores" Clicked="AgregarContactoProveedores_Clicked" Text="+" HorizontalOptions="End" VerticalOptions="End" Margin="15" FontSize="40" TextColor="white" BackgroundColor="Green" CornerRadius="35" WidthRequest="70" HeightRequest="70" Padding="0,5,0,10"/>
+        </Grid>
+    </ContentPage>
+    <ContentPage Title="Asociado">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0">
+                <ListView x:Name="listContactosAsociados" Scrolled="listContactosAsociados_Scrolled" ItemSelected="listContactosAsociados_ItemSelected" RowHeight="100" SeparatorColor="Gray">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Button BackgroundColor="DimGray" Text="{Binding Nombre}" TextColor="White" Margin="10,20,0,20" FontSize="35" Padding="10,5,10,10" CornerRadius="30" WidthRequest="60" HeightRequest="60"/>
+                                    <StackLayout>
+                                        <Label Text="{Binding Nombre}" Margin="0" TextColor="Black" FontSize="22" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Numero}" Margin="0" TextColor="DarkSlateGray" FontSize="18" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Correo}" Margin="0" TextColor="DarkSlateGray" FontSize="16" FontAttributes="Italic"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Label IsVisible="false" Grid.Row="0" x:Name="labelVacioA" Text="Aún no ha añadido ningún Asociado" TextColor="Gray" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Button Grid.Row="0" x:Name="AgregarContactoAsociados" Clicked="AgregarContactoAsociados_Clicked" Text="+" HorizontalOptions="End" VerticalOptions="End" Margin="15" FontSize="40" TextColor="white" BackgroundColor="Green" CornerRadius="35" WidthRequest="70" HeightRequest="70" Padding="0,5,0,10"/>
+        </Grid>
+    </ContentPage>
+    <ContentPage Title="Empleado">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0">
+                <ListView x:Name="listContactosTrabajadores" Scrolled="listContactosTrabajadores_Scrolled" ItemSelected="listContactosTrabajadores_ItemSelected" RowHeight="100" SeparatorColor="Gray">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Button BackgroundColor="DimGray" Text="{Binding Nombre}" TextColor="White" Margin="10,20,0,20" FontSize="35" Padding="10,5,10,10" CornerRadius="30" WidthRequest="60" HeightRequest="60"/>
+                                    <StackLayout>
+                                        <Label Text="{Binding Nombre}" Margin="0" TextColor="Black" FontSize="22" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Numero}" Margin="0" TextColor="DarkSlateGray" FontSize="18" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Correo}" Margin="0" TextColor="DarkSlateGray" FontSize="16" FontAttributes="Italic"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Label IsVisible="false" x:Name="labelVacioT" Grid.Row="0" Text="Aún no ha añadido ningún Empleado" TextColor="Gray" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Button Grid.Row="0" x:Name="AgregarContactoTrabajadores" Clicked="AgregarContactoTrabajadores_Clicked" Text="+" HorizontalOptions="End" VerticalOptions="End" Margin="15" FontSize="40" TextColor="white" BackgroundColor="Green" CornerRadius="35" WidthRequest="70" HeightRequest="70" Padding="0,5,0,10"/>
+        </Grid>
+    </ContentPage>
+</TabbedPage>

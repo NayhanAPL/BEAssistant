@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages:PopupPage  xmlns:Pages="http://rotorgames.com"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  x:Class="BEAssistant.popups.CrearContacto">
+    <StackLayout Margin="20,0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="350">
+        <Frame Margin="0" Padding="20" CornerRadius="10" BackgroundColor="White">
+            <StackLayout>
+                <Label Text="Crear Contacto:" TextColor="DarkSlateGray" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                <StackLayout>
+                    <Label Text="Nombre:" TextColor="Gray" FontSize="18" VerticalOptions="Center" FontAttributes="Bold"/>
+                    <Entry Placeholder="" Keyboard ="Text" VerticalOptions="Start" SelectionLength="70" x:Name="EntryNombre" PlaceholderColor="Gray" TextColor="Black"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Celular:" TextColor="Gray" FontSize="18" VerticalOptions="Center" FontAttributes="Bold"/>
+                    <Entry Placeholder="" Keyboard="Telephone" VerticalOptions="Start" SelectionLength="70" x:Name="EntryNumero" PlaceholderColor="Gray" TextColor="Black"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Telefono:" TextColor="Gray" FontSize="18" VerticalOptions="Center" FontAttributes="Bold"/>
+                    <Entry Placeholder="" Keyboard="Email" VerticalOptions="Start" SelectionLength="70" x:Name="EntryTelefono" PlaceholderColor="Gray" TextColor="Black"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Correo:" TextColor="Gray" FontSize="18" VerticalOptions="Center" FontAttributes="Bold"/>
+                    <Entry Placeholder="" Keyboard="Email" VerticalOptions="Start" SelectionLength="70" x:Name="EntryCorreo" PlaceholderColor="Gray" TextColor="Black"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Dirección:" TextColor="Gray" FontSize="18" VerticalOptions="Center" FontAttributes="Bold"/>
+                    <Entry Placeholder="" Keyboard="Email" VerticalOptions="Start" SelectionLength="70" x:Name="EntryDireccion" PlaceholderColor="Gray" TextColor="Black"/>
+                </StackLayout>
+                <StackLayout >
+                    <Label Text="Descripción:" TextColor="Gray" FontSize="18" VerticalOptions="Center" FontAttributes="Bold"/>
+                    <Entry Placeholder="" Keyboard="Email" VerticalOptions="Start" SelectionLength="70" x:Name="EntryDescripcion" PlaceholderColor="Gray" TextColor="Black"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Cancelar" x:Name="ButtonCancelar" Margin="0,5,25,0" Clicked="ButtonCancelar_Clicked" HorizontalOptions="Start" FontSize="20" CornerRadius="5" BackgroundColor="White" FontAttributes="Bold" TextColor="Green"/>
+                    <Button Text="Aceptar" x:Name="ButtonCrear" Margin="25,5,0,0" Clicked="ButtonCrear_Clicked" HorizontalOptions="End" FontSize="20" CornerRadius="5" BackgroundColor="White" FontAttributes="Bold" TextColor="Green"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+        
+</Pages:PopupPage>

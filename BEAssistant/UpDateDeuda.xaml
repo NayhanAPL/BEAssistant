@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages:PopupPage  xmlns:Pages="http://rotorgames.com" 
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  xmlns:local="clr-namespace:BEAssistant"
+                  x:Class="BEAssistant.UpDateDeuda"
+                  CloseWhenBackgroundIsClicked="True">
+    <StackLayout HeightRequest="600" HorizontalOptions="Center" Margin="10,0" VerticalOptions="Center" WidthRequest="395">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Margin="10" Padding="15" CornerRadius="10" BackgroundColor="White">
+                <StackLayout>
+                    <StackLayout>
+                        <Label Text="Actualizar propiedades de:" FontSize="19" TextColor="Black" FontAttributes="Bold" Margin="10,10,0,5"/>
+                        <Label Text="" x:Name="nameDeuda" TextColor="Green" Margin="10,10,10,5" FontSize="18" FontAttributes="Bold"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Costo: $" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
+                        <local:RoundedEntry x:Name="EntryCostoDeuda" Keyboard="Numeric" Focused="EntryCostoDeuda_Focused" Unfocused="EntryCostoDeuda_Unfocused" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Unidades:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
+                        <local:RoundedEntry x:Name="EntryUnidadesDeuda" Keyboard="Numeric" Focused="EntryUnidadesDeuda_Focused" Unfocused="EntryUnidadesDeuda_Unfocused" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Fecha inicial:" FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="10,10,0,5"/>
+                        <Label Text="" x:Name="fechaInicialDeuda" TextColor="Black" Margin="0,10,10,5" FontSize="17" FontAttributes="Bold"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Fecha límite:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
+                        <Entry x:Name="EntryFechaFinDeuda" Keyboard="Default" Focused="EntryFechaFinDeuda_Focused" Unfocused="EntryFechaFinDeuda_Unfocused" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Descripción del producto:" Margin="10,0" TextColor="Black" FontSize="17" FontAttributes="Bold"/>
+                        <Entry Placeholder="Descripción" SelectionLength="100" x:Name="EntryDeudaDescripcion" PlaceholderColor="Green" TextColor="Black" Margin="10"/>
+                    </StackLayout>
+                    <Button Text="ACTUALIZAR" Margin="0,10" x:Name="UpDateDeudas" Clicked="UpDateDeudas_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                </StackLayout>
+            </Frame>
+            <Button Grid.Row="0" Text="X" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35"  x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
+        </Grid>
+    </StackLayout>
+</Pages:PopupPage>

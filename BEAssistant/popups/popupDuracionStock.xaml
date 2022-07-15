@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages:PopupPage  xmlns:Pages="http://rotorgames.com"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  x:Class="BEAssistant.popups.popupDuracionStock"
+                  CloseWhenBackgroundIsClicked="False">
+    <StackLayout Padding="0" x:Name="stackPopup" HeightRequest="600" WidthRequest="340" HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" BackgroundColor="White" x:Name="framePopup" Padding="0,10" Margin="10,10,10,0" CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Stock" TextColor="Green" FontSize="21" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                    <Frame Margin="0" Padding="20,0">
+                        <StackLayout>
+                            <Label Text="¿Cuanto tiempo perdura esta materia prima en utilidad? Tiempo útil:" FontSize="17"/>
+                            <Button Text="Tiempo Indefinido" x:Name="indefinido" Clicked="indefinido_Clicked" CornerRadius="10" BackgroundColor="White" TextColor="Black" FontSize="18" HorizontalOptions="Center"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Entry Grid.Column="0" x:Name="EntryTiempoDiaPro" Placeholder="Días     " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="3"/>
+                                <Entry Grid.Column="1" x:Name="EntryTiempoMesPro" Placeholder="Meses    " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                                <Entry Grid.Column="2" x:Name="EntryTiempoAnnoPro" Placeholder="Años     " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Margin="0" Padding="20,0">
+                        <StackLayout>
+                            <Label Text="Seleccione o asigne una categoría para esta materia prima." FontSize="17"/>
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                                <Entry Grid.Row="0" x:Name="EntryCategoria" Placeholder="Categoría" VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Margin="0" Keyboard="Text"/>
+                                <Picker Grid.Row="1" FontSize="17" Title="Seleccionar" FontAttributes="Bold" x:Name="PickerCategoria" TextColor="Black" Margin="0" TitleColor="Green"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Margin="0" Padding="20,0">
+                        <StackLayout>
+                            <Label Text="¿Cuántas unidades estima que deben haber promedio en el stock?" FontSize="17"/>
+                            <Entry x:Name="EntryUnidadesEstimadas" Placeholder="Unidades estimadas" VerticalOptions="Start" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Margin="0" Keyboard="Numeric"/>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout Margin="10">
+                        <Button Text="guardar" x:Name="guardar" Clicked="guardar_Clicked" CornerRadius="10" BackgroundColor="White" TextColor="Green" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <Button Grid.Row="0" Text="X" Margin="0" Padding="0" x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" WidthRequest="35" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
+        </Grid>
+    </StackLayout>
+</Pages:PopupPage>

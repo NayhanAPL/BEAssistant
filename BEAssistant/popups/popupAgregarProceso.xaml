@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages:PopupPage  xmlns:Pages="http://rotorgames.com" 
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:BEAssistant"
+                  x:Class="BEAssistant.popups.popupAgregarProceso">
+    <StackLayout Padding="0" x:Name="stackPopup" WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" BackgroundColor="White" x:Name="framePopup" Padding="20" Margin="10" CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Iniciar Proceso de Producción" TextColor="Black" FontSize="20" HorizontalOptions="Center"/>
+                    <Picker SelectedIndexChanged="selectProducto_SelectedIndexChanged" x:Name="selectProducto" Margin="0" VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="Seleccionar producto"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Cantidad de unidades:" TextColor="DarkSlateGray" FontSize="18" HorizontalOptions="Start"/>
+                        <local:RoundedEntry x:Name="EntryCantUnidades" FontAttributes="Bold" Placeholder="Unidades" VerticalOptions="Center" PlaceholderColor="Black" TextColor="Green" Keyboard="Numeric"/>
+                    </StackLayout>
+                    <Label Text="Una descripción sera oportuna para recordar detalles como percanses, cantidad de empleados tranajando en el proceso, la situación del proceso en general." FontSize="16" TextColor="Gray" HorizontalOptions="Start"/>
+                    <Entry WidthRequest="370" Keyboard="Text" VerticalOptions="Start" x:Name="EntryDescripcion" TextColor="Black"/>
+                    <Button Text="reportar" FontAttributes="Bold" x:Name="GuardarProceso" Clicked="GuardarProceso_Clicked" FontSize="18" HorizontalOptions="Center" TextColor="Green" CornerRadius="10" BackgroundColor="White"/>
+                </StackLayout>
+            </Frame>
+            <Button Grid.Row="0" Text="X" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35" x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
+        </Grid>
+    </StackLayout>
+</Pages:PopupPage>

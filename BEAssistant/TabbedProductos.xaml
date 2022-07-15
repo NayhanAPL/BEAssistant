@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            xmlns:local="clr-namespace:BEAssistant" 
+            x:Class="BEAssistant.TabbedProductos">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="REPORTAR VENTA">
+        <ScrollView>
+            <StackLayout Margin="10,0">
+                <Label Text="¿Desea registrar una venta?" FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="10,10,0,5"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Seleccione la denominación:" VerticalOptions="Center" TextColor="Black" FontSize="17" FontAttributes="Bold" Margin="10,0,0,0"/>
+                    <Picker x:Name="selectDenominacionPro" Margin="0" SelectedIndexChanged="selectDenominacionPro_SelectedIndexChanged" VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  "/>
+                </StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="250"></RowDefinition>
+                        <RowDefinition Height="130"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Frame  Grid.Row="0" BackgroundColor="White" HasShadow="True" Padding="5" Margin="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="385"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0" x:Name="rellenoListView">
+                                <Frame CornerRadius="5" BackgroundColor="LightGray" HeightRequest="17" Padding="0" Margin="10,5,230,0"/>
+                                <Grid Margin="0" Padding="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Frame Grid.Column="0" CornerRadius="5" BackgroundColor="LightGray" HeightRequest="14" Padding="0" Margin="10,5,100,15"/>
+                                    <Frame Grid.Column="1" CornerRadius="5" BackgroundColor="LightGray" HeightRequest="14" Padding="0" Margin="100,5,20,15"/>
+                                </Grid>
+                                <Grid Margin="0" Padding="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Frame Grid.Column="0" CornerRadius="5" BackgroundColor="LightGray" HeightRequest="14" Padding="0" Margin="10,5,100,15"/>
+                                    <Frame Grid.Column="1" CornerRadius="5" BackgroundColor="LightGray" HeightRequest="14" Padding="0" Margin="100,5,20,15"/>
+                                </Grid>
+                                <Frame CornerRadius="5" BackgroundColor="LightGray" HeightRequest="17" Padding="0" Margin="10,5,230,0"/>
+                                <Grid Margin="0" Padding="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Frame Grid.Column="0" CornerRadius="5" BackgroundColor="LightGray" HeightRequest="14" Padding="0" Margin="10,5,100,15"/>
+                                    <Frame Grid.Column="1" CornerRadius="5" BackgroundColor="LightGray" HeightRequest="14" Padding="0" Margin="100,5,20,15"/>
+                                </Grid>
+                                <Grid Margin="0" Padding="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Frame Grid.Column="0" CornerRadius="5" BackgroundColor="LightGray" HeightRequest="14" Padding="0" Margin="10,5,100,15"/>
+                                    <Frame Grid.Column="1" CornerRadius="5" BackgroundColor="LightGray" HeightRequest="14" Padding="0" Margin="100,5,20,15"/>
+                                </Grid>
+                            </StackLayout>
+                            <ListView Grid.Column="0" x:Name="ViewNombresPro" Margin="0" RowHeight="90" ItemSelected="ViewNombresPro_ItemSelected" SeparatorColor="DarkSlateGray">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout>
+                                                <Label Text="{Binding Nombre}" FontSize="21" Margin="10,0" HorizontalOptions="Start" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Start"></Label>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Column="0" Orientation="Vertical">
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="Demanda:" Margin="10,0" FontSize="17" TextColor="Gray" HorizontalOptions="Start"></Label>
+                                                            <Label Text="{Binding Demanda}" Margin="0" TextColor="DimGray" HorizontalOptions="Start" FontSize="18"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="Dificultad:" Margin="10,0" TextColor="Gray" FontSize="17" HorizontalOptions="Start"></Label>
+                                                            <Label Text="{Binding Dificultad}" TextColor="DimGray" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Column="1" Margin="10,0">
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="- $" TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalOptions="Center" HorizontalOptions="End" FontSize="18"/>
+                                                            <Label Text="{Binding Inversion}" TextColor="DarkSlateGray" FontSize="16" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="+ $" TextColor="LightSlateGray" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center" FontSize="18"/>
+                                                            <Label Text="{Binding Precio}" TextColor="LightSlateGray" FontSize="16" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                        
+                    </Frame>
+                    <StackLayout x:Name="DatosReportePro" Grid.Row="1">
+                        <StackLayout Orientation="Horizontal" Margin="10">
+                            <Label x:Name="LabelDePrecio" Text="Precio: $" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
+                            <local:RoundedEntry x:Name="EntryCostoProducto" MaxLength="8" TextChanged="EntryCostoProducto_TextChanged" Keyboard="Numeric" Focused="EntryCostoProducto_Focused" Unfocused="EntryCostoProducto_Unfocused" VerticalOptions="Center" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="DarkGray" TextColor="Green" />
+                            <Label Text="Por unidad" VerticalOptions="Center" FontSize="17" Margin="0,0,0,0" TextColor="Black" FontAttributes="Bold"/>
+                            <Label Text="" x:Name="LavelSugerPrecioVenta" VerticalOptions="Center" FontSize="15" Margin="0,0,0,0" TextColor="White"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Margin="10">
+                            <Label x:Name="LabelCantUnidpro" Text="Cantidad de unidades:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
+                            <local:RoundedEntry x:Name="EntryUnidadesproducto" Keyboard="Numeric" MaxLength="8" Focused="EntryUnidadesproducto_Focused" Unfocused="EntryUnidadesproducto_Unfocused" VerticalOptions="Center" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="DarkGray" TextColor="Green" />
+                        </StackLayout>
+                    </StackLayout>
+                    <Button Grid.Row="2" Text="Agregar una descripción para más detalles" FontSize="17" TextTransform="None" x:Name="ButtonDescripcionVeenta" Clicked="ButtonDescripcionVeenta_Clicked"  HorizontalOptions="Start" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                    <Button Grid.Row="3" Text="REPORTAR" x:Name="ButtonReportarPro" Clicked="ButtonReportarPro_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage Title="CREAR PRODUCTO">
+        <ScrollView>
+            <StackLayout BackgroundColor="LightGray">
+                <Frame HasShadow="True" Padding="0">
+                    <StackLayout>
+                        <Label Text="¿Desea crear un nuevo producto?" TextColor="Black" Margin="20,10,0,10" FontAttributes="Bold" FontSize="17"/>
+                        <Label Text="Debe llenar todos los datos que se le solicitan..." Margin="20,0,0,10" FontSize="17"/>
+                    </StackLayout>
+                </Frame>
+                <StackLayout>
+                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                        <StackLayout>
+                            <Label Text="Nombre del producto:" Margin="0" FontSize="17" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold"/>
+                            <Entry SelectionLength="20" x:Name="EntryNombreProducto" VerticalOptions="Center" FontSize="17" Focused="EntryNombreProducto_Focused" Unfocused="EntryNombreProducto_Unfocused" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Black" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame HasShadow="True" Padding="20,10,10,10" BorderColor="DarkGray">
+                        <StackLayout>
+                            <Label Text="Cree o seleccione una denominación para definir familias o grupos entre sus productos. Ejemplo: camisas, refrigerios" FontSize="17" HorizontalOptions="Center"/>
+                            <StackLayout>
+                                <Label Text="Denominación:" FontSize="17" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid VerticalOptions="CenterAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="130"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Entry Grid.Column="0" SelectionLength="20" x:Name="EntryDenomProducto" FontSize="17" Focused="EntryDenomProducto_Focused" Unfocused="EntryDenomProducto_Unfocused" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                                        <Button Grid.Column="0" Text="Escribir" x:Name="ButtonDenomEscrbir" Clicked="ButtonDenomEscrbir_Clicked" TextTransform="None" FontSize="18" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                                    </Grid>
+                                    <Grid VerticalOptions="CenterAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="130"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Picker Grid.Column="0" FontSize="17" Title="Seleccione" FontAttributes="Bold" SelectedIndexChanged="PickerDenominacion_SelectedIndexChanged" x:Name="PickerDenominacion" TextColor="Black" TitleColor="Green"/>
+                                        <Button Grid.Column="0" Text="Sugerencia" x:Name="ButtonDenomSeleccionar" Clicked="ButtonDenomSeleccionar_Clicked" TextTransform="None" FontSize="18" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                                    </Grid>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout>
+                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60"></RowDefinition>
+                                <RowDefinition Height="60"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0" Orientation="Horizontal">
+                                <Picker FontSize="17" Title="    tipos de dimensiones     " FontAttributes="Bold" x:Name="PickerTipoDimenciones" SelectedIndexChanged="PickerTipoDimenciones_SelectedIndexChanged" TextColor="Black" TitleColor="Green">
+                                    <Picker.Items>
+                                        <x:String>por unidad de medida</x:String>
+                                        <x:String>longitud y latitud</x:String>
+                                        <x:String>longitud, latitud y altitud</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                                <Label Text="No es obligarotio" Margin="20,0,0,0"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1" x:Name="Grid1parameter" Orientation="Horizontal">
+                                <Label Text="Medidas en una sola unidad:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <Entry x:Name="EntryDimencionesPorUnidad" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1" x:Name="Grid2parameter" Orientation="Horizontal">
+                                <Label Text="Longitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <Entry x:Name="EntryDim2Longitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
+                                <Label Text="Latitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <Entry x:Name="EntryDim2Latitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1" x:Name="Grid3parameter" Orientation="Horizontal">
+                                <Label Text="Longitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <Entry x:Name="EntryDim3Longitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
+                                <Label Text="Latitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <Entry x:Name="EntryDim3Latitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
+                                <Label Text="Altitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <Entry x:Name="EntryDim3Altitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                        <StackLayout>
+                            <Label Text="¿Cuanto tiempo toma finalizar una unidad?" FontSize="17"/>
+                            <Label Text="Tiempo de producción:" FontAttributes="Bold" VerticalOptions="Center" TextColor="Black" FontSize="17"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Entry Grid.Column="0" x:Name="EntryTiempoDiaPro" Placeholder="Días   " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="3"/>
+                                <Entry Grid.Column="1" x:Name="EntryTiempoHorasPro" Placeholder="Horas  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                                <Entry Grid.Column="2" x:Name="EntryTiempoMinPro" Placeholder="Min's  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                                <Entry Grid.Column="3" x:Name="EntryTiempoSegPro" Placeholder="Seg's  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                        <StackLayout>
+                            <Label Text="Escriba cuanto cree que invierte en una unidad" FontSize="17"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Inversión estimada:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <local:RoundedEntry Grid.Column="1" x:Name="EntryInversionPro" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                        <StackLayout>
+                            <Label Text="Unidades vendidas aproximadamente en un mes" FontSize="17"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Venta mansual:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <local:RoundedEntry Grid.Column="1" x:Name="EntryDemandaPro" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                        <StackLayout>
+                            <Label Text="Escriba un número (1-10) para representar la dificultad aproximada en la creación del producto" FontSize="17"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Dificultad:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <local:RoundedEntry Grid.Column="1" x:Name="EntryDificultadPro" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" MaxLength="2" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                        <StackLayout>
+                            <Label Text="Establezca el precio inicial del producto" FontSize="17"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Precio:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <local:RoundedEntry Grid.Column="1" x:Name="EntryPrecioPro" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <Frame Margin="0" BorderColor="White" Padding="20,0,0,10">
+                    <StackLayout>
+                        <Button Text="Agregar una descripción para más detalles" FontSize="17" TextTransform="None" x:Name="ButtonDescripcionProducto" Clicked="ButtonDescripcionProducto_Clicked" HorizontalOptions="Start" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                        <Button Text="Agregar materias primas (recomendado)" FontSize="17" TextTransform="None" x:Name="ButtonAddMateriasPrimas" Clicked="ButtonAddMateriasPrimas_Clicked" HorizontalOptions="Start" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                        <Button Text="CREAR" Margin="0,0,0,20" x:Name="ButtonCrearProducto" Clicked="ButtonCrearProducto_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage Title="GESTIONAR PRODUCTOS">
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75"></RowDefinition>
+                        <RowDefinition Height="460"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="0" HasShadow="True" Padding="5" Margin="0" BorderColor="DimGray">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Margin="30,0" Text="PRODUCTOS" FontSize="16" x:Name="Page3producto" Clicked="Page3producto_Clicked" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
+                            <Button Grid.Column="1" Margin="30,0" Text="VENTAS" FontSize="16" x:Name="Page3venta" Clicked="Page3venta_Clicked" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
+                        </Grid>
+                    </Frame>
+                    <ListView Grid.Row="1" ItemSelected="ViewPage3Pro_ItemSelected" x:Name="ViewPage3Pro" Margin="0" RowHeight="90" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Label Text="{Binding Denominacion}" Margin="10,0" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Start" FontSize="21"/>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Column="0" Orientation="Vertical">
+                                                <Label Text="{Binding Nombre}" FontSize="18" Margin="10,0" HorizontalOptions="Start" FontAttributes="Bold" TextColor="DarkSlateGray" HorizontalTextAlignment="Start"></Label>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Dificultad:" Margin="10,0" TextColor="Gray" FontSize="17" HorizontalOptions="Start"></Label>
+                                                    <Label Text="{Binding Dificultad}" TextColor="DimGray" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="1" Margin="10,0">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="- $" TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalOptions="Center" HorizontalOptions="End" FontSize="18"/>
+                                                    <Label Text="{Binding Inversion}" TextColor="DarkSlateGray" FontSize="16" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="+ $" TextColor="LightSlateGray" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center" FontSize="18"/>
+                                                    <Label Text="{Binding Precio}" TextColor="LightSlateGray" FontSize="16" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <ListView Grid.Row="1" x:Name="ViewPage3Ven" ItemSelected="ViewPage3Ven_ItemSelected" Margin="0" RowHeight="55" SeparatorColor="DarkSlateGray">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="0" Orientation="Horizontal">
+                                            <Label Text="$" Margin="10,0,0,0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" FontSize="19" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Precio}" Margin="0" VerticalOptions="Center" TextColor="Green" HorizontalOptions="Fill" FontSize="19" FontAttributes="Bold"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="1" Orientation="Horizontal">
+                                            <Label Text="{Binding Unidades}" Margin="0" TextColor="Green" VerticalOptions="Center" HorizontalOptions="Fill" FontSize="19" FontAttributes="Bold"/>
+                                            <Label Text="U" Margin="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" FontSize="19" FontAttributes="Bold"/>
+                                        </StackLayout>
+                                        <Label Grid.Column="2" Text="{Binding Fecha}" Margin="0,0,10,0" TextColor="Black" VerticalOptions="Start" HorizontalOptions="Fill" FontSize="15"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Frame Grid.Row="2" HasShadow="True" Padding="5" Margin="0" BorderColor="DimGray">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Margin="0" FontSize="18" BorderWidth="1" BorderColor="White" CornerRadius="10" Text="EDITAR" x:Name="ButtonActualizarPro" Clicked="ButtonActualizarPro_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                            <Button Grid.Column="1" Margin="0" FontSize="18" BorderWidth="1" BorderColor="White" WidthRequest="110" CornerRadius="10" Text="ELIMINAR" x:Name="ButtonEliminarPro" Clicked="ButtonEliminarPro_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage Title="PROCESOS">
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="465"></RowDefinition>
+                    <RowDefinition Height="70"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="Procesos Actuales" TextColor="Black" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" Margin="15"/>
+                <ListView Grid.Row="1" x:Name="listViewProcesos" ItemSelected="listViewProcesos_ItemSelected" RowHeight="160" SeparatorColor="DarkSlateGray">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal" Margin="15,0" >
+                                        <Label Text="{Binding Unidades}" TextColor="Black" FontSize="19" FontAttributes="Bold"/>
+                                        <Label Text="unidades de" TextColor="Black" FontSize="19" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Nombre}" TextColor="Black" FontSize="19" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Margin="15,0" >
+                                        <Label Text="Fecha inicial:" TextColor="Gray" FontSize="17"/>
+                                        <Label Text="{Binding FechaIni}" TextColor="DarkSlateGray" FontSize="17" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Margin="15,0" >
+                                        <Label Text="Producción:" TextColor="Gray" FontSize="17"/>
+                                        <Label Text="{Binding Duracion}" TextColor="DarkSlateGray" FontSize="17" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Margin="15,0" >
+                                        <Label Text="Fecha límite:" TextColor="Gray" FontSize="17"/>
+                                        <Label Text="{Binding FechaFin}" TextColor="DarkSlateGray" FontSize="17" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <Label Text="{Binding Descripcion}" Margin="15,0" TextColor="Gray" FontSize="16"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Frame Grid.Row="2" HasShadow="True" Padding="5" Margin="0" BorderColor="DarkSlateGray">
+                    <Button Text="Iniciar Proceso de Producción" x:Name="ButtonInicioProceso" Clicked="ButtonInicioProceso_Clicked" HorizontalOptions="Center" TextColor="Green" BackgroundColor="White" FontSize="19"/>
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </ContentPage>
+</TabbedPage>

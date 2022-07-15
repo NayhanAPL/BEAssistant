@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages:PopupPage  xmlns:Pages="http://rotorgames.com"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  x:Class="BEAssistant.popups.popupStockSelected">
+    <StackLayout Padding="0" x:Name="stackPopup" WidthRequest="375" HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame BackgroundColor="White" x:Name="framePopup" Padding="20" Margin="10" CornerRadius="10">
+                <StackLayout>
+                    <Label Text="" x:Name="labelTitle" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="230"></ColumnDefinition>
+                            <ColumnDefinition Width="80"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Text="Fondo total esperado:" TextColor="DarkSlateGray" FontSize="18"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="" x:Name="labelfondoTotal" TextColor="Green" FontSize="18"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="Fondo invertido:" TextColor="DarkSlateGray" FontSize="18"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="" x:Name="labelfondoInvertido" TextColor="Green" FontSize="18"/>
+                        <Label Grid.Row="2" Grid.Column="0" Text="Fondo faltante:" TextColor="DarkSlateGray" FontSize="18"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="" x:Name="labelfondoFaltante" TextColor="Green" FontSize="18"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="Unidades esperadas:" TextColor="DarkSlateGray" FontSize="18"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="" x:Name="labelUnidEsperadas" TextColor="Green" FontSize="18"/>
+                        <Label Grid.Row="4" Grid.Column="0" Text="Unidades actuales:" TextColor="DarkSlateGray" FontSize="18"/>
+                        <Label Grid.Row="4" Grid.Column="1" Text="" x:Name="labelUnidActuales" TextColor="Green" FontSize="18"/>
+                        <Label Grid.Row="5" Grid.Column="0" Text="Unidades Faltantes:" TextColor="DarkSlateGray" FontSize="18"/>
+                        <Label Grid.Row="5" Grid.Column="1" Text="" x:Name="labelUnidFaltantes" TextColor="Green" FontSize="18"/>
+                    </Grid>
+                    <Label Text="Productos que lo emplean:" TextColor="Black" FontSize="19" FontAttributes="Bold" HorizontalOptions="Start" Margin="0,15,0,5"/>
+                    <Label Text="" x:Name="labelProductosEmpleados" TextColor="DarkSlateGray" FontAttributes="Bold" FontSize="18" HorizontalOptions="Start"/>
+                    <Label Text="" x:Name="labelOfertaDemanda" TextColor="Black" FontSize="18" HorizontalOptions="Start"/>
+                    <Button Text="¿Desea actualizar las unidades estimadas?" x:Name="ActualizarFondo" FontSize="19" Clicked="ActualizarFondo_Clicked" TextColor="Green" BackgroundColor="White" HorizontalOptions="Start"/>
+                </StackLayout>
+            </Frame>
+            <Button Grid.Row="0" Text="X" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35" x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
+        </Grid>
+    </StackLayout>
+</Pages:PopupPage>

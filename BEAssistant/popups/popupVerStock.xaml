@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages:PopupPage  xmlns:Pages="http://rotorgames.com" 
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BEAssistant.popups.popupVerStock">
+    <StackLayout Padding="0" x:Name="stackPopup" HeightRequest="470" WidthRequest="395" HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" BackgroundColor="White" x:Name="framePopup" Padding="20" Margin="10" CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Materias Primas en el Stock" TextColor="Black" FontSize="22" HorizontalOptions="Center" Margin="20,0,20,15"/>
+                    <ListView x:Name="listStock" SeparatorVisibility="None" ItemSelected="listStock_ItemSelected" RowHeight="65">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Label Text="{Binding Categoria}" TextColor="Gray" FontSize="21" FontAttributes="Bold" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding TipoInv}" TextColor="DimGray" FontSize="19" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Frame>
+            <Button Grid.Row="0" Text="X" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35" x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
+        </Grid>
+    </StackLayout>
+</Pages:PopupPage>

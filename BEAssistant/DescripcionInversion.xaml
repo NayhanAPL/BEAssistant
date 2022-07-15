@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages:PopupPage  xmlns:Pages="http://rotorgames.com"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BEAssistant.DescripcionInversion"
+             Title="Descripción de la Inversión">
+    <StackLayout Margin="20,50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="370" HeightRequest="470">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Margin="10" Padding="10" CornerRadius="10" BackgroundColor="White">
+                <StackLayout>
+                    <Label Text="Descripción de la Inversión" Margin="10,15" TextColor="Black" FontSize="23" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                    <Label Text="Hacer una decripción le permite identificar con mayor detalle todos los factores que intervienen en esta nueva inverción. En un futuro será de utilidad cuando quiera consultar este elemento..." FontAttributes="Bold" Margin="10"/>
+                    <Entry Placeholder="Descripción" SelectionLength="70" x:Name="EntryInvDescripcion" PlaceholderColor="Green" TextColor="Black" Margin="5"/>
+                    <Button Text="AGREGAR" Margin="5" x:Name="ButtonAgregarDescripcion" Clicked="ButtonAgregarDescripcion_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                </StackLayout>
+            </Frame>
+            <Button Grid.Row="0" Text="X" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35"  x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
+        </Grid>
+    </StackLayout>
+</Pages:PopupPage>

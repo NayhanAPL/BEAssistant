@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages:PopupPage  xmlns:Pages="http://rotorgames.com"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  x:Class="BEAssistant.UpMateriaPrima"
+                  xmlns:local="clr-namespace:BEAssistant"
+                  CloseWhenBackgroundIsClicked="True">
+    
+    <StackLayout HeightRequest="470" HorizontalOptions="Center" Margin="0" VerticalOptions="Center" WidthRequest="370">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="450"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Margin="10" Padding="0" CornerRadius="10" BackgroundColor="White">
+                <StackLayout>
+                    <Label Text="Materia Prima" Margin="10" TextColor="Black" FontAttributes="Bold" FontSize="19" HorizontalOptions="Center"/>
+                    <Frame Padding="5" Margin="0" HasShadow="True">
+                        <StackLayout>
+                            <ListView x:Name="ListMatPri" ItemSelected="MateriaPrima_ItemSelected" SeparatorColor="LightGray">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Label Text="{Binding Nombre}" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="18"/>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout x:Name="DatosMateriaPrima">
+                        <StackLayout Orientation="Horizontal" Margin="10">
+                            <Label Text="Precio: $" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
+                            <local:RoundedEntry x:Name="EntryPrecio" MaxLength="8" Keyboard="Numeric" VerticalOptions="Center" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="DarkGray" TextColor="Green" />
+                            <Label Text="Por unidad" VerticalOptions="Center" FontSize="17" Margin="0,0,0,0" TextColor="Black" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Margin="10">
+                            <Label x:Name="LabelCantUnid" Text="Cantidad de unidades:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
+                            <local:RoundedEntry x:Name="EntryUnidades" Keyboard="Numeric" MaxLength="8" VerticalOptions="Center" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="DarkGray" TextColor="Green" />
+                        </StackLayout>
+                    </StackLayout>
+                    <Button Text="Actualizar" Margin="0,10" x:Name="UpMP" Clicked="UpMP_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                </StackLayout>
+            </Frame>
+            <Button Grid.Row="0" Text="X" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35"  x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
+        </Grid>
+    </StackLayout>
+</Pages:PopupPage>
