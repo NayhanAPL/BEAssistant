@@ -33,5 +33,10 @@ namespace BEAssistant
         {
             await Navigation.PushPopupAsync(new popupInventario());
         }
+
+        private async void StockProductos_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushPopupAsync(new popupStockProductos());
+        }
     }
 }

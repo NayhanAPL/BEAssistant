@@ -66,31 +66,31 @@ namespace BEAssistant.popups
                         var invC = await App.Database.GetByNameInvConstante(item.Nombre);
                         if (invC.Count != 0)
                         {
-                            var stock = await App.Database.GetIdStock(invC[0].Id);
+                            var stock = await App.Database.GetIdInvCStock(invC[0].Id);
                             Stocker up = new Stocker()
                             {
-                                Id = stock.Id,
-                                Duracion = stock.Duracion,
-                                IdInv = stock.IdInv,
-                                TipoInv = stock.TipoInv,
-                                CantActual = stock.CantActual - (item.CantidadPorProducto * cantidad),
-                                Categoria = stock.Categoria,
-                                UnidadesEstimadas = stock.UnidadesEstimadas
+                                Id = stock[0].Id,
+                                Duracion = stock[0].Duracion,
+                                IdInv = stock[0].IdInv,
+                                TipoInv = stock[0].TipoInv,
+                                CantActual = stock[0].CantActual - (item.CantidadPorProducto * cantidad),
+                                Categoria = stock[0].Categoria,
+                                UnidadesEstimadas = stock[0].UnidadesEstimadas
                             }; await App.Database.SaveUpStock(up);
                         }
                     }
                     else
                     {
-                        var stock = await App.Database.GetIdStock(invA[0].Id);
+                        var stock = await App.Database.GetIdInvAStock(invA[0].Id);
                         Stocker up = new Stocker()
                         {
-                            Id = stock.Id,
-                            Duracion = stock.Duracion,
-                            IdInv = stock.IdInv,
-                            TipoInv = stock.TipoInv,
-                            CantActual = stock.CantActual - (item.CantidadPorProducto * cantidad),
-                            Categoria = stock.Categoria,
-                            UnidadesEstimadas = stock.UnidadesEstimadas
+                            Id = stock[0].Id,
+                            Duracion = stock[0].Duracion,
+                            IdInv = stock[0].IdInv,
+                            TipoInv = stock[0].TipoInv,
+                            CantActual = stock[0].CantActual - (item.CantidadPorProducto * cantidad),
+                            Categoria = stock[0].Categoria,
+                            UnidadesEstimadas = stock[0].UnidadesEstimadas
                         }; await App.Database.SaveUpStock(up);
                     }
                     //inventario

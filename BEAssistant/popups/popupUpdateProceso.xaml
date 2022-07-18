@@ -12,11 +12,11 @@
                 <StackLayout Margin="0,5">
                     <Label Margin="10" Text="Cambiar aspectos del proceso" HorizontalOptions="Center" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Cantidad de unidades:" TextColor="DarkSlateGray" FontSize="18" HorizontalOptions="Start"/>
+                        <Label Text="Cantidad de unidades:" TextColor="DarkSlateGray" FontAttributes="Bold" FontSize="18" HorizontalOptions="Start"/>
                         <local:RoundedEntry x:Name="EntryCantUnidades" FontAttributes="Bold" Placeholder="Unidades" VerticalOptions="Center" PlaceholderColor="Black" TextColor="Green" Keyboard="Numeric"/>
                     </StackLayout>
                     <StackLayout>
-                        <Label Text="Tiempo de producción:" FontAttributes="Bold" VerticalOptions="Center" TextColor="Black" FontSize="17"/>
+                        <Label Text="Tiempo de producción:" FontAttributes="Bold" VerticalOptions="Center" TextColor="DarkSlateGray" FontSize="17"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>

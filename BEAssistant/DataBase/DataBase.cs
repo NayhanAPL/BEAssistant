@@ -33,6 +33,8 @@ namespace BEAssistant.DataBase
             _database.CreateTableAsync<Opciones>().Wait();
             _database.CreateTableAsync<Inventario>().Wait();
             _database.CreateTableAsync<Procesos>().Wait();
+            _database.CreateTableAsync<StockProductos>().Wait();
+            
         }
         
         //---------------------------------InvConstante-------------------------------------------
@@ -882,6 +884,49 @@ namespace BEAssistant.DataBase
         public async Task<List<Procesos>> GetActivosProcesos(bool enProceso)
         {
             return await _database.QueryAsync<Procesos>($"Select * from Procesos where EnProceso = {enProceso}");
+        }
+
+        //---------------------------------StockProductos-------------------------------------------
+
+        //consulta completa StockProductos----------------------------------------------------------
+        public Task<List<StockProductos>> GetStockProductos()
+        {
+            return _database.Table<StockProductos>().ToListAsync();
+        }
+        //consulta por id de StockProductos---------------------------------------------------------
+        public Task<StockProductos> GetIdStockProductos(int Id)
+        {
+            return _database.Table<StockProductos>().Where(a => a.Id == Id).FirstOrDefaultAsync();
+        }
+        //annadir el StockProductos en la db--------------------------------------------------------
+        public Task<int> SaveStockProductos(StockProductos U)
+        {
+            if (U.Id == 0)
+                return _database.InsertAsync(U);
+            else return null;
+        }
+        //guardar la actualizacion de el StockProductos en la db------------------------------------
+        public Task<int> SaveUpStockProductos(StockProductos U)
+        {
+            if (U.Id != 0)
+                return _database.UpdateAsync(U);
+            else return _database.InsertAsync(U);
+        }
+        // borrar una fila de la tabla StockProductos-----------------------------------------------
+        public Task<int> DeleteStockProductos(StockProductos StockProductos)
+        {
+            var x = _database.DeleteAsync(StockProductos);
+            return x;
+        }
+        // encuentra un elemento por el nombre en StockProductos-----------------------------------------------
+        public async Task<List<StockProductos>> GetByNameStockProductos(string name)
+        {
+            return await _database.QueryAsync<StockProductos>($"Select * from StockProductos where Nombre = '{name}'");
+        }
+        // devuelve el elemento por el id del producto-----------------------------------------
+        public async Task<List<StockProductos>> GetByIdProStockProductos(int ID)
+        {
+            return await _database.QueryAsync<StockProductos>($"Select * from StockProductos where IdPro = {ID}");
         }
     }
 }

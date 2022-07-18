@@ -235,6 +235,14 @@ namespace BEAssistant
         public string Categoria { get; set; }
         public int UnidadesEstimadas { get; set; }
     }
+    public class StockProductos
+    {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        public int IdPro { get; set; }
+        public string Nombre { get; set; }
+        public int Cantidad { get; set; }
+    }
     public class Inventario
     {
         [PrimaryKey, AutoIncrement]

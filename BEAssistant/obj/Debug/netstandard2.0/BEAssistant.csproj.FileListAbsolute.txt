@@ -86,3 +86,6 @@ C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\po
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupAgregarProceso.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupModificarProceso.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupUpdateProceso.xaml.g.cs
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupActVenStockProductos.xaml.g.cs
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupModificarStockProductos.xaml.g.cs
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupStockProductos.xaml.g.cs

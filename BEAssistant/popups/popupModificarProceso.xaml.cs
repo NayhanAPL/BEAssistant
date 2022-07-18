@@ -25,14 +25,34 @@ namespace BEAssistant.popups
         {
             await Task.Delay(100);
             GuardarAlStock.IsVisible = true;
-            await Task.Delay(200);
+            await Task.Delay(100);
             ReportarComoVenta.IsVisible = true;
-            await Task.Delay(200);
+            await Task.Delay(100);
             Actualizar.IsVisible = true;
         }
 
         private async void GuardarAlStock_Clicked(object sender, EventArgs e)
         {
+            var elem = await App.Database.GetByIdProStockProductos(TabbedProductos.procesoSelected4.IdPro);
+            if(elem.Count > 0)
+            {
+                StockProductos stock = new StockProductos()
+                {
+                    Cantidad = elem[0].Cantidad + TabbedProductos.procesoSelected4.Cantidad,
+                    Id = elem[0].Id,
+                    IdPro = elem[0].IdPro,
+                    Nombre = elem[0].Nombre
+                }; await App.Database.SaveUpStockProductos(stock);
+            }
+            else
+            {
+                var pro = await App.Database.GetIdProductos(TabbedProductos.procesoSelected4.IdPro);
+                await App.Database.SaveStockProductos(new StockProductos() {
+                    Cantidad = TabbedProductos.procesoSelected4.Cantidad,
+                    IdPro = pro.Id,
+                    Nombre = pro.Nombre,
+                });
+            }
             Procesos up = new Procesos() { 
             Id = TabbedProductos.procesoSelected4.Id,
             Cantidad = TabbedProductos.procesoSelected4.Cantidad,
@@ -51,15 +71,15 @@ namespace BEAssistant.popups
         {
             await Task.Delay(100);
             GuardarAlStock.IsVisible = false;
-            await Task.Delay(200);
+            await Task.Delay(100);
             ReportarComoVenta.IsVisible = false;
-            await Task.Delay(200);
+            await Task.Delay(100);
             Actualizar.IsVisible = false;
             await Task.Delay(100);
             lavel.IsVisible = true;
-            await Task.Delay(200);
+            await Task.Delay(100);
             EntryCosto.IsVisible = true;
-            await Task.Delay(200);
+            await Task.Delay(100);
             reportar.IsVisible = true;
         }
 

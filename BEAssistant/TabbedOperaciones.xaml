@@ -9,6 +9,7 @@
                 <Button Text="Contactos" x:Name="Contactos" Clicked="Contactos_Clicked" HorizontalOptions="CenterAndExpand" WidthRequest="400" FontSize="20" FontAttributes="Bold" TextColor="DarkSlateGray" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
                 <Button Text="Ver Stock" x:Name="VerStock" Clicked="VerStock_Clicked" HorizontalOptions="CenterAndExpand" WidthRequest="400" FontSize="20" FontAttributes="Bold" TextColor="DarkSlateGray" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
                 <Button Text="Inventario" x:Name="Inventario" Clicked="Inventario_Clicked" HorizontalOptions="CenterAndExpand" WidthRequest="400" FontSize="20" FontAttributes="Bold" TextColor="DarkSlateGray" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
+                <Button Text="Stock de Productos" x:Name="StockProductos" Clicked="StockProductos_Clicked" HorizontalOptions="CenterAndExpand" WidthRequest="400" FontSize="20" FontAttributes="Bold" TextColor="DarkSlateGray" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
             </StackLayout>
         </ScrollView>
     </ContentPage>

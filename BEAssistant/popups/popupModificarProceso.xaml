@@ -12,10 +12,10 @@
             </Grid.RowDefinitions>
             <Label x:Name="lavel" Grid.Row="0" IsVisible="false" Text="Precio por unidad" TextColor="White" FontSize="21" HorizontalOptions="Center" VerticalOptions="Center"/>
             <local:RoundedEntry Grid.Row="1" IsVisible="false" SelectionLength="20" x:Name="EntryCosto" HorizontalOptions="Center" VerticalOptions="Center" FontSize="17" Placeholder="Número" Keyboard="Numeric" PlaceholderColor="Green" TextColor="Green" />
-            <Button Grid.Row="2" Text="Reportar" IsVisible="false" x:Name="reportar" Clicked="reportar_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" BackgroundColor="Green" CornerRadius="10"/>
-            <Button Grid.Row="0" Text="guardar en el stock" IsVisible="false" x:Name="GuardarAlStock" Clicked="GuardarAlStock_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" BackgroundColor="Green" CornerRadius="10"/>
-            <Button Grid.Row="1" Text="reportar como venta" IsVisible="false" x:Name="ReportarComoVenta" Clicked="ReportarComoVenta_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" BackgroundColor="Green" CornerRadius="10"/>
-            <Button Grid.Row="2" Text="hacer algún cambio " IsVisible="false" x:Name="Actualizar" Clicked="Actualizar_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" BackgroundColor="Green" CornerRadius="10"/>
+            <Button Grid.Row="2" Text="Reportar" IsVisible="false" x:Name="reportar" Clicked="reportar_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Green" BackgroundColor="White" BorderColor="LightGray" BorderWidth="2" CornerRadius="10"/>
+            <Button Grid.Row="0" Text="guardar en el stock" IsVisible="false" x:Name="GuardarAlStock" Clicked="GuardarAlStock_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Green" BackgroundColor="White" BorderColor="LightGray" BorderWidth="2" CornerRadius="10"/>
+            <Button Grid.Row="1" Text="reportar como venta" IsVisible="false" x:Name="ReportarComoVenta" Clicked="ReportarComoVenta_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Green" BackgroundColor="White" BorderColor="LightGray" BorderWidth="2" CornerRadius="10"/>
+            <Button Grid.Row="2" Text="hacer algún cambio " IsVisible="false" x:Name="Actualizar" Clicked="Actualizar_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Green" BackgroundColor="White" BorderColor="LightGray" BorderWidth="2" CornerRadius="10"/>
         </Grid>
     </StackLayout>
 </Pages:PopupPage>
