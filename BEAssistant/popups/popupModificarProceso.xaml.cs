@@ -63,7 +63,7 @@ namespace BEAssistant.popups
             TimeEsperado = TabbedProductos.procesoSelected4.TimeEsperado,
             TimeResultado = TabbedProductos.procesoSelected4.TimeResultado
             };await App.Database.SaveUpProcesos(up);
-
+            MessagingCenter.Send<popupModificarProceso, string>(this, "popupModificarProceso", "x");
             await PopupNavigation.Instance.PopAsync(true);
         }
 
@@ -86,6 +86,11 @@ namespace BEAssistant.popups
         private async void Actualizar_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushPopupAsync(new popupUpdateProceso());
+            MessagingCenter.Subscribe<popupUpdateProceso, string>(this, "popupUpdateProceso", async (s, arg) =>
+            {
+                MessagingCenter.Send<popupModificarProceso, string>(this, "popupModificarProceso", "x");
+                await PopupNavigation.Instance.PopAsync(true);
+            });
         }
 
         private async void reportar_Clicked(object sender, EventArgs e)
@@ -114,6 +119,7 @@ namespace BEAssistant.popups
                 Precio = Convert.ToDouble(EntryCosto.Text),
                 Unidades = TabbedProductos.procesoSelected4.Cantidad
             });
+            MessagingCenter.Send<popupModificarProceso, string>(this, "popupModificarProceso", "x");
             await PopupNavigation.Instance.PopAsync(true);
         }
     }

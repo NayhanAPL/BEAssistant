@@ -384,6 +384,7 @@ namespace BEAssistant
             PopupAlert.PopupLabelTitulo = "ELEMENTO ACTUALIZADO";
             PopupAlert.PopupLabelText = "El elemento se guardó de manera adecuada. Junto con el se actualizarán todos los datos relacionados.";
             await Navigation.PushPopupAsync(new PopupAlert());
+            MessagingCenter.Send<UpdateInverciones, string>(this, "UpdateInverciones", "x");
             await PopupNavigation.Instance.PopAsync(true);
         }
         private void EntryCostoInversion_Focused(object sender, FocusEventArgs e)

@@ -86,6 +86,7 @@ namespace BEAssistant
                         IdInv = deuda.IdInv
                     });
                 }
+                MessagingCenter.Send<PagarDeuda, string>(this, "PagarDeuda", "Pagar");
                 await PopupNavigation.Instance.PopAsync(true);
             }
         }

@@ -80,13 +80,14 @@ namespace BEAssistant
                 PopupAlert.PopupLabelTitulo = "ELEMENTO ACTUALIZADO";
                 PopupAlert.PopupLabelText = "Los datos de su deuda fueron actualizados, revise los cambios en la página anterior.";
                 await Navigation.PushPopupAsync(new PopupAlert());
-                await PopupNavigation.Instance.PopAsync(true);
             }
             else {
                 PopupAlert.PopupLabelTitulo = "ERROR";
                 PopupAlert.PopupLabelText = "No puede dejar ningún dato sin llenar.";
-                await PopupNavigation.Instance.PopAsync(true);
+                await Navigation.PushPopupAsync(new PopupAlert());
             }
+            MessagingCenter.Send<UpDateDeuda, string>(this, "UpDateDeuda", "UpDeuda");
+            await PopupNavigation.Instance.PopAsync(true);
         }
 
         private async void volver_Clicked(object sender, EventArgs e)

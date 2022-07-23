@@ -696,7 +696,6 @@ C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\stamp
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\stamp\_AndroidXJetifyManifest.stamp
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\_AndroidXJetifyManifest.jetify
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\stamp\_CopyIntermediateAssemblies.stamp
-C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\jl\0143a6c0-43af-4cbb-af3a-35f6e6d6be75.jar
-C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\proguard\47a2e605-6ac9-4c31-87c1-e48a3babd6cd.cfg
-C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\proguard\6783d9b2-91fc-4f38-8de1-b4c140dbb6d4.txt
-C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\android\assets\Plugin.Messaging.pdb
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\jl\53b1d676-9ef2-4486-8d47-279a90d7eead.jar
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\proguard\b8163aed-5eb7-4985-87b9-f94771d2ae25.cfg
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant.Android\obj\Debug\110\androidx\proguard\c7ff5810-02a7-4666-8248-a84c2c357cc9.txt

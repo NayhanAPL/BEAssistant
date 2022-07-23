@@ -1045,7 +1045,14 @@ namespace BEAssistant
                         await Navigation.PushPopupAsync(new PopupAlert());
                     }
                 }
-                if (sepuede) await Navigation.PushPopupAsync(new UpdateInverciones());
+                if (sepuede)
+                { 
+                    await Navigation.PushPopupAsync(new UpdateInverciones());
+                    MessagingCenter.Subscribe<UpdateInverciones, string>(this, "UpdateInverciones", async (s, arg) =>
+                    {
+                        ByDefaultPage3();
+                    });
+                }
             }
             else {
                 PopupAlert.PopupLabelTitulo = "ERROR";
@@ -1215,6 +1222,10 @@ namespace BEAssistant
         private async void ButtonActualizarDeuda_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushPopupAsync(new UpDateDeuda());
+            MessagingCenter.Subscribe<UpDateDeuda, string>(this, "UpDateDeuda", async (s, arg) =>
+            {
+                ByDefaultPage4();
+            });
         }
         private async void ButtonBorrarDeuda_Clicked(object sender, EventArgs e)
         {
@@ -1228,6 +1239,10 @@ namespace BEAssistant
         private async void ButtonPagarDeuda_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushPopupAsync(new PagarDeuda());
+            MessagingCenter.Subscribe<PagarDeuda, string>(this, "PagarDeuda", async (s, arg) =>
+            {
+                ByDefaultPage4();
+            });
         }
         private void TabbedPage_CurrentPageChanged(object sender, EventArgs e)
         {

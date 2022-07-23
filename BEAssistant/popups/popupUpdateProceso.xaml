@@ -12,26 +12,29 @@
                 <StackLayout Margin="0,5">
                     <Label Margin="10" Text="Cambiar aspectos del proceso" HorizontalOptions="Center" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Cantidad de unidades:" TextColor="DarkSlateGray" FontAttributes="Bold" FontSize="18" HorizontalOptions="Start"/>
+                        <Label Text="&#xf217;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="DarkSlateGray" FontAttributes="Bold" FontSize="18" HorizontalOptions="Start"/>
                         <local:RoundedEntry x:Name="EntryCantUnidades" FontAttributes="Bold" Placeholder="Unidades" VerticalOptions="Center" PlaceholderColor="Black" TextColor="Green" Keyboard="Numeric"/>
                     </StackLayout>
                     <StackLayout>
-                        <Label Text="Tiempo de producción:" FontAttributes="Bold" VerticalOptions="Center" TextColor="DarkSlateGray" FontSize="17"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Entry Grid.Column="0" x:Name="EntryTiempoDiaPro" Placeholder="Días   " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="3"/>
-                            <Entry Grid.Column="1" x:Name="EntryTiempoHorasPro" Placeholder="Horas  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
-                            <Entry Grid.Column="2" x:Name="EntryTiempoMinPro" Placeholder="Min's  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
-                            <Entry Grid.Column="3" x:Name="EntryTiempoSegPro" Placeholder="Seg's  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                            <Label Grid.Column="0" Text="&#xf017;" FontFamily="{StaticResource FontAwesomeSolid}" FontAttributes="Bold" VerticalOptions="Center" TextColor="DarkSlateGray" FontSize="17"/>
+                            <Entry Grid.Column="1" x:Name="EntryTiempoDiaPro" Placeholder="Días   " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="3"/>
+                            <Entry Grid.Column="2" x:Name="EntryTiempoHorasPro" Placeholder="Horas  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                            <Entry Grid.Column="3" x:Name="EntryTiempoMinPro" Placeholder="Min's  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                            <Entry Grid.Column="4" x:Name="EntryTiempoSegPro" Placeholder="Seg's  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
                         </Grid>
                     </StackLayout>
-                    <Label Text="Descripción" HorizontalOptions="Start" TextColor="DarkSlateGray" FontSize="18" FontAttributes="Bold"/>
-                    <Entry Placeholder="Escribir aquí" WidthRequest="370" Keyboard="Text" VerticalOptions="Start" x:Name="EntryDescripcion" PlaceholderColor="Green" TextColor="Black"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="&#xf70e;" FontFamily="{StaticResource FontAwesomeSolid}"  HorizontalOptions="Start" TextColor="DarkSlateGray" FontSize="18" FontAttributes="Bold"/>
+                        <Entry Placeholder="Escribir aquí" WidthRequest="370" Keyboard="Text" VerticalOptions="Start" x:Name="EntryDescripcion" PlaceholderColor="Green" TextColor="Black"/>
+                    </StackLayout>
                     <Button Text="actualizar" Margin="10" x:Name="Update" CornerRadius="10" Clicked="Update_Clicked" FontSize="18" TextColor="White" BackgroundColor="Green" HorizontalOptions="Center"/>
                 </StackLayout>
             </Frame>

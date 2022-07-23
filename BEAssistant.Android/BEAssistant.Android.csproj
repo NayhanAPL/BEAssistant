@@ -91,6 +91,9 @@
     <Compile Include="RoundedEntryRendererAndroid.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\BrandsRegular.otf" />
+    <AndroidAsset Include="Assets\FreeRegular.otf" />
+    <AndroidAsset Include="Assets\FreeSolid.otf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

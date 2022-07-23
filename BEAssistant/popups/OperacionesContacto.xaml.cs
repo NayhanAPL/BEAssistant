@@ -1,6 +1,7 @@
 ﻿using Plugin.Messaging;
 using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,6 +88,12 @@ namespace BEAssistant.popups
         {
 
         }
-       
+
+        private async void buttonEliminar_Clicked(object sender, EventArgs e)
+        {
+            await App.Database.DeleteContacts(Contactos.contactoSelected);
+            MessagingCenter.Send<OperacionesContacto, string>(this, "BorrarContacto", "BorrarCont");
+            await PopupNavigation.Instance.PopAsync(true);
+        }
     }
 }

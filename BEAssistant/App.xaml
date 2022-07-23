@@ -3,6 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BEAssistant.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeBrands">
+                <On Platform="Android" Value="BrandsRegular.otf#Brands"/>
+                <On Platform="iOS" Value="BrandsRegular.otf"/>
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
+                <On Platform="Android" Value="FreeRegular.otf#Regular"/>
+                <On Platform="iOS" Value="FreeRegular.otf"/>
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
+                <On Platform="Android" Value="FreeSolid.otf#Solid"/>
+                <On Platform="iOS" Value="FreeSolid.otf"/>
+            </OnPlatform>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -123,6 +123,7 @@ namespace BEAssistant.popups
                 TimeEsperado = esperado
                 });
             }
+            MessagingCenter.Send<popupAgregarProceso, string>(this, "popupAgregarProceso", "x");
             await PopupNavigation.Instance.PopAsync(true);
         }
     }

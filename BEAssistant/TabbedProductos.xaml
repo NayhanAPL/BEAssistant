@@ -377,7 +377,10 @@
                     <RowDefinition Height="465"></RowDefinition>
                     <RowDefinition Height="70"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Text="Procesos Actuales" TextColor="Black" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" Margin="15"/>
+                <StackLayout Grid.Row="0" Orientation="Horizontal" Margin="15" HorizontalOptions="Center">
+                    <Label  Text="&#xf252;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="Black" FontSize="19" FontAttributes="Bold"/>
+                    <Label  Text="Procesos Actuales" TextColor="Black" FontSize="18" FontAttributes="Bold"/>
+                </StackLayout>
                 <ListView Grid.Row="1" x:Name="listViewProcesos" ItemSelected="listViewProcesos_ItemSelected" RowHeight="160" SeparatorColor="DarkSlateGray">
                     <ListView.ItemTemplate>
                         <DataTemplate>

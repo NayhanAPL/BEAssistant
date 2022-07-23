@@ -44,6 +44,7 @@ namespace BEAssistant.popups
                 Direccion = direccion,
                 Telefono = telefono
             }) ;
+            MessagingCenter.Send<CrearContacto, string>(this, "CrearContacto", "Contacto");
             await PopupNavigation.Instance.PopAsync(true);
         }
 

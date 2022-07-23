@@ -122,13 +122,26 @@ namespace BEAssistant.popups
                 }
                 else
                 {
+                    DateTime fecha;
+                    if (listCoro[movCoro].ListInventario.Count != 0) fecha = listCoro[movCoro].ListInventario[0].Fecha;
+                    else
+                    {
+                        string num = ""; int dia = 0; int mes = 0; int anno = 0; int cont = 0;
+                        foreach (var item in listCoro[movCoro].Fecha)
+                        { if (item == '/' && cont == 0) { dia = Convert.ToInt32(num); num = ""; cont++; }
+                          else if (item == '/' && cont == 1) { mes = Convert.ToInt32(num); num = ""; }
+                          else num += item;} anno = Convert.ToInt32(num);
+                        fecha = new DateTime(day: dia, month: mes, year: anno);
+
+                    }
+
                     await App.Database.SaveInventario(new Inventario()
                     {
                         Materias = listMateria[indexMateria].Nombre,
                         ConsCaduco = caduco,
                         ConsExedente = perdido,
                         ConsUtil = util,
-                        Fecha = listCoro[movCoro].ListInventario[0].Fecha
+                        Fecha = fecha
                     });
                 }
             }

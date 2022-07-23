@@ -45,44 +45,77 @@ namespace BEAssistant
         private async void listContactosClientes_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             contactoSelected = (Contacto)e.SelectedItem;
-            await Navigation.PushPopupAsync(new OperacionesContacto()); 
+            await Navigation.PushPopupAsync(new OperacionesContacto());
+            MessagingCenter.Subscribe<OperacionesContacto, string>(this, "BorrarContacto", async (s, arg) =>
+            {
+                LlenarListasContactos();
+            });
         }
         private async void listContactosProveedores_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             contactoSelected = (Contacto)e.SelectedItem;
             await Navigation.PushPopupAsync(new OperacionesContacto());
+            MessagingCenter.Subscribe<OperacionesContacto, string>(this, "BorrarContacto", async (s, arg) =>
+            {
+                LlenarListasContactos();
+            });
         }
         private async void listContactosAsociados_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             contactoSelected = (Contacto)e.SelectedItem;
             await Navigation.PushPopupAsync(new OperacionesContacto());
+            MessagingCenter.Subscribe<OperacionesContacto, string>(this, "BorrarContacto", async (s, arg) =>
+            {
+                LlenarListasContactos();
+            });
         }
         private async void listContactosTrabajadores_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             contactoSelected = (Contacto)e.SelectedItem;
             await Navigation.PushPopupAsync(new OperacionesContacto());
+            MessagingCenter.Subscribe<OperacionesContacto, string>(this, "BorrarContacto", async (s, arg) =>
+            {
+                LlenarListasContactos();
+            });
         }
 
         private async void AgregarContactoProveedores_Clicked(object sender, EventArgs e)
         {
             CrearContacto.tipo = "Proveedores";
             await Navigation.PushPopupAsync(new CrearContacto());
+            MessagingCenter.Subscribe<CrearContacto, string>(this, "CrearContacto", async (s, arg) =>
+            {
+                LlenarListasContactos();
+            });
         }
         private async void AgregarContactoAsociados_Clicked(object sender, EventArgs e)
         {
             CrearContacto.tipo = "Asociados";
             await Navigation.PushPopupAsync(new CrearContacto());
+            MessagingCenter.Subscribe<CrearContacto, string>(this, "CrearContacto", async (s, arg) =>
+            {
+                LlenarListasContactos();
+            });
         }
         private async void AgregarContactoTrabajadores_Clicked(object sender, EventArgs e)
         {
             CrearContacto.tipo = "Trabajadores";
             await Navigation.PushPopupAsync(new CrearContacto());
+            MessagingCenter.Subscribe<CrearContacto, string>(this, "CrearContacto", async (s, arg) =>
+            {
+                LlenarListasContactos();
+            });
         }
         private async void AgregarContactoCliente_Clicked(object sender, EventArgs e)
         {
             CrearContacto.tipo = "Clientes";
             await Navigation.PushPopupAsync(new CrearContacto());
+            MessagingCenter.Subscribe<CrearContacto, string>(this, "CrearContacto", async (s, arg) =>
+            {
+                LlenarListasContactos();
+            });
         }
+
         private void listContactosClientes_Scrolled(object sender, ScrolledEventArgs e)
         {
             //AgregarContactoCliente.IsVisible = false;

@@ -503,7 +503,7 @@ namespace BEAssistant
         }
         private async void ButtonRespuestasR_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new TabbedOperaciones());
+            await Navigation.PushPopupAsync(new TabbedOperaciones());
         }
     }
 }

@@ -34,5 +34,10 @@
     <string>BEAssistant</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+  <array>
+    <string>BrandsRegular.otf</string>
+    <string>FreeRegular.otf</string>
+    <string>FreeSolid.otf</string>
+  </array>
 </dict>
 </plist>

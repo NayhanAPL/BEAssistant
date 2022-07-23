@@ -50,6 +50,7 @@ namespace BEAssistant.popups
             + Convert.ToInt32(EntryTiempoHorasPro.Text) * 60 * 60
             + Convert.ToInt32(EntryTiempoDiaPro.Text) * 60 * 60 * 24
             }; await App.Database.SaveUpProcesos(up);
+            MessagingCenter.Send<popupUpdateProceso, string>(this, "popupUpdateProceso", "x");
             await PopupNavigation.Instance.PopAsync(true);
         }
         

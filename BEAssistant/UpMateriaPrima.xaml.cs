@@ -50,6 +50,7 @@ namespace BEAssistant
                 PrecioUnidad = pu
             };
             await App.Database.SaveUpMateriaPrima(up);
+            MessagingCenter.Send<UpMateriaPrima, string>(this, "UpMateriaPrima", "x");
             await PopupNavigation.Instance.PopAsync(true);
         }
 

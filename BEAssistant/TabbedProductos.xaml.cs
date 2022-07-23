@@ -706,6 +706,11 @@ namespace BEAssistant
                 {
                     await Task.Delay(1000);
                     await Navigation.PushPopupAsync(new UpdateProductos());
+                    MessagingCenter.Subscribe<UpdateProductos, string>(this, "UpdateProductos", async (s, arg) =>
+                    {
+                        ByDefault();
+                    });
+                    
                 }
             }
             else
@@ -785,10 +790,18 @@ namespace BEAssistant
             var view = (ViewProcesos)e.SelectedItem;
             procesoSelected4 = await App.Database.GetIdProcesos(view.Id);
             await Navigation.PushPopupAsync(new popupModificarProceso());
+            MessagingCenter.Subscribe<popupModificarProceso, string>(this, "popupModificarProceso", async (s, arg) =>
+            {
+                ByDefault();
+            });
         }
         private async void ButtonInicioProceso_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushPopupAsync(new popupAgregarProceso());
+            MessagingCenter.Subscribe<popupAgregarProceso, string>(this, "popupAgregarProceso", async (s, arg) =>
+            {
+                ByDefault();
+            });
         }
 
 

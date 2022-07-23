@@ -27,7 +27,7 @@
                 <Button Grid.Row="2" Grid.Column="0" Text="Propuestas y Asesoría" x:Name="ButtonPropuestas" Clicked="ButtonPropuestas_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
                 <Button Grid.Row="2" Grid.Column="1" Text="Opciones" x:Name="ButtonOpciones" Clicked="ButtonOperaciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
             </Grid>
-            <Label Text="El valor de su empresa es de:" TextColor="Black" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="El valor de su empresa es de:" TextColor="Black" Margin="0,10,0,0" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
             <Label x:Name="lavelValorEmpresa" Text="0.0 $" TextColor="Green" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
             <Label Text="Su progreso es:" TextColor="Black" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
             <Label x:Name="LabelCrecimientoEmpresa" Text="0 %" TextColor="Green" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>

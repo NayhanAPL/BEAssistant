@@ -163,6 +163,7 @@ namespace BEAssistant
                         Tiempo = tiempo
                     }; await App.Database.SaveUpProductos(p);
                     ByDefault();
+                    MessagingCenter.Send<UpdateProductos, string>(this, "UpdateProductos", "x");
                     await PopupNavigation.Instance.PopAsync(true);
                 }
                 else
@@ -199,6 +200,7 @@ namespace BEAssistant
                     IdPro = TabbedProductos.page3VenSelected.IdPro
                 }; await App.Database.SaveUpVenta(v);
                 ByDefault();
+                MessagingCenter.Send<UpdateProductos, string>(this, "UpdateProductos", "x");
                 await PopupNavigation.Instance.PopAsync(true);
             }           
         }
@@ -212,6 +214,10 @@ namespace BEAssistant
         private async void ButtonActualizarMP_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushPopupAsync(new UpMateriaPrima());
+            MessagingCenter.Subscribe<UpMateriaPrima, string>(this, "UpMateriaPrima", async (s, arg) =>
+            {
+                ByDefault();
+            });
         }
 
         private async void volver_Clicked(object sender, EventArgs e)
