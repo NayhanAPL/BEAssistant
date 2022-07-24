@@ -20,9 +20,11 @@ namespace BEAssistant.iOS
             {
                 Control.Layer.CornerRadius = 5;
                 Control.Layer.BorderWidth = 2;
-                Control.Layer.BorderColor = Color.LightGray.ToCGColor();
+                Control.Layer.BorderColor = Color.White.ToCGColor();
                 Control.Layer.BackgroundColor = Color.White.ToCGColor();
                 Control.TextColor = Color.Green.ToUIColor();
+                Control.Layer.ShadowRadius = 5;
+                Control.Layer.ShadowColor = Color.Gray.ToCGColor();
                 Control.Placeholder = "Escribir Aquí";
 
             }

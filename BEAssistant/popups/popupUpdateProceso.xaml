@@ -12,7 +12,7 @@
                 <StackLayout Margin="0,5">
                     <Label Margin="10" Text="Cambiar aspectos del proceso" HorizontalOptions="Center" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="&#xf217;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="DarkSlateGray" FontAttributes="Bold" FontSize="18" HorizontalOptions="Start"/>
+                        <Label Text="&#xf217;" FontFamily="{StaticResource FontAwesomeSolid}" VerticalOptions="Center" TextColor="DarkSlateGray" FontAttributes="Bold" FontSize="20" HorizontalOptions="Start" Margin="0,0,15,0"/>
                         <local:RoundedEntry x:Name="EntryCantUnidades" FontAttributes="Bold" Placeholder="Unidades" VerticalOptions="Center" PlaceholderColor="Black" TextColor="Green" Keyboard="Numeric"/>
                     </StackLayout>
                     <StackLayout>
@@ -24,7 +24,7 @@
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="&#xf017;" FontFamily="{StaticResource FontAwesomeSolid}" FontAttributes="Bold" VerticalOptions="Center" TextColor="DarkSlateGray" FontSize="17"/>
+                            <Label Grid.Column="0" Text="&#xf017;" FontFamily="{StaticResource FontAwesomeSolid}"  Margin="0,0,15,0" FontAttributes="Bold" VerticalOptions="Center" TextColor="DarkSlateGray" FontSize="20"/>
                             <Entry Grid.Column="1" x:Name="EntryTiempoDiaPro" Placeholder="Días   " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="3"/>
                             <Entry Grid.Column="2" x:Name="EntryTiempoHorasPro" Placeholder="Horas  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
                             <Entry Grid.Column="3" x:Name="EntryTiempoMinPro" Placeholder="Min's  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
@@ -32,8 +32,8 @@
                         </Grid>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="&#xf70e;" FontFamily="{StaticResource FontAwesomeSolid}"  HorizontalOptions="Start" TextColor="DarkSlateGray" FontSize="18" FontAttributes="Bold"/>
-                        <Entry Placeholder="Escribir aquí" WidthRequest="370" Keyboard="Text" VerticalOptions="Start" x:Name="EntryDescripcion" PlaceholderColor="Green" TextColor="Black"/>
+                        <Label Text="&#xf70e;" FontFamily="{StaticResource FontAwesomeSolid}" VerticalOptions="Center" Margin="0,0,15,0" HorizontalOptions="Start" TextColor="DarkSlateGray" FontSize="20" FontAttributes="Bold"/>
+                        <Entry Placeholder="Escribir aquí" WidthRequest="300" Keyboard="Text" VerticalOptions="Start" x:Name="EntryDescripcion" PlaceholderColor="Green" TextColor="Black"/>
                     </StackLayout>
                     <Button Text="actualizar" Margin="10" x:Name="Update" CornerRadius="10" Clicked="Update_Clicked" FontSize="18" TextColor="White" BackgroundColor="Green" HorizontalOptions="Center"/>
                 </StackLayout>

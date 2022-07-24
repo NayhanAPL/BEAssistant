@@ -20,12 +20,27 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" Text="Productos Y Ventas" x:Name="ButtonProductos" Clicked="ButtonElementos_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
-                <Button Grid.Row="0" Grid.Column="1" Text="Inversiones y Gastos" x:Name="ButtonInverciones" Clicked="ButtonInverciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
-                <Button Grid.Row="1" Grid.Column="0" Text="Historial y Estadísticas" x:Name="ButtonEstadisticas" Clicked="ButtonEstadisticas_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20"></Button>
-                <Button Grid.Row="1" Grid.Column="1" Text="Operaciones y Consultas" x:Name="ButtonOperaciones" Clicked="ButtonRespuestasR_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
-                <Button Grid.Row="2" Grid.Column="0" Text="Propuestas y Asesoría" x:Name="ButtonPropuestas" Clicked="ButtonPropuestas_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
-                <Button Grid.Row="2" Grid.Column="1" Text="Opciones" x:Name="ButtonOpciones" Clicked="ButtonOperaciones_Clicked" BackgroundColor="White" Margin="10" TextColor="Green" FontSize="20" ></Button>
+                <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="White" Margin="5,0,0,0" CornerRadius="10" HasShadow="True" Padding="0">
+                    <Button Text="Productos Y Ventas" CornerRadius="10" BorderWidth="1" x:Name="ButtonProductos" Padding="10" Clicked="ButtonElementos_Clicked" BackgroundColor="White" TextColor="Green" FontSize="20"></Button>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="White" Margin="0,0,5,0" CornerRadius="10" HasShadow="True" Padding="0">
+                    <Button Grid.Row="0" Grid.Column="1" Text="Inversiones y Gastos" CornerRadius="10" Padding="10" BorderWidth="1" x:Name="ButtonInverciones" Clicked="ButtonInverciones_Clicked" BackgroundColor="White" TextColor="Green" FontSize="20"></Button>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="White" Margin="5,0,0,0" CornerRadius="10" HasShadow="True" Padding="0">
+                    <Button Text="Historial y Estadísticas" CornerRadius="10" BorderWidth="1" Padding="10" x:Name="ButtonEstadisticas" Clicked="ButtonEstadisticas_Clicked" BackgroundColor="White" TextColor="Green" FontSize="20"></Button>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="White" Margin="0,0,5,0" CornerRadius="10" HasShadow="True" Padding="0">
+                    <Button Text="Operaciones y Consultas" CornerRadius="10" BorderWidth="1" Padding="10" x:Name="ButtonOperaciones" Clicked="ButtonRespuestasR_Clicked" BackgroundColor="White" TextColor="Green" FontSize="20" ></Button>
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="0" BackgroundColor="White" Margin="5,0,0,0" CornerRadius="10" HasShadow="True" Padding="0">
+                    <Button Text="Propuestas y Asesoría" CornerRadius="10" BorderWidth="1" Padding="10" x:Name="ButtonPropuestas" Clicked="ButtonPropuestas_Clicked" BackgroundColor="White" TextColor="Green" FontSize="20" ></Button>
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="1" BackgroundColor="White" Margin="0,0,5,0" CornerRadius="10" HasShadow="True" Padding="0">
+                    <Button Text="Opciones" CornerRadius="10" BorderWidth="1" Padding="10" x:Name="ButtonOpciones" Clicked="ButtonOperaciones_Clicked" BackgroundColor="White" TextColor="Green" FontSize="20" ></Button>
+                </Frame>
+
+               
+                
             </Grid>
             <Label Text="El valor de su empresa es de:" TextColor="Black" Margin="0,10,0,0" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
             <Label x:Name="lavelValorEmpresa" Text="0.0 $" TextColor="Green" FontSize="Body" FontAttributes="Bold" HorizontalTextAlignment="Center"/>

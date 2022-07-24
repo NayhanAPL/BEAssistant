@@ -30,9 +30,9 @@ namespace BEAssistant
             rellenoListView.IsVisible = true;
             ViewPage3Ven.IsVisible = false;
             ViewPage3Pro.IsVisible = false;
-            Page3producto.FontSize = 16;
+            Page3producto.FontSize = 21;
             Page3producto.TextColor = Color.Black;
-            Page3venta.FontSize = 16;
+            Page3venta.FontSize = 21;
             Page3venta.TextColor = Color.Black;
             selectedAny = false;
 
@@ -136,22 +136,6 @@ namespace BEAssistant
                     EntryUnidadesproducto.Text = "1";
                 }
             }
-        }
-        private void EntryCostoProducto_Focused(object sender, FocusEventArgs e)
-        {
-            EntryCostoProducto.FontSize = 20;
-        }
-        private void EntryCostoProducto_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryCostoProducto.FontSize = 17;
-        }
-        private void EntryUnidadesproducto_Focused(object sender, FocusEventArgs e)
-        {
-            EntryUnidadesproducto.FontSize = 20;
-        }
-        private void EntryUnidadesproducto_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryUnidadesproducto.FontSize = 20;
         }
         public static Product product = new Product();
         public static string descripcion = "";
@@ -563,9 +547,9 @@ namespace BEAssistant
         private void Page3venta_Clicked(object sender, EventArgs e)
         {
             botonSeleccionadoPro = 2;
-            Page3venta.FontSize = 18;
+            Page3venta.FontSize = 22;
             Page3venta.TextColor = Color.Green;
-            Page3producto.FontSize = 16;
+            Page3producto.FontSize = 21;
             Page3producto.TextColor = Color.Black;
             ViewPage3Ven.IsVisible = true;
             ViewPage3Pro.IsVisible = false;
@@ -586,9 +570,9 @@ namespace BEAssistant
             popupSubAlert.TextSubAlert = "ADVERTENCIA: Si cambia algún parámetro de un producto cambiará la información de todos los registros de ese elemento. Se recomienda crear un nuevo elemento.";
             await Navigation.PushPopupAsync(new popupSubAlert());
             botonSeleccionadoPro = 1;
-            Page3producto.FontSize = 18;
+            Page3producto.FontSize = 22;
             Page3producto.TextColor = Color.Green;
-            Page3venta.FontSize = 16;
+            Page3venta.FontSize = 21;
             Page3venta.TextColor = Color.Black;
             ViewPage3Ven.IsVisible = false;
             ViewPage3Pro.IsVisible = true;

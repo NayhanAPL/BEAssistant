@@ -9,14 +9,14 @@
             <StackLayout Margin="10,0">
                 <Label Text="¿Desea registrar una venta?" FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="10,10,0,5"/>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Seleccione la denominación:" VerticalOptions="Center" TextColor="Black" FontSize="17" FontAttributes="Bold" Margin="10,0,0,0"/>
-                    <Picker x:Name="selectDenominacionPro" Margin="0" SelectedIndexChanged="selectDenominacionPro_SelectedIndexChanged" VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  "/>
+                    <Label Text="Seleccione la denominación:" FontAttributes="Bold" VerticalOptions="Center" TextColor="Black" FontSize="17" Margin="10,0,0,0"/>
+                    <Picker x:Name="selectDenominacionPro" Margin="0" SelectedIndexChanged="selectDenominacionPro_SelectedIndexChanged" VerticalOptions="Center" TitleColor="Green" TextColor="Black" Title="  Seleccionar  "/>
                 </StackLayout>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="250"></RowDefinition>
-                        <RowDefinition Height="130"></RowDefinition>
-                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="115"></RowDefinition>
+                        <RowDefinition Height="65"></RowDefinition>
                         <RowDefinition Height="50"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Frame  Grid.Row="0" BackgroundColor="White" HasShadow="True" Padding="5" Margin="0">
@@ -65,7 +65,7 @@
                                     <DataTemplate>
                                         <ViewCell>
                                             <StackLayout>
-                                                <Label Text="{Binding Nombre}" FontSize="21" Margin="10,0" HorizontalOptions="Start" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Start"></Label>
+                                                <Label Text="{Binding Nombre}" FontSize="20" Margin="10,0" HorizontalOptions="Start" TextColor="Black" HorizontalTextAlignment="Start"></Label>
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -102,40 +102,39 @@
                     </Frame>
                     <StackLayout x:Name="DatosReportePro" Grid.Row="1">
                         <StackLayout Orientation="Horizontal" Margin="10">
-                            <Label x:Name="LabelDePrecio" Text="Precio: $" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
-                            <local:RoundedEntry x:Name="EntryCostoProducto" MaxLength="8" TextChanged="EntryCostoProducto_TextChanged" Keyboard="Numeric" Focused="EntryCostoProducto_Focused" Unfocused="EntryCostoProducto_Unfocused" VerticalOptions="Center" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="DarkGray" TextColor="Green" />
-                            <Label Text="Por unidad" VerticalOptions="Center" FontSize="17" Margin="0,0,0,0" TextColor="Black" FontAttributes="Bold"/>
+                            <Label x:Name="LabelDePrecio" FontAttributes="Bold" Text="Precio: $" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" />
+                            <local:RoundedEntry x:Name="EntryCostoProducto" MaxLength="8" TextChanged="EntryCostoProducto_TextChanged" Keyboard="Numeric" VerticalOptions="Center"  Placeholder="Escribir aquí" PlaceholderColor="DarkGray" TextColor="Green" />
+                            <Label Text="Por unidad" VerticalOptions="Center" FontSize="17" Margin="0,0,0,0" TextColor="Black"/>
                             <Label Text="" x:Name="LavelSugerPrecioVenta" VerticalOptions="Center" FontSize="15" Margin="0,0,0,0" TextColor="White"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Margin="10">
-                            <Label x:Name="LabelCantUnidpro" Text="Cantidad de unidades:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
-                            <local:RoundedEntry x:Name="EntryUnidadesproducto" Keyboard="Numeric" MaxLength="8" Focused="EntryUnidadesproducto_Focused" Unfocused="EntryUnidadesproducto_Unfocused" VerticalOptions="Center" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="DarkGray" TextColor="Green" />
+                            <Label x:Name="LabelCantUnidpro" FontAttributes="Bold" Text="Cantidad de unidades:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black"/>
+                            <local:RoundedEntry x:Name="EntryUnidadesproducto" Keyboard="Numeric" MaxLength="8" VerticalOptions="Center" Placeholder="Escribir aquí" PlaceholderColor="DarkGray" TextColor="Green" />
                         </StackLayout>
                     </StackLayout>
-                    <Button Grid.Row="2" Text="Agregar una descripción para más detalles" FontSize="17" TextTransform="None" x:Name="ButtonDescripcionVeenta" Clicked="ButtonDescripcionVeenta_Clicked"  HorizontalOptions="Start" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                    <Button Grid.Row="3" Text="REPORTAR" x:Name="ButtonReportarPro" Clicked="ButtonReportarPro_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
-
+                    <Frame Grid.Row="2" Padding="0" HasShadow="True" HorizontalOptions="Center" CornerRadius="10" Margin="10" BackgroundColor="White">
+                        <Button Text="Agregar una descripción para más detalles" WidthRequest="360"  TextTransform="None" FontSize="17" x:Name="ButtonDescripcionVeenta" Clicked="ButtonDescripcionVeenta_Clicked" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                    </Frame>
+                    <Frame Grid.Row="3" Padding="0" HasShadow="True" CornerRadius="10" BackgroundColor="Green" HorizontalOptions="Center">
+                        <Button Text="Reportar" Padding="0" x:Name="ButtonReportarPro" WidthRequest="360" TextTransform="None" Clicked="ButtonReportarPro_Clicked" CornerRadius="10" FontSize="17" TextColor="White" FontAttributes="Bold" Margin="0" BackgroundColor="Green"/>
+                    </Frame>
                 </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage>
     <ContentPage Title="CREAR PRODUCTO">
         <ScrollView>
-            <StackLayout BackgroundColor="LightGray">
-                <Frame HasShadow="True" Padding="0">
-                    <StackLayout>
-                        <Label Text="¿Desea crear un nuevo producto?" TextColor="Black" Margin="20,10,0,10" FontAttributes="Bold" FontSize="17"/>
-                        <Label Text="Debe llenar todos los datos que se le solicitan..." Margin="20,0,0,10" FontSize="17"/>
-                    </StackLayout>
-                </Frame>
+            <StackLayout BackgroundColor="White">
+                <Label Text="¿Desea crear un nuevo producto?" TextColor="Black" Margin="20,10,0,10" FontAttributes="Bold" FontSize="17"/>
+                <Label Text="Debe llenar todos los datos que se le solicitan" Margin="20,0,0,10" FontSize="17"/>
                 <StackLayout>
-                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                    <Frame HasShadow="True" Padding="20,10" Margin="10,5" CornerRadius="10" BorderColor="White">
                         <StackLayout>
                             <Label Text="Nombre del producto:" Margin="0" FontSize="17" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold"/>
                             <Entry SelectionLength="20" x:Name="EntryNombreProducto" VerticalOptions="Center" FontSize="17" Focused="EntryNombreProducto_Focused" Unfocused="EntryNombreProducto_Unfocused" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Black" />
                         </StackLayout>
                     </Frame>
-                    <Frame HasShadow="True" Padding="20,10,10,10" BorderColor="DarkGray">
+                    <Frame HasShadow="True" Padding="20,10,10,10" BorderColor="White" CornerRadius="10" Margin="10,5">
                         <StackLayout>
                             <Label Text="Cree o seleccione una denominación para definir familias o grupos entre sus productos. Ejemplo: camisas, refrigerios" FontSize="17" HorizontalOptions="Center"/>
                             <StackLayout>
@@ -161,7 +160,7 @@
                     </Frame>
                 </StackLayout>
                 <StackLayout>
-                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                    <Frame HasShadow="True" Padding="20,10" BorderColor="White" CornerRadius="10" Margin="10,5">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="60"></RowDefinition>
@@ -188,16 +187,16 @@
                                 <Entry x:Name="EntryDim2Latitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
                             </StackLayout>
                             <StackLayout Grid.Row="1" x:Name="Grid3parameter" Orientation="Horizontal">
-                                <Label Text="Longitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <Label Text="Longitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="16"/>
                                 <Entry x:Name="EntryDim3Longitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
-                                <Label Text="Latitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <Label Text="Latitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="16"/>
                                 <Entry x:Name="EntryDim3Latitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
-                                <Label Text="Altitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <Label Text="Altitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="16"/>
                                 <Entry x:Name="EntryDim3Altitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
                             </StackLayout>
                         </Grid>
                     </Frame>
-                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                    <Frame HasShadow="True" Padding="20,10" Margin="10,5" CornerRadius="10" BorderColor="White">
                         <StackLayout>
                             <Label Text="¿Cuanto tiempo toma finalizar una unidad?" FontSize="17"/>
                             <Label Text="Tiempo de producción:" FontAttributes="Bold" VerticalOptions="Center" TextColor="Black" FontSize="17"/>
@@ -215,7 +214,7 @@
                             </Grid>
                         </StackLayout>
                     </Frame>
-                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                    <Frame HasShadow="True" Padding="20,10" Margin="10,5" CornerRadius="10" BorderColor="White">
                         <StackLayout>
                             <Label Text="Escriba cuanto cree que invierte en una unidad" FontSize="17"/>
                             <Grid>
@@ -228,7 +227,7 @@
                             </Grid>
                         </StackLayout>
                     </Frame>
-                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                    <Frame HasShadow="True" Padding="20,10" Margin="10,5" CornerRadius="10" BorderColor="White">
                         <StackLayout>
                             <Label Text="Unidades vendidas aproximadamente en un mes" FontSize="17"/>
                             <Grid>
@@ -241,7 +240,7 @@
                             </Grid>
                         </StackLayout>
                     </Frame>
-                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                    <Frame HasShadow="True" Padding="20,10" Margin="10,5" CornerRadius="10" BorderColor="White">
                         <StackLayout>
                             <Label Text="Escriba un número (1-10) para representar la dificultad aproximada en la creación del producto" FontSize="17"/>
                             <Grid>
@@ -254,7 +253,7 @@
                             </Grid>
                         </StackLayout>
                     </Frame>
-                    <Frame HasShadow="True" Padding="20,10" BorderColor="DarkGray">
+                    <Frame HasShadow="True" Padding="20,10" Margin="10,5" CornerRadius="10" BorderColor="White">
                         <StackLayout>
                             <Label Text="Establezca el precio inicial del producto" FontSize="17"/>
                             <Grid>
@@ -268,12 +267,14 @@
                         </StackLayout>
                     </Frame>
                 </StackLayout>
-                <Frame Margin="0" BorderColor="White" Padding="20,0,0,10">
-                    <StackLayout>
-                        <Button Text="Agregar una descripción para más detalles" FontSize="17" TextTransform="None" x:Name="ButtonDescripcionProducto" Clicked="ButtonDescripcionProducto_Clicked" HorizontalOptions="Start" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                        <Button Text="Agregar materias primas (recomendado)" FontSize="17" TextTransform="None" x:Name="ButtonAddMateriasPrimas" Clicked="ButtonAddMateriasPrimas_Clicked" HorizontalOptions="Start" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                        <Button Text="CREAR" Margin="0,0,0,20" x:Name="ButtonCrearProducto" Clicked="ButtonCrearProducto_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
-                    </StackLayout>
+                <Frame Padding="0" HasShadow="True" CornerRadius="10" Margin="10" BackgroundColor="White" HorizontalOptions="Center">
+                    <Button WidthRequest="360" Text="Agregar una descripción para más detalles" CornerRadius="10" FontSize="17" TextTransform="None" x:Name="ButtonDescripcionProducto" Clicked="ButtonDescripcionProducto_Clicked" HorizontalOptions="Start" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                </Frame>
+                <Frame Padding="0" HasShadow="True" CornerRadius="10" Margin="10,0,10,10" BackgroundColor="White" HorizontalOptions="Center">
+                    <Button WidthRequest="360" Text="Agregar materias primas (recomendado)" FontSize="17" TextTransform="None" CornerRadius="10" x:Name="ButtonAddMateriasPrimas" Clicked="ButtonAddMateriasPrimas_Clicked" HorizontalOptions="Start" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                </Frame>
+                <Frame Padding="0" HasShadow="True" CornerRadius="10" Margin="0,0,0,15" BackgroundColor="Green" HorizontalOptions="Center">
+                    <Button WidthRequest="360" FontSize="17" Text="Crear" x:Name="ButtonCrearProducto" TextTransform="None" Clicked="ButtonCrearProducto_Clicked" CornerRadius="10" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
                 </Frame>
             </StackLayout>
         </ScrollView>
@@ -287,14 +288,14 @@
                         <RowDefinition Height="460"></RowDefinition>
                         <RowDefinition Height="70"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Frame Grid.Row="0" HasShadow="True" Padding="5" Margin="0" BorderColor="DimGray">
+                    <Frame Grid.Row="0" HasShadow="True" Padding="5" Margin="0" BorderColor="White">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Margin="30,0" Text="PRODUCTOS" FontSize="16" x:Name="Page3producto" Clicked="Page3producto_Clicked" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
-                            <Button Grid.Column="1" Margin="30,0" Text="VENTAS" FontSize="16" x:Name="Page3venta" Clicked="Page3venta_Clicked" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
+                            <Button Grid.Column="0" Margin="30,0" Text="&#xf468;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="22" x:Name="Page3producto" Clicked="Page3producto_Clicked" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
+                            <Button Grid.Column="1" Margin="30,0" Text="&#xf4c0;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="22" x:Name="Page3venta" Clicked="Page3venta_Clicked" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
                         </Grid>
                     </Frame>
                     <ListView Grid.Row="1" ItemSelected="ViewPage3Pro_ItemSelected" x:Name="ViewPage3Pro" Margin="0" RowHeight="90" SeparatorVisibility="None">
@@ -355,14 +356,14 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Frame Grid.Row="2" HasShadow="True" Padding="5" Margin="0" BorderColor="DimGray">
+                    <Frame Grid.Row="2" HasShadow="True" Padding="5" Margin="0" BorderColor="LightGray">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Margin="0" FontSize="18" BorderWidth="1" BorderColor="White" CornerRadius="10" Text="EDITAR" x:Name="ButtonActualizarPro" Clicked="ButtonActualizarPro_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                            <Button Grid.Column="1" Margin="0" FontSize="18" BorderWidth="1" BorderColor="White" WidthRequest="110" CornerRadius="10" Text="ELIMINAR" x:Name="ButtonEliminarPro" Clicked="ButtonEliminarPro_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                            <Button Grid.Column="0" Margin="0" FontSize="21" BorderWidth="1" BorderColor="White" CornerRadius="10" Text="&#xf044;" FontFamily="{StaticResource FontAwesomeSolid}" x:Name="ButtonActualizarPro" Clicked="ButtonActualizarPro_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                            <Button Grid.Column="1" Margin="0" FontSize="21" BorderWidth="1" BorderColor="White" WidthRequest="110" CornerRadius="10" Text="&#xf1f8;" FontFamily="{StaticResource FontAwesomeSolid}" x:Name="ButtonEliminarPro" Clicked="ButtonEliminarPro_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
                         </Grid>
                     </Frame>
                 </Grid>
@@ -377,11 +378,10 @@
                     <RowDefinition Height="465"></RowDefinition>
                     <RowDefinition Height="70"></RowDefinition>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" Orientation="Horizontal" Margin="15" HorizontalOptions="Center">
-                    <Label  Text="&#xf252;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="Black" FontSize="19" FontAttributes="Bold"/>
-                    <Label  Text="Procesos Actuales" TextColor="Black" FontSize="18" FontAttributes="Bold"/>
-                </StackLayout>
-                <ListView Grid.Row="1" x:Name="listViewProcesos" ItemSelected="listViewProcesos_ItemSelected" RowHeight="160" SeparatorColor="DarkSlateGray">
+                <Frame HasShadow="True" Grid.Row="0" Margin="0" Padding="0" BackgroundColor="White">
+                    <Label  Text="Procesos Actuales" HorizontalOptions="Center" TextColor="Black" Margin="15" FontSize="20" FontAttributes="Bold"/>
+                </Frame>
+                    <ListView Grid.Row="1" x:Name="listViewProcesos" ItemSelected="listViewProcesos_ItemSelected" RowHeight="160" SeparatorColor="DarkSlateGray">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -409,8 +409,8 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Frame Grid.Row="2" HasShadow="True" Padding="5" Margin="0" BorderColor="DarkSlateGray">
-                    <Button Text="Iniciar Proceso de Producción" x:Name="ButtonInicioProceso" Clicked="ButtonInicioProceso_Clicked" HorizontalOptions="Center" TextColor="Green" BackgroundColor="White" FontSize="19"/>
+                <Frame Grid.Row="2" HasShadow="True" Padding="5" Margin="0" BorderColor="LightGray">
+                    <Button Text="Iniciar Proceso de Producción" TextTransform="None" x:Name="ButtonInicioProceso" Clicked="ButtonInicioProceso_Clicked" HorizontalOptions="Center" TextColor="Green" BackgroundColor="White" FontSize="19"/>
                 </Frame>
             </Grid>
         </ScrollView>

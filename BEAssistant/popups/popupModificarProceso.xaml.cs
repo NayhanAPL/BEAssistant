@@ -24,11 +24,11 @@ namespace BEAssistant.popups
         private async void Animacion()
         {
             await Task.Delay(100);
-            GuardarAlStock.IsVisible = true;
+            SGuardarAlStock.IsVisible = true;
             await Task.Delay(100);
-            ReportarComoVenta.IsVisible = true;
+            SReportarComoVenta.IsVisible = true;
             await Task.Delay(100);
-            Actualizar.IsVisible = true;
+            SActualizar.IsVisible = true;
         }
 
         private async void GuardarAlStock_Clicked(object sender, EventArgs e)

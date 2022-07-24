@@ -23,7 +23,7 @@ namespace BEAssistant.popups
         private async void ByDefault()
         {
             textSubAlert.Text = TextSubAlert;
-            await Task.Delay(30);
+            await Task.Delay(3000);
             if (!salio)
             {
                 await PopupNavigation.Instance.PopAsync(true);
