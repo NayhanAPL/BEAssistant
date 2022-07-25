@@ -20,13 +20,7 @@ namespace BEAssistant {
         private global::Xamarin.Forms.Entry EntryMatPri;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Button ButtonMatPriEscrbir;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Picker PickerMatPri;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Button ButtonMatPriSeleccionar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::BEAssistant.RoundedEntry EntryCantUnid;
@@ -47,9 +41,7 @@ namespace BEAssistant {
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MateriaPrimaProductos));
             EntryMatPri = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "EntryMatPri");
-            ButtonMatPriEscrbir = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "ButtonMatPriEscrbir");
             PickerMatPri = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Picker>(this, "PickerMatPri");
-            ButtonMatPriSeleccionar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "ButtonMatPriSeleccionar");
             EntryCantUnid = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::BEAssistant.RoundedEntry>(this, "EntryCantUnid");
             AgregarMatPri = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "AgregarMatPri");
             ListViewMatPri = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ListView>(this, "ListViewMatPri");

@@ -281,14 +281,6 @@ namespace BEAssistant
 
         List<string> denomExistentes = new List<string>();
         public static List<string> producNombres = new List<string>();
-        private void EntryDenomProducto_Focused(object sender, FocusEventArgs e)
-        {
-            EntryDenomProducto.FontSize = 20;
-        }
-        private void EntryDenomProducto_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryDenomProducto.FontSize = 17;
-        }
         public bool denomPickerEntry = false;
         private void ButtonDenomEscrbir_Clicked(object sender, EventArgs e)
         {
@@ -311,14 +303,6 @@ namespace BEAssistant
                 if(item != null && !PickerDenominacion.Items.Contains(item))
                    PickerDenominacion.Items.Add(item);
             }
-        }
-        private void EntryNombreProducto_Focused(object sender, FocusEventArgs e)
-        {
-            EntryNombreProducto.FontSize = 20;
-        }
-        private void EntryNombreProducto_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryNombreProducto.FontSize = 17;
         }
         private async void ButtonCrearProducto_Clicked(object sender, EventArgs e)
         {

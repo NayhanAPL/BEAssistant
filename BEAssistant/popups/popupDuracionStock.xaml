@@ -14,7 +14,7 @@
                     <Label Text="Stock" TextColor="Green" FontSize="21" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
                     <Frame Margin="0" Padding="20,0">
                         <StackLayout>
-                            <Label Text="¿Cuanto tiempo perdura esta materia prima en utilidad? Tiempo útil:" FontSize="17"/>
+                            <Label Text="¿Cuánto tiempo perdura esta materia prima en utilidad? Tiempo útil:" FontSize="17"/>
                             <Button Text="Tiempo Indefinido" x:Name="indefinido" Clicked="indefinido_Clicked" CornerRadius="10" BackgroundColor="White" TextColor="Black" FontSize="18" HorizontalOptions="Center"/>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -54,7 +54,7 @@
                     </StackLayout>
                 </StackLayout>
             </Frame>
-            <Button Grid.Row="0" Text="X" Margin="0" Padding="0" x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" WidthRequest="35" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
+            <Button Grid.Row="0" Text="&#xf00d;" FontFamily="{StaticResource FontAwesomeSolid}" Margin="0" Padding="0" x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" WidthRequest="35" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
         </Grid>
     </StackLayout>
 </Pages:PopupPage>

@@ -140,7 +140,7 @@
                                 </StackLayout>
                                 <StackLayout x:Name="StackConstante" Orientation="Vertical" Grid.Row="0">
                                     <Label Text="Esta denominación se clasifica en periodos de tiempo. 
-                                       ¿Cada cuanto tiempo usted debe hacer esta inversión?" Margin="10,0,10,5" FontAttributes="Bold"/>
+                                       ¿Cada cuánto tiempo usted debe hacer esta inversión?" Margin="10,0,10,5" FontAttributes="Bold"/>
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="Plazo de la inversión:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Black" FontAttributes="Bold"/>
                                         <Picker x:Name="PickerTiempoCategoria" VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">

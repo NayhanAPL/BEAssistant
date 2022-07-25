@@ -18,10 +18,12 @@
                     </StackLayout>
                     <Label Text="Una descripción sera oportuna para recordar detalles como percanses, cantidad de empleados tranajando en el proceso, la situación del proceso en general." FontSize="16" TextColor="Gray" HorizontalOptions="Start"/>
                     <Entry WidthRequest="370" Keyboard="Text" VerticalOptions="Start" x:Name="EntryDescripcion" TextColor="Black"/>
-                    <Button Text="reportar" FontAttributes="Bold" x:Name="GuardarProceso" Clicked="GuardarProceso_Clicked" FontSize="18" HorizontalOptions="Center" TextColor="Green" CornerRadius="10" BackgroundColor="White"/>
+                    <Frame HasShadow="True" Margin="15,0" Padding="0" BackgroundColor="Green" CornerRadius="10">
+                        <Button Text="reportar" FontAttributes="Bold" x:Name="GuardarProceso" Clicked="GuardarProceso_Clicked" FontSize="18" HorizontalOptions="Center" TextColor="White" CornerRadius="10" WidthRequest="350" BackgroundColor="Green"/>
+                    </Frame>
                 </StackLayout>
             </Frame>
-            <Button Grid.Row="0" Text="X" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35" x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
+            <Button Grid.Row="0" Text="&#xf00d;" FontFamily="{StaticResource FontAwesomeSolid}" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35" x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
         </Grid>
     </StackLayout>
 </Pages:PopupPage>

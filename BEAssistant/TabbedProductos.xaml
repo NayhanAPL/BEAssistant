@@ -6,11 +6,12 @@
   <!--Pages can be added as references or inline-->
     <ContentPage Title="REPORTAR VENTA">
         <ScrollView>
-            <StackLayout Margin="10,0">
-                <Label Text="¿Desea registrar una venta?" FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="10,10,0,5"/>
-                <StackLayout Orientation="Horizontal">
+            <StackLayout>
+                <Label Text="¿Desea registrar una venta?" FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="20,10,10,5"/>
+                <StackLayout Margin="10,0" Orientation="Horizontal">
                     <Label Text="Seleccione la denominación:" FontAttributes="Bold" VerticalOptions="Center" TextColor="Black" FontSize="17" Margin="10,0,0,0"/>
                     <Picker x:Name="selectDenominacionPro" Margin="0" SelectedIndexChanged="selectDenominacionPro_SelectedIndexChanged" VerticalOptions="Center" TitleColor="Green" TextColor="Black" Title="  Seleccionar  "/>
+                    <Label Margin="0" FontSize="21" TextColor="Green" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                 </StackLayout>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -60,39 +61,41 @@
                                     <Frame Grid.Column="1" CornerRadius="5" BackgroundColor="LightGray" HeightRequest="14" Padding="0" Margin="100,5,20,15"/>
                                 </Grid>
                             </StackLayout>
-                            <ListView Grid.Column="0" x:Name="ViewNombresPro" Margin="0" RowHeight="90" ItemSelected="ViewNombresPro_ItemSelected" SeparatorColor="DarkSlateGray">
+                            <ListView Grid.Column="0" x:Name="ViewNombresPro" Margin="0" RowHeight="120" ItemSelected="ViewNombresPro_ItemSelected" SeparatorVisibility="None">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
-                                            <StackLayout>
-                                                <Label Text="{Binding Nombre}" FontSize="20" Margin="10,0" HorizontalOptions="Start" TextColor="Black" HorizontalTextAlignment="Start"></Label>
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                    </Grid.ColumnDefinitions>
-                                                    <StackLayout Grid.Column="0" Orientation="Vertical">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="Demanda:" Margin="10,0" FontSize="17" TextColor="Gray" HorizontalOptions="Start"></Label>
-                                                            <Label Text="{Binding Demanda}" Margin="0" TextColor="DimGray" HorizontalOptions="Start" FontSize="18"/>
+                                            <Frame Margin="5" HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="10" BorderColor="White">
+                                                <StackLayout>
+                                                    <Label Text="{Binding Nombre}" FontSize="19" Margin="10,0" FontAttributes="Bold" HorizontalOptions="Start" TextColor="Black" HorizontalTextAlignment="Start"></Label>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Orientation="Vertical">
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="Demanda:" Margin="10,0" FontSize="17" TextColor="Gray" HorizontalOptions="Start"></Label>
+                                                                <Label Text="{Binding Demanda}" Margin="0" TextColor="DimGray" HorizontalOptions="Start" FontSize="18"/>
+                                                            </StackLayout>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="Dificultad:" Margin="10,0" TextColor="Gray" FontSize="17" HorizontalOptions="Start"></Label>
+                                                                <Label Text="{Binding Dificultad}" TextColor="DimGray" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                            </StackLayout>
                                                         </StackLayout>
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="Dificultad:" Margin="10,0" TextColor="Gray" FontSize="17" HorizontalOptions="Start"></Label>
-                                                            <Label Text="{Binding Dificultad}" TextColor="DimGray" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                        <StackLayout Grid.Column="1" Margin="10,0">
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="- $" TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalOptions="Center" HorizontalOptions="End" FontSize="18"/>
+                                                                <Label Text="{Binding Inversion}" TextColor="DarkSlateGray" FontSize="16" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center"/>
+                                                            </StackLayout>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="+ $" TextColor="LightSlateGray" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center" FontSize="18"/>
+                                                                <Label Text="{Binding Precio}" TextColor="LightSlateGray" FontSize="16" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center"/>
+                                                            </StackLayout>
                                                         </StackLayout>
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Column="1" Margin="10,0">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="- $" TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalOptions="Center" HorizontalOptions="End" FontSize="18"/>
-                                                            <Label Text="{Binding Inversion}" TextColor="DarkSlateGray" FontSize="16" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center"/>
-                                                        </StackLayout>
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="+ $" TextColor="LightSlateGray" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center" FontSize="18"/>
-                                                            <Label Text="{Binding Precio}" TextColor="LightSlateGray" FontSize="16" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center"/>
-                                                        </StackLayout>
-                                                    </StackLayout>
-                                                </Grid>
-                                            </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
                                         </ViewCell>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -100,7 +103,7 @@
                         </Grid>
                         
                     </Frame>
-                    <StackLayout x:Name="DatosReportePro" Grid.Row="1">
+                    <StackLayout Margin="10,0" x:Name="DatosReportePro" Grid.Row="1">
                         <StackLayout Orientation="Horizontal" Margin="10">
                             <Label x:Name="LabelDePrecio" FontAttributes="Bold" Text="Precio: $" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" />
                             <local:RoundedEntry x:Name="EntryCostoProducto" MaxLength="8" TextChanged="EntryCostoProducto_TextChanged" Keyboard="Numeric" VerticalOptions="Center"  Placeholder="Escribir aquí" PlaceholderColor="DarkGray" TextColor="Green" />
@@ -112,11 +115,11 @@
                             <local:RoundedEntry x:Name="EntryUnidadesproducto" Keyboard="Numeric" MaxLength="8" VerticalOptions="Center" Placeholder="Escribir aquí" PlaceholderColor="DarkGray" TextColor="Green" />
                         </StackLayout>
                     </StackLayout>
-                    <Frame Grid.Row="2" Padding="0" HasShadow="True" HorizontalOptions="Center" CornerRadius="10" Margin="10" BackgroundColor="White">
-                        <Button Text="Agregar una descripción para más detalles" WidthRequest="360"  TextTransform="None" FontSize="17" x:Name="ButtonDescripcionVeenta" Clicked="ButtonDescripcionVeenta_Clicked" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                    <Frame Grid.Row="2" Padding="0" HasShadow="True" HorizontalOptions="Center" CornerRadius="10" Margin="20,10" BackgroundColor="White">
+                        <Button Text="Agregar una descripción" BorderWidth="1" HeightRequest="45" WidthRequest="360"  TextTransform="None" FontSize="17" x:Name="ButtonDescripcionVeenta" Clicked="ButtonDescripcionVeenta_Clicked" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
                     </Frame>
-                    <Frame Grid.Row="3" Padding="0" HasShadow="True" CornerRadius="10" BackgroundColor="Green" HorizontalOptions="Center">
-                        <Button Text="Reportar" Padding="0" x:Name="ButtonReportarPro" WidthRequest="360" TextTransform="None" Clicked="ButtonReportarPro_Clicked" CornerRadius="10" FontSize="17" TextColor="White" FontAttributes="Bold" Margin="0" BackgroundColor="Green"/>
+                    <Frame Grid.Row="3" Margin="10,0" Padding="0" HasShadow="True" CornerRadius="10" BackgroundColor="Green" HorizontalOptions="Center">
+                        <Button Text="Reportar" HeightRequest="40" Padding="0" x:Name="ButtonReportarPro" WidthRequest="360" TextTransform="None" Clicked="ButtonReportarPro_Clicked" CornerRadius="10" FontSize="17" TextColor="White" FontAttributes="Bold" Margin="0" BackgroundColor="Green"/>
                     </Frame>
                 </Grid>
             </StackLayout>
@@ -131,7 +134,7 @@
                     <Frame HasShadow="True" Padding="20,10" Margin="10,5" CornerRadius="10" BorderColor="White">
                         <StackLayout>
                             <Label Text="Nombre del producto:" Margin="0" FontSize="17" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold"/>
-                            <Entry SelectionLength="20" x:Name="EntryNombreProducto" VerticalOptions="Center" FontSize="17" Focused="EntryNombreProducto_Focused" Unfocused="EntryNombreProducto_Unfocused" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Black" />
+                            <Entry SelectionLength="20" x:Name="EntryNombreProducto" VerticalOptions="Center" FontSize="17" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Black" />
                         </StackLayout>
                     </Frame>
                     <Frame HasShadow="True" Padding="20,10,10,10" BorderColor="White" CornerRadius="10" Margin="10,5">
@@ -144,7 +147,7 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="130"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <Entry Grid.Column="0" SelectionLength="20" x:Name="EntryDenomProducto" FontSize="17" Focused="EntryDenomProducto_Focused" Unfocused="EntryDenomProducto_Unfocused" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                                        <Entry Grid.Column="0" SelectionLength="20" x:Name="EntryDenomProducto" FontSize="17" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
                                         <Button Grid.Column="0" Text="Escribir" x:Name="ButtonDenomEscrbir" Clicked="ButtonDenomEscrbir_Clicked" TextTransform="None" FontSize="18" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
                                     </Grid>
                                     <Grid VerticalOptions="CenterAndExpand">
@@ -163,42 +166,43 @@
                     <Frame HasShadow="True" Padding="20,10" BorderColor="White" CornerRadius="10" Margin="10,5">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="60"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
                                 <RowDefinition Height="60"></RowDefinition>
                             </Grid.RowDefinitions>
                             <StackLayout Grid.Row="0" Orientation="Horizontal">
-                                <Picker FontSize="17" Title="    tipos de dimensiones     " FontAttributes="Bold" x:Name="PickerTipoDimenciones" SelectedIndexChanged="PickerTipoDimenciones_SelectedIndexChanged" TextColor="Black" TitleColor="Green">
+                                <Picker FontSize="17" Title="tipos de dimensiones" HeightRequest="200" FontAttributes="Bold" x:Name="PickerTipoDimenciones" SelectedIndexChanged="PickerTipoDimenciones_SelectedIndexChanged" TextColor="Black" TitleColor="Green">
                                     <Picker.Items>
-                                        <x:String>por unidad de medida</x:String>
-                                        <x:String>longitud y latitud</x:String>
-                                        <x:String>longitud, latitud y altitud</x:String>
+                                        <x:String>Una unidad de medida</x:String>
+                                        <x:String>Alto y ancho</x:String>
+                                        <x:String>Alto, ancho y largo</x:String>
                                     </Picker.Items>
                                 </Picker>
-                                <Label Text="No es obligarotio" Margin="20,0,0,0"/>
+                                <Label Margin="0" FontSize="21" TextColor="Green" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                <Label Text="opcional" VerticalOptions="Center" Margin="20,0,0,0"/>
                             </StackLayout>
                             <StackLayout Grid.Row="1" x:Name="Grid1parameter" Orientation="Horizontal">
-                                <Label Text="Medidas en una sola unidad:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <Label Text="&#xf5cd;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
                                 <Entry x:Name="EntryDimencionesPorUnidad" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
                             </StackLayout>
                             <StackLayout Grid.Row="1" x:Name="Grid2parameter" Orientation="Horizontal">
-                                <Label Text="Longitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <Label Text="&#xf338;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
                                 <Entry x:Name="EntryDim2Longitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
-                                <Label Text="Latitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
+                                <Label Text="&#xf337;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="17"/>
                                 <Entry x:Name="EntryDim2Latitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
                             </StackLayout>
                             <StackLayout Grid.Row="1" x:Name="Grid3parameter" Orientation="Horizontal">
-                                <Label Text="Longitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="&#xf338;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="16"/>
                                 <Entry x:Name="EntryDim3Longitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
-                                <Label Text="Latitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="&#xf337;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="16"/>
                                 <Entry x:Name="EntryDim3Latitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
-                                <Label Text="Altitud:" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="&#xf424;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="16"/>
                                 <Entry x:Name="EntryDim3Altitud" FontAttributes="Bold" Placeholder="valor" VerticalOptions="Center" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric"/>
                             </StackLayout>
                         </Grid>
                     </Frame>
                     <Frame HasShadow="True" Padding="20,10" Margin="10,5" CornerRadius="10" BorderColor="White">
                         <StackLayout>
-                            <Label Text="¿Cuanto tiempo toma finalizar una unidad?" FontSize="17"/>
+                            <Label Text="¿Cuánto tiempo toma finalizar una unidad?" FontSize="17"/>
                             <Label Text="Tiempo de producción:" FontAttributes="Bold" VerticalOptions="Center" TextColor="Black" FontSize="17"/>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -207,16 +211,16 @@
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Entry Grid.Column="0" x:Name="EntryTiempoDiaPro" Placeholder="Días   " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="3"/>
-                                <Entry Grid.Column="1" x:Name="EntryTiempoHorasPro" Placeholder="Horas  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
-                                <Entry Grid.Column="2" x:Name="EntryTiempoMinPro" Placeholder="Min's  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
-                                <Entry Grid.Column="3" x:Name="EntryTiempoSegPro" Placeholder="Seg's  " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                                <Entry Grid.Column="0" x:Name="EntryTiempoDiaPro" Placeholder="Días " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="3"/>
+                                <Entry Grid.Column="1" x:Name="EntryTiempoHorasPro" Placeholder="Horas" VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                                <Entry Grid.Column="2" x:Name="EntryTiempoMinPro" Placeholder="Mins " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                                <Entry Grid.Column="3" x:Name="EntryTiempoSegPro" Placeholder="Segs " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
                             </Grid>
                         </StackLayout>
                     </Frame>
                     <Frame HasShadow="True" Padding="20,10" Margin="10,5" CornerRadius="10" BorderColor="White">
                         <StackLayout>
-                            <Label Text="Escriba cuanto cree que invierte en una unidad" FontSize="17"/>
+                            <Label Text="Escriba cuánto cree que invierte en una unidad" FontSize="17"/>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -298,60 +302,64 @@
                             <Button Grid.Column="1" Margin="30,0" Text="&#xf4c0;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="22" x:Name="Page3venta" Clicked="Page3venta_Clicked" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
                         </Grid>
                     </Frame>
-                    <ListView Grid.Row="1" ItemSelected="ViewPage3Pro_ItemSelected" x:Name="ViewPage3Pro" Margin="0" RowHeight="90" SeparatorVisibility="None">
+                    <ListView Grid.Row="1" ItemSelected="ViewPage3Pro_ItemSelected" x:Name="ViewPage3Pro" Margin="0" RowHeight="120" SeparatorVisibility="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <StackLayout>
-                                        <Label Text="{Binding Denominacion}" Margin="10,0" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Start" FontSize="21"/>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
-                                            <StackLayout Grid.Column="0" Orientation="Vertical">
-                                                <Label Text="{Binding Nombre}" FontSize="18" Margin="10,0" HorizontalOptions="Start" FontAttributes="Bold" TextColor="DarkSlateGray" HorizontalTextAlignment="Start"></Label>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="Dificultad:" Margin="10,0" TextColor="Gray" FontSize="17" HorizontalOptions="Start"></Label>
-                                                    <Label Text="{Binding Dificultad}" TextColor="DimGray" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Frame Margin="10,5" HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="10" BorderColor="White">
+                                        <StackLayout>
+                                            <Label Text="{Binding Nombre}" Margin="10,0" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Start" FontSize="19"/>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Column="0" Orientation="Vertical">
+                                                    <Label Text="{Binding Denominacion}" FontSize="17" Margin="10,0" HorizontalOptions="Start" TextColor="DarkSlateGray" HorizontalTextAlignment="Start"></Label>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="Dificultad:" Margin="10,0" TextColor="Gray" FontSize="17" HorizontalOptions="Start"></Label>
+                                                        <Label Text="{Binding Dificultad}" TextColor="DimGray" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                    </StackLayout>
                                                 </StackLayout>
-                                            </StackLayout>
-                                            <StackLayout Grid.Column="1" Margin="10,0">
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="- $" TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalOptions="Center" HorizontalOptions="End" FontSize="18"/>
-                                                    <Label Text="{Binding Inversion}" TextColor="DarkSlateGray" FontSize="16" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center"/>
+                                                <StackLayout Grid.Column="1" Margin="10,0">
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="- $" TextColor="DarkSlateGray" HorizontalTextAlignment="End" VerticalOptions="Center" HorizontalOptions="End" FontSize="18"/>
+                                                        <Label Text="{Binding Inversion}" TextColor="DarkSlateGray" FontSize="16" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="+ $" TextColor="LightSlateGray" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center" FontSize="18"/>
+                                                        <Label Text="{Binding Precio}" TextColor="LightSlateGray" FontSize="16" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center"/>
+                                                    </StackLayout>
                                                 </StackLayout>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="+ $" TextColor="LightSlateGray" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center" FontSize="18"/>
-                                                    <Label Text="{Binding Precio}" TextColor="LightSlateGray" FontSize="16" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="Center"/>
-                                                </StackLayout>
-                                            </StackLayout>
-                                        </Grid>
-                                    </StackLayout>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <ListView Grid.Row="1" x:Name="ViewPage3Ven" ItemSelected="ViewPage3Ven_ItemSelected" Margin="0" RowHeight="55" SeparatorColor="DarkSlateGray">
+                    <ListView Grid.Row="1" x:Name="ViewPage3Ven" ItemSelected="ViewPage3Ven_ItemSelected" Margin="0" RowHeight="80" SeparatorVisibility="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <StackLayout Grid.Column="0" Orientation="Horizontal">
-                                            <Label Text="$" Margin="10,0,0,0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" FontSize="19" FontAttributes="Bold"/>
-                                            <Label Text="{Binding Precio}" Margin="0" VerticalOptions="Center" TextColor="Green" HorizontalOptions="Fill" FontSize="19" FontAttributes="Bold"/>
-                                        </StackLayout>
-                                        <StackLayout Grid.Column="1" Orientation="Horizontal">
-                                            <Label Text="{Binding Unidades}" Margin="0" TextColor="Green" VerticalOptions="Center" HorizontalOptions="Fill" FontSize="19" FontAttributes="Bold"/>
-                                            <Label Text="U" Margin="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" FontSize="19" FontAttributes="Bold"/>
-                                        </StackLayout>
-                                        <Label Grid.Column="2" Text="{Binding Fecha}" Margin="0,0,10,0" TextColor="Black" VerticalOptions="Start" HorizontalOptions="Fill" FontSize="15"/>
-                                    </Grid>
+                                    <Frame Margin="10,5" HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="10" BorderColor="White">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Column="0" Orientation="Horizontal">
+                                                <Label Text="$" Margin="10,0,0,0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" FontSize="19" FontAttributes="Bold"/>
+                                                <Label Text="{Binding Precio}" Margin="0" VerticalOptions="Center" TextColor="Green" HorizontalOptions="Fill" FontSize="19" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="1" Orientation="Horizontal">
+                                                <Label Text="{Binding Unidades}" Margin="0" TextColor="Green" VerticalOptions="Center" HorizontalOptions="Fill" FontSize="19" FontAttributes="Bold"/>
+                                                <Label Text="U" Margin="0" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" FontSize="19" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                            <Label Grid.Column="2" Text="{Binding Fecha}" Margin="0,0,10,0" TextColor="Black" VerticalOptions="Start" HorizontalOptions="Fill" FontSize="15"/>
+                                        </Grid>
+                                    </Frame>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -375,42 +383,42 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"></RowDefinition>
-                    <RowDefinition Height="465"></RowDefinition>
-                    <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition Height="540"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Frame HasShadow="True" Grid.Row="0" Margin="0" Padding="0" BackgroundColor="White">
                     <Label  Text="Procesos Actuales" HorizontalOptions="Center" TextColor="Black" Margin="15" FontSize="20" FontAttributes="Bold"/>
                 </Frame>
-                    <ListView Grid.Row="1" x:Name="listViewProcesos" ItemSelected="listViewProcesos_ItemSelected" RowHeight="160" SeparatorColor="DarkSlateGray">
+                <ListView Grid.Row="1" x:Name="listViewProcesos" ItemSelected="listViewProcesos_ItemSelected" RowHeight="180" SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout>
-                                    <StackLayout Orientation="Horizontal" Margin="15,0" >
-                                        <Label Text="{Binding Unidades}" TextColor="Black" FontSize="19" FontAttributes="Bold"/>
-                                        <Label Text="unidades de" TextColor="Black" FontSize="19" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Nombre}" TextColor="Black" FontSize="19" FontAttributes="Bold"/>
+                                <Frame Margin="10,5" HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="10" BorderColor="White">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Margin="15,0,0,15" >
+                                            <Label Text="{Binding Unidades}" TextColor="Black" FontSize="19" FontAttributes="Bold"/>
+                                            <Label Text="unidades de" TextColor="Black" FontSize="19" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Nombre}" TextColor="Black" FontSize="19" FontAttributes="Bold"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Margin="15,0" >
+                                            <Label Text="&#xf017;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="Black" Margin="0,0,10,0" FontSize="21"/>
+                                            <Label Text="{Binding FechaIni}" TextColor="DarkSlateGray" FontSize="17"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Margin="15,0" >
+                                            <Label Text="&#xf2f2;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="Black" Margin="0,0,10,0" FontSize="21"/>
+                                            <Label Text="{Binding Duracion}" TextColor="DarkSlateGray" FontSize="17"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Margin="15,0" >
+                                            <Label Text="&#xf1da;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="Black" Margin="0,0,10,0" FontSize="21"/>
+                                            <Label Text="{Binding FechaFin}" TextColor="DarkSlateGray" FontSize="17"/>
+                                        </StackLayout>
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal" Margin="15,0" >
-                                        <Label Text="Fecha inicial:" TextColor="Gray" FontSize="17"/>
-                                        <Label Text="{Binding FechaIni}" TextColor="DarkSlateGray" FontSize="17" FontAttributes="Bold"/>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal" Margin="15,0" >
-                                        <Label Text="Producción:" TextColor="Gray" FontSize="17"/>
-                                        <Label Text="{Binding Duracion}" TextColor="DarkSlateGray" FontSize="17" FontAttributes="Bold"/>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal" Margin="15,0" >
-                                        <Label Text="Fecha límite:" TextColor="Gray" FontSize="17"/>
-                                        <Label Text="{Binding FechaFin}" TextColor="DarkSlateGray" FontSize="17" FontAttributes="Bold"/>
-                                    </StackLayout>
-                                    <Label Text="{Binding Descripcion}" Margin="15,0" TextColor="Gray" FontSize="16"/>
-                                </StackLayout>
+                                </Frame>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Frame Grid.Row="2" HasShadow="True" Padding="5" Margin="0" BorderColor="LightGray">
-                    <Button Text="Iniciar Proceso de Producción" TextTransform="None" x:Name="ButtonInicioProceso" Clicked="ButtonInicioProceso_Clicked" HorizontalOptions="Center" TextColor="Green" BackgroundColor="White" FontSize="19"/>
+                <Frame Grid.Row="1" HorizontalOptions="End" VerticalOptions="End" HasShadow="True" BackgroundColor="Green" Padding="0" Margin="25" CornerRadius="35">
+                    <Button Text="&#xf067;" FontFamily="{StaticResource FontAwesomeSolid}" x:Name="ButtonInicioProceso" Clicked="ButtonInicioProceso_Clicked" WidthRequest="70" CornerRadius="35" Padding="0" HeightRequest="70" TextColor="White" BackgroundColor="Green" FontSize="30"/>
                 </Frame>
             </Grid>
         </ScrollView>

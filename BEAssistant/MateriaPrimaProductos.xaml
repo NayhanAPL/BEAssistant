@@ -6,32 +6,22 @@
         <StackLayout Margin="10">
             <Label Text="Materias Primas del Producto" TextColor="Black" FontSize="20" HorizontalOptions="Center" Margin="10" FontAttributes="Bold"/>
             <Label Text="Agregue todas las materias primas que intervienen en la confección de este producto. Si la sugerencia no le da el nombre de la materia prima significa que no lo ha reportado como una inversión. En ese caso plantéese si es relevante declarar esa materia prima o, de lo contrario, termine este producto y reporte la inversión cuanto antes." FontSize="17" Margin="10,0"/>
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" HeightRequest="60">
                 <Label Text="Materia Prima:" FontSize="17" Margin="10,0,0,0" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold"/>
-                <Grid VerticalOptions="CenterAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Entry Grid.Column="0" SelectionLength="20" x:Name="EntryMatPri" FontSize="17" Focused="EntryMatPri_Focused" Unfocused="EntryMatPri_Unfocused" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
-                    <Button Grid.Column="0" Text="Escribir" x:Name="ButtonMatPriEscrbir" Clicked="ButtonMatPriEscrbir_Clicked" TextTransform="None" FontSize="18" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                </Grid>
-                <Grid VerticalOptions="CenterAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Picker Grid.Column="0" FontSize="17" Title="Seleccione" FontAttributes="Bold" x:Name="PickerMatPri" TextColor="Black" TitleColor="Green"/>
-                    <Button Grid.Column="0" Text="Sugerencia" x:Name="ButtonMatPriSeleccionar" Clicked="ButtonMatPriSeleccionar_Clicked" TextTransform="None" FontSize="18" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                </Grid>
+                <Entry SelectionLength="20" x:Name="EntryMatPri" FontSize="17" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                <Picker FontSize="17" Title="Seleccione" FontAttributes="Bold" x:Name="PickerMatPri" TextColor="Black" TitleColor="Green"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Cantidad de unidades:" VerticalOptions="Center" TextColor="Black" FontSize="17" FontAttributes="Bold" Margin="10"/>
-                <local:RoundedEntry SelectionLength="20" x:Name="EntryCantUnid" Focused="EntryCantUnid_Focused" Unfocused="EntryCantUnid_Unfocused" FontSize="17" VerticalOptions="Center" Placeholder="Número" Keyboard="Numeric" PlaceholderColor="Green" TextColor="Green" />
+                <local:RoundedEntry SelectionLength="20" x:Name="EntryCantUnid" FontSize="17" VerticalOptions="Center" Placeholder="Número" Keyboard="Numeric" PlaceholderColor="Green" TextColor="Green" />
             </StackLayout>
-            <Button Text="AGREGAR" x:Name="AgregarMatPri" Clicked="AgregarMatPri_Clicked" TextTransform="None" FontSize="20" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+            <Frame Grid.Column="0" Margin="15,10" Padding="0" CornerRadius="10" HasShadow="True">
+                <Button Text="Agregar" Padding="0" x:Name="AgregarMatPri" Clicked="AgregarMatPri_Clicked" TextTransform="None" CornerRadius="10" FontSize="18" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+            </Frame>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="210"></RowDefinition>
-                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="180"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
                 </Grid.RowDefinitions>
                 <ListView Grid.Row="0" x:Name="ListViewMatPri" RowHeight="40" SeparatorColor="Black">
                     <ListView.ItemTemplate>
@@ -56,8 +46,12 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Text="REGRESAR" x:Name="VOLVER" Clicked="VOLVER_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
-                    <Button Grid.Column="1" Text="AÑADIR OTRA" x:Name="AÑADIROTRA" Clicked="AÑADIROTRA_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                    <Frame Grid.Column="0" Margin="15,0,10,10" Padding="0" CornerRadius="10" HasShadow="True">
+                        <Button Text="Regresar" WidthRequest="180" Padding="0" TextTransform="None" FontSize="17" x:Name="VOLVER" Clicked="VOLVER_Clicked" CornerRadius="10" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                    </Frame>
+                    <Frame Grid.Column="1" Margin="10,0,15,10" Padding="0" CornerRadius="10" HasShadow="True">
+                        <Button Text="Añadir otra" WidthRequest="180" Padding="0" TextTransform="None" FontSize="17" x:Name="AÑADIROTRA" Clicked="AÑADIROTRA_Clicked" CornerRadius="10" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                    </Frame>
                 </Grid>
             </Grid>
         </StackLayout>

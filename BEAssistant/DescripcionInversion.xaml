@@ -14,10 +14,12 @@
                     <Label Text="Descripción de la Inversión" Margin="10,15" TextColor="Black" FontSize="23" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                     <Label Text="Hacer una decripción le permite identificar con mayor detalle todos los factores que intervienen en esta nueva inverción. En un futuro será de utilidad cuando quiera consultar este elemento..." FontAttributes="Bold" Margin="10"/>
                     <Entry Placeholder="Descripción" SelectionLength="70" x:Name="EntryInvDescripcion" PlaceholderColor="Green" TextColor="Black" Margin="5"/>
-                    <Button Text="AGREGAR" Margin="5" x:Name="ButtonAgregarDescripcion" Clicked="ButtonAgregarDescripcion_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                    <Frame Margin="15,5" HorizontalOptions="Center" BackgroundColor="Green" CornerRadius="10" HasShadow="True" Padding="0">
+                        <Button Text="AGREGAR" WidthRequest="350" HeightRequest="40" x:Name="ButtonAgregarDescripcion" Clicked="ButtonAgregarDescripcion_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                    </Frame>
                 </StackLayout>
             </Frame>
-            <Button Grid.Row="0" Text="X" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35"  x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
+            <Button Grid.Row="0" Text="&#xf00d;" FontFamily="{StaticResource FontAwesomeSolid}" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35"  x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>
         </Grid>
     </StackLayout>
 </Pages:PopupPage>

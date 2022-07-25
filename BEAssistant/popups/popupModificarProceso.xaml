@@ -11,9 +11,6 @@
                 <RowDefinition Height="70"></RowDefinition>
                 <RowDefinition Height="70"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label x:Name="lavel" Grid.Row="0" IsVisible="false" Text="Precio por unidad" TextColor="White" FontSize="21" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <local:RoundedEntry Grid.Row="1" IsVisible="false" SelectionLength="20" x:Name="EntryCosto" HorizontalOptions="Center" VerticalOptions="Center" FontSize="17" Placeholder="Número" Keyboard="Numeric" PlaceholderColor="Green" TextColor="Green" />
-            <Button Grid.Row="2" Text="Reportar" IsVisible="false" x:Name="reportar" Clicked="reportar_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Green" BackgroundColor="White" BorderColor="LightGray" BorderWidth="2" CornerRadius="10"/>
             <StackLayout Orientation="Horizontal" IsVisible="false" x:Name="SGuardarAlStock" Grid.Row="0">
                 <Button FontSize="23" Text="&#xf6f1;" FontFamily="{StaticResource FontAwesomeSolid}" x:Name="GuardarAlStock" WidthRequest="50" HeightRequest="50" Clicked="GuardarAlStock_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Green" BackgroundColor="White" CornerRadius="10"/>
                 <Label Text="Guardar en el almacen" VerticalOptions="Center" TextColor="White" FontSize="18" HorizontalOptions="Center" FontAttributes="Bold" Margin="10,0,0,0"/>
