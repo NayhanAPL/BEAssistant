@@ -29,6 +29,8 @@ namespace BEAssistant.popups
             SReportarComoVenta.IsVisible = true;
             await Task.Delay(100);
             SActualizar.IsVisible = true;
+            await Task.Delay(100);
+            SDescripcion.IsVisible = true;
         }
 
         private async void GuardarAlStock_Clicked(object sender, EventArgs e)
@@ -87,5 +89,9 @@ namespace BEAssistant.popups
             });
         }
 
+        private async void Descripcion_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushPopupAsync(new popupMostrarInfoProceso());
+        }
     }
 }

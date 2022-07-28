@@ -13,7 +13,7 @@
             <Frame Grid.Row="0" Margin="10" Padding="15" CornerRadius="10" BackgroundColor="White">
                 <StackLayout>
                     <StackLayout>
-                        <Label Text="Actualizar propiedades de:" FontSize="19" TextColor="Black" FontAttributes="Bold" Margin="10,10,0,5"/>
+                        <Label Text="Actualizar propiedades de la deuda:" FontSize="19" TextColor="Black" FontAttributes="Bold" Margin="10,10,0,5"/>
                         <Label Text="" x:Name="nameDeuda" TextColor="Green" Margin="10,10,10,5" FontSize="18" FontAttributes="Bold"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
@@ -34,9 +34,13 @@
                     </StackLayout>
                     <StackLayout>
                         <Label Text="Descripción del producto:" Margin="10,0" TextColor="Black" FontSize="17" FontAttributes="Bold"/>
-                        <Entry Placeholder="Descripción" SelectionLength="100" x:Name="EntryDeudaDescripcion" PlaceholderColor="Green" TextColor="Black" Margin="10"/>
+                        <Frame Padding="5" Margin="5" HasShadow="True" CornerRadius="10" BackgroundColor="White">
+                            <Editor Placeholder="Descripción" MaxLength="300" HeightRequest="80" x:Name="EntryDeudaDescripcion" PlaceholderColor="Black" TextColor="Black"/>
+                        </Frame>
                     </StackLayout>
-                    <Button Text="ACTUALIZAR" Margin="0,10" x:Name="UpDateDeudas" Clicked="UpDateDeudas_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                    <Frame Padding="0" CornerRadius="10" Margin="15,0" BackgroundColor="Green" HasShadow="True">
+                        <Button Text="Actualizar" WidthRequest="350" TextTransform="None" x:Name="UpDateDeudas" Clicked="UpDateDeudas_Clicked" CornerRadius="10" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                    </Frame>
                 </StackLayout>
             </Frame>
             <Button Grid.Row="0" Text="&#xf00d;" FontFamily="{StaticResource FontAwesomeSolid}" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35"  x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>

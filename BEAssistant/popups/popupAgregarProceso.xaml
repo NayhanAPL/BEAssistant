@@ -17,7 +17,9 @@
                         <local:RoundedEntry x:Name="EntryCantUnidades" FontAttributes="Bold" Placeholder="Unidades" VerticalOptions="Center" PlaceholderColor="Black" TextColor="Green" Keyboard="Numeric"/>
                     </StackLayout>
                     <Label Text="Una descripción sera oportuna para recordar detalles como percanses, cantidad de empleados tranajando en el proceso, la situación del proceso en general." FontSize="16" TextColor="Gray" HorizontalOptions="Start"/>
-                    <Entry WidthRequest="370" Keyboard="Text" VerticalOptions="Start" x:Name="EntryDescripcion" TextColor="Black"/>
+                    <Frame Padding="5" Margin="5" HasShadow="True" CornerRadius="10" BackgroundColor="White">
+                        <Editor Placeholder="Descripción" MaxLength="300" HeightRequest="80" x:Name="EntryDescripcion" PlaceholderColor="Black" TextColor="Black"/>
+                    </Frame>
                     <Frame HasShadow="True" Margin="15,0" Padding="0" BackgroundColor="Green" CornerRadius="10">
                         <Button Text="reportar" FontAttributes="Bold" x:Name="GuardarProceso" Clicked="GuardarProceso_Clicked" FontSize="18" HorizontalOptions="Center" TextColor="White" CornerRadius="10" WidthRequest="350" BackgroundColor="Green"/>
                     </Frame>

@@ -26,7 +26,7 @@ namespace BEAssistant {
         private global::Xamarin.Forms.Entry EntryTiempoDiaDeuda;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry EntryDeudaDescripcion;
+        private global::Xamarin.Forms.Editor EntryDeudaDescripcion;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Button ButtonAgregarDeuda;
@@ -40,7 +40,7 @@ namespace BEAssistant {
             EntryTiempoAnnoDeuda = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "EntryTiempoAnnoDeuda");
             EntryTiempoMesDeuda = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "EntryTiempoMesDeuda");
             EntryTiempoDiaDeuda = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "EntryTiempoDiaDeuda");
-            EntryDeudaDescripcion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "EntryDeudaDescripcion");
+            EntryDeudaDescripcion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Editor>(this, "EntryDeudaDescripcion");
             ButtonAgregarDeuda = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "ButtonAgregarDeuda");
             volver = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "volver");
         }

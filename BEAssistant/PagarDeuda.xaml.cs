@@ -65,6 +65,13 @@ namespace BEAssistant
                         Unidades = deuda.Unidades - newUnidades,
                         IdInv = deuda.IdInv
                     });
+                    var lastItem = await App.Database.GetLastItemRegAcumulativa();
+                    await App.Database.SaveCaducidad(new Caducidad()
+                    {
+                        IdReg = lastItem[0].IdInv,
+                        Caduco = false,
+                        TipoInv = "A"
+                    });
                 }
                 if (deuda.Denominacion == "C")
                 {
@@ -74,7 +81,14 @@ namespace BEAssistant
                         Costo = deuda.Costo,
                         Unidades = deuda.Unidades - newUnidades,
                         IdInv = deuda.IdInv
-                    }); 
+                    });
+                    var lastItem = await App.Database.GetLastItemRegConstante();
+                    await App.Database.SaveCaducidad(new Caducidad()
+                    {
+                        IdReg = lastItem[0].IdInv,
+                        Caduco = false,
+                        TipoInv = "C"
+                    });
                 }
                 if (deuda.Denominacion == "E")
                 {

@@ -29,7 +29,7 @@ namespace BEAssistant.popups {
         private global::BEAssistant.RoundedEntry EntryCantUnidades;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry EntryDescripcion;
+        private global::Xamarin.Forms.Editor EntryDescripcion;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Button GuardarProceso;
@@ -44,7 +44,7 @@ namespace BEAssistant.popups {
             framePopup = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Frame>(this, "framePopup");
             selectProducto = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Picker>(this, "selectProducto");
             EntryCantUnidades = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::BEAssistant.RoundedEntry>(this, "EntryCantUnidades");
-            EntryDescripcion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "EntryDescripcion");
+            EntryDescripcion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Editor>(this, "EntryDescripcion");
             GuardarProceso = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "GuardarProceso");
             volver = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "volver");
         }

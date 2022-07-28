@@ -26,12 +26,13 @@ namespace BEAssistant
 
         private async void ByDefault()
         {
+            MostrarTpro();
             ViewNombresPro.IsVisible = false;
             rellenoListView.IsVisible = true;
             ViewPage3Ven.IsVisible = false;
-            ViewPage3Pro.IsVisible = false;
+            ViewPage3Pro.IsVisible = true;
             Page3producto.FontSize = 21;
-            Page3producto.TextColor = Color.Black;
+            Page3producto.TextColor = Color.Green;
             Page3venta.FontSize = 21;
             Page3venta.TextColor = Color.Black;
             selectedAny = false;
@@ -44,10 +45,8 @@ namespace BEAssistant
             EntryUnidadesproducto.PlaceholderColor = Color.Green;
             selectDenominacionPro.TitleColor = Color.Green;
 
-            EntryDenomProducto.IsVisible = false;
-            PickerDenominacion.IsVisible = false;
-            ButtonDenomEscrbir.IsVisible = true;
-            ButtonDenomSeleccionar.IsVisible = true;
+            EntryDenomProducto.IsVisible = true;
+            PickerDenominacion.IsVisible = true;
             EntryDenomProducto.PlaceholderColor = Color.Green;
             EntryInversionPro.PlaceholderColor = Color.Green;
             EntryDemandaPro.PlaceholderColor = Color.Green;
@@ -71,6 +70,12 @@ namespace BEAssistant
             EntryTiempoHorasPro.Text = "";
             EntryTiempoMinPro.Text = "";
             EntryTiempoSegPro.Text = "";
+            PickerDenominacion.Items.Clear();
+            foreach (var item in denomExistentes)
+            {
+                if (item != null && !PickerDenominacion.Items.Contains(item))
+                    PickerDenominacion.Items.Add(item);
+            }
             List<Product> product = await App.Database.GetProductos();
             if (product.Count != 0)
             {
@@ -281,29 +286,6 @@ namespace BEAssistant
 
         List<string> denomExistentes = new List<string>();
         public static List<string> producNombres = new List<string>();
-        public bool denomPickerEntry = false;
-        private void ButtonDenomEscrbir_Clicked(object sender, EventArgs e)
-        {
-            EntryDenomProducto.IsVisible = true;
-            PickerDenominacion.IsVisible = false;
-            ButtonDenomEscrbir.IsVisible = false;
-            ButtonDenomSeleccionar.IsVisible = true;
-            denomPickerEntry = false;
-        }
-        private void ButtonDenomSeleccionar_Clicked(object sender, EventArgs e)
-        {
-            EntryDenomProducto.IsVisible = false;
-            PickerDenominacion.IsVisible = true;
-            ButtonDenomEscrbir.IsVisible = true;
-            ButtonDenomSeleccionar.IsVisible = false;
-            denomPickerEntry = true;
-            PickerDenominacion.Items.Clear();
-            foreach (var item in denomExistentes)
-            {
-                if(item != null && !PickerDenominacion.Items.Contains(item))
-                   PickerDenominacion.Items.Add(item);
-            }
-        }
         private async void ButtonCrearProducto_Clicked(object sender, EventArgs e)
         {
             double dimensiones = 0;
@@ -341,16 +323,17 @@ namespace BEAssistant
                 dimen3 = Convert.ToDouble(EntryDim3Altitud.Text);
                 dimensiones = dimen1 * dimen2 * dimen3; sepuedeDimenciones = true;
             }
-
-            if (!denomPickerEntry)
+            
+            if(!string.IsNullOrEmpty(EntryDenomProducto.Text))
             {
-                if (EntryDenomProducto.Text == "" || EntryDenomProducto.Text == null) 
-                { 
-                    sepuede = false; EntryDenomProducto.PlaceholderColor = Color.Red; 
-                } 
-                else denominacion = EntryDenomProducto.Text; 
+                denominacion = EntryDenomProducto.Text;
             }
-            else denominacion = PickerDenominacion.SelectedItem.ToString();
+            else if (!string.IsNullOrEmpty(PickerDenominacion.SelectedItem.ToString()))
+            {
+                denominacion = PickerDenominacion.SelectedItem.ToString();
+            }
+            else sepuede = false; EntryDenomProducto.PlaceholderColor = Color.Red;
+
 
             if (EntryInversionPro.Text != null && EntryInversionPro.Text != "" && !EntryInversionPro.Text.Contains("-"))
                 inversion = Convert.ToDouble(EntryInversionPro.Text);
@@ -527,7 +510,7 @@ namespace BEAssistant
 
         // ------------------------------------------page3------------------------------------------
 
-        public static int botonSeleccionadoPro = 0;
+        public static int botonSeleccionadoPro = 1;
         private void Page3venta_Clicked(object sender, EventArgs e)
         {
             botonSeleccionadoPro = 2;
@@ -572,8 +555,7 @@ namespace BEAssistant
                 int cont = 0;
                 foreach (var item in viewpro)
                 {
-                    viewPro[cont] = item; 
-                    viewPro[cont].Descripcion = TabbedInversiones.ReducirText(viewPro[cont].Descripcion);
+                    viewPro[cont] = item;
                     if (denom == viewPro[cont].Denominacion) viewPro[cont].Denominacion = "";
                     else denom = viewPro[cont].Denominacion;
                     cont++;
@@ -688,29 +670,20 @@ namespace BEAssistant
             }
         }
         public static Product page3ProSelected = new Product();
+        public static List<MateriasPrimas> page3listMat = new List<MateriasPrimas>();
         private async void ViewPage3Pro_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             selectedAny = true;
             page3ProSelected = (Product)e.SelectedItem;
-            var listMat = await App.Database.GetByIdProMateriaPrima(page3ProSelected.Id);
-            PopupAlert.PopupLabelTitulo = "DETALLES DEL PRODUCTO";
-            PopupAlert.PopupLabelText = $"Nombre: {page3ProSelected.Nombre} \nDenominación: {page3ProSelected.Denominacion} \nPrecio: {page3ProSelected.Precio} \nDificultad: {page3ProSelected.Dificultad} \nDemanda: {page3ProSelected.Demanda} \nInversión: {page3ProSelected.Inversion} \nDescripción: {page3ProSelected.Descripcion} \n";
-            if(listMat.Count > 0)
-            {
-                PopupAlert.PopupLabelText += "Materias Primas: \n";
-                listMat.ForEach(x => PopupAlert.PopupLabelText += x.Nombre + " " + x.CantidadPorProducto + "\n");
-            }
-            await Navigation.PushPopupAsync(new PopupAlert());
+            page3listMat = await App.Database.GetByIdProMateriaPrima(page3ProSelected.Id);
+            await Navigation.PushPopupAsync(new popupMostrarInfoPro());
         }
         public static Venta page3VenSelected = new Venta();
         private async void ViewPage3Ven_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             selectedAny = true;
             page3VenSelected = (Venta)e.SelectedItem;
-            var obj = await App.Database.GetIdProductos(page3VenSelected.IdPro);
-            PopupAlert.PopupLabelTitulo = "DETALLES DE LA VENTA";
-            PopupAlert.PopupLabelText = $"Nombre del producto: {obj.Nombre} \nPrecio: {page3VenSelected.Precio} \nUnidades: {page3VenSelected.Unidades} \nFecha: {page3VenSelected.Fecha} \nDesctipción: {page3VenSelected.Descripcion}";
-            await Navigation.PushPopupAsync(new PopupAlert());
+            await Navigation.PushPopupAsync(new popupMostrarInfoVen());
         }
 
 

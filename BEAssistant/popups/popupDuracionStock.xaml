@@ -15,16 +15,18 @@
                     <Frame Margin="0" Padding="20,0">
                         <StackLayout>
                             <Label Text="¿Cuánto tiempo perdura esta materia prima en utilidad? Tiempo útil:" FontSize="17"/>
-                            <Button Text="Tiempo Indefinido" x:Name="indefinido" Clicked="indefinido_Clicked" CornerRadius="10" BackgroundColor="White" TextColor="Black" FontSize="18" HorizontalOptions="Center"/>
+                            <Frame HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="0" Margin="15,0">
+                                <Button Text="Tiempo Indefinido" WidthRequest="350" x:Name="indefinido" Clicked="indefinido_Clicked" CornerRadius="10" BackgroundColor="White" TextColor="Black" FontSize="18" HorizontalOptions="Center"/>
+                            </Frame>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Entry Grid.Column="0" x:Name="EntryTiempoDiaPro" Placeholder="Días     " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="3"/>
-                                <Entry Grid.Column="1" x:Name="EntryTiempoMesPro" Placeholder="Meses    " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
-                                <Entry Grid.Column="2" x:Name="EntryTiempoAnnoPro" Placeholder="Años     " VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                                <Entry Grid.Column="0" x:Name="EntryTiempoDiaPro" Placeholder="Día(s)" WidthRequest="75" VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="3"/>
+                                <Entry Grid.Column="1" x:Name="EntryTiempoMesPro" Placeholder="Mes(es)" WidthRequest="75" VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
+                                <Entry Grid.Column="2" x:Name="EntryTiempoAnnoPro" Placeholder="Año(s)" WidthRequest="75" VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Keyboard="Numeric" MaxLength="2"/>
                             </Grid>
                         </StackLayout>
                     </Frame>
@@ -38,7 +40,7 @@
                                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                 </Grid>
-                                <Entry Grid.Row="0" x:Name="EntryCategoria" Placeholder="Categoría" VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Margin="0" Keyboard="Text"/>
+                                <Entry Grid.Row="0" x:Name="EntryCategoria" Placeholder="Escribir" VerticalOptions="Center" FontAttributes="Bold" PlaceholderColor="Green" TextColor="Black" Margin="0" Keyboard="Text"/>
                                 <Picker Grid.Row="1" FontSize="17" Title="Seleccionar" FontAttributes="Bold" x:Name="PickerCategoria" TextColor="Black" Margin="0" TitleColor="Green"/>
                             </StackLayout>
                         </StackLayout>
@@ -50,7 +52,9 @@
                         </StackLayout>
                     </Frame>
                     <StackLayout Margin="10">
-                        <Button Text="guardar" x:Name="guardar" Clicked="guardar_Clicked" CornerRadius="10" BackgroundColor="White" TextColor="Green" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        <Frame HasShadow="True" BackgroundColor="Green" CornerRadius="10" Padding="0" Margin="15,0">
+                            <Button Text="Guardar" TextTransform="None" x:Name="guardar" Clicked="guardar_Clicked" CornerRadius="10" BackgroundColor="Green" TextColor="White" WidthRequest="350" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        </Frame>
                     </StackLayout>
                 </StackLayout>
             </Frame>

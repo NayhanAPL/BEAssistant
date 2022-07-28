@@ -90,3 +90,8 @@ C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\po
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupModificarStockProductos.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupStockProductos.xaml.g.cs
 C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupReportarVentaDesdeProceso.xaml.g.cs
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupMostrarInfoPro.xaml.g.cs
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupMostrarInfoVen.xaml.g.cs
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupMostrarInfoProceso.xaml.g.cs
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupReporteCaducidad.xaml.g.cs
+C:\Users\Nayhan\source\repos\BEAssistant\BEAssistant\obj\Debug\netstandard2.0\popups\popupMostrarInfoInv.xaml.g.cs

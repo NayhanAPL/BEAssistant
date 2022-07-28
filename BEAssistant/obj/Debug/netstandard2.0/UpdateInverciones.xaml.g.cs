@@ -83,7 +83,7 @@ namespace BEAssistant {
         private global::Xamarin.Forms.StackLayout G4descripcion;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry EntryInvDescripcion;
+        private global::Xamarin.Forms.Editor EntryInvDescripcion;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Button UpdateStock;
@@ -122,7 +122,7 @@ namespace BEAssistant {
             G3Ctipo = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "G3Ctipo");
             PickerFactorTipoConstante = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Picker>(this, "PickerFactorTipoConstante");
             G4descripcion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "G4descripcion");
-            EntryInvDescripcion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "EntryInvDescripcion");
+            EntryInvDescripcion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Editor>(this, "EntryInvDescripcion");
             UpdateStock = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "UpdateStock");
             UpdateDependencia = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "UpdateDependencia");
             UpdateElem = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "UpdateElem");

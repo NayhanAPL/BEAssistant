@@ -6,7 +6,7 @@
                   x:Class="BEAssistant.UpdateInverciones"
                   CloseWhenBackgroundIsClicked="True">
 
-    <StackLayout HeightRequest="610" HorizontalOptions="Center" Margin="10,0" VerticalOptions="Center" WidthRequest="395">
+    <StackLayout HorizontalOptions="Center" Margin="10,0" VerticalOptions="Center" WidthRequest="395">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -25,13 +25,13 @@
                         </Grid.RowDefinitions>
                         <StackLayout x:Name="G0nombre" Grid.Row="0">
                             <Label Text="Nombre del elemento:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Gray" FontAttributes="Bold"/>
-                            <Entry VerticalOptions="Center" SelectionLength="30" x:Name="EntryNombreInversion" Margin="8,0" FontSize="17" Focused="EntryNombreInversion_Focused" Unfocused="EntryNombreInversion_Unfocused" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                            <Entry VerticalOptions="Center" SelectionLength="30" x:Name="EntryNombreInversion" Margin="8,0" FontSize="17" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
                         </StackLayout>
-                        <StackLayout x:Name="G0costo" Grid.Row="0">
+                        <StackLayout Orientation="Horizontal" x:Name="G0costo" Grid.Row="0">
                             <Label Text="Costo:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Gray" FontAttributes="Bold"/>
-                            <local:RoundedEntry x:Name="EntryCostoInversion" Keyboard="Numeric" Margin="8,0" Focused="EntryCostoInversion_Focused" Unfocused="EntryCostoInversion_Unfocused" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                            <local:RoundedEntry x:Name="EntryCostoInversion" Keyboard="Numeric" Margin="8,0" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
                         </StackLayout>
-                        <StackLayout x:Name="G1Ctiempo" Grid.Row="1">
+                        <StackLayout Orientation="Horizontal" x:Name="G1Ctiempo" Grid.Row="1">
                             <Label Text="Frecuencia:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Gray" FontAttributes="Bold"/>
                             <Picker x:Name="PickerTiempoCategoria" VerticalOptions="Center" Margin="8,0" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
                                 <Picker.Items>
@@ -44,7 +44,7 @@
                                 </Picker.Items>
                             </Picker>
                         </StackLayout>
-                        <StackLayout x:Name="G1Atipo" Grid.Row="1">
+                        <StackLayout Orientation="Horizontal" x:Name="G1Atipo" Grid.Row="1">
                             <Label Text="Tipo la inversión:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Gray" FontAttributes="Bold"/>
                             <Picker x:Name="PickerFactorTipo" VerticalOptions="Center" Margin="8,0" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
                                 <Picker.Items>
@@ -56,7 +56,7 @@
                                 </Picker.Items>
                             </Picker>
                         </StackLayout>
-                        <StackLayout x:Name="G1Ecategoria" Grid.Row="1">
+                        <StackLayout Orientation="Horizontal" x:Name="G1Ecategoria" Grid.Row="1">
                             <Label Text="Categoría extraordinaria:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Gray" FontAttributes="Bold"/>
                             <Picker x:Name="PickerExtraCategoria" VerticalOptions="Center" Margin="8,0" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
                                 <Picker.Items>
@@ -65,11 +65,11 @@
                                 </Picker.Items>
                             </Picker>
                         </StackLayout>
-                        <StackLayout x:Name="G1unidades" Grid.Row="1">
+                        <StackLayout Orientation="Horizontal" x:Name="G1unidades" Grid.Row="1">
                             <Label Text="Cantidad de unidades:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Gray" FontAttributes="Bold"/>
-                            <local:RoundedEntry x:Name="EntryUnidadesInversion" Keyboard="Numeric" Margin="8,0" Focused="EntryUnidadesInversion_Focused" Unfocused="EntryUnidadesInversion_Unfocused" VerticalOptions="Center" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                            <local:RoundedEntry x:Name="EntryUnidadesInversion" Keyboard="Numeric" Margin="8,0" VerticalOptions="Center" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
                         </StackLayout>
-                        <StackLayout x:Name="G2Ccateroria" Grid.Row="2">
+                        <StackLayout Orientation="Horizontal" x:Name="G2Ccateroria" Grid.Row="2">
                             <Label Text="Correlación:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Gray" FontAttributes="Bold"/>
                             <Picker x:Name="PickerConstSubCategoria" VerticalOptions="Center" Margin="8,0" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
                                 <Picker.Items>
@@ -78,7 +78,7 @@
                                 </Picker.Items>
                             </Picker>
                         </StackLayout>
-                        <StackLayout x:Name="G2Etipos1" Grid.Row="2">
+                        <StackLayout Orientation="Horizontal" x:Name="G2Etipos1" Grid.Row="2">
                             <Label Text="Razón de inversión:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Gray" FontAttributes="Bold"/>
                             <Picker x:Name="PickerExtraTipoBenef" VerticalOptions="Center" Margin="8,0" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
                                 <Picker.Items>
@@ -89,7 +89,7 @@
                                 </Picker.Items>
                             </Picker>
                         </StackLayout>
-                        <StackLayout x:Name="G2Etipos2" Grid.Row="2">
+                        <StackLayout Orientation="Horizontal" x:Name="G2Etipos2" Grid.Row="2">
                             <Label Text="Razón de inversión:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Gray" FontAttributes="Bold"/>
                             <Picker x:Name="PickerExtraTipoOblig" VerticalOptions="Center" Margin="8,0" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
                                 <Picker.Items>
@@ -100,7 +100,7 @@
                                 </Picker.Items>
                             </Picker>
                         </StackLayout>
-                        <StackLayout x:Name="G3Ctipo" Grid.Row="3">
+                        <StackLayout Orientation="Horizontal" x:Name="G3Ctipo" Grid.Row="3">
                             <Label Text="Tipo de inversión:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Gray" FontAttributes="Bold"/>
                             <Picker x:Name="PickerFactorTipoConstante" VerticalOptions="Center" Margin="8,0" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
                                 <Picker.Items>
@@ -115,18 +115,20 @@
                                 </Picker.Items>
                             </Picker>
                         </StackLayout>
-                        <StackLayout x:Name="G4descripcion" Grid.Row="4">
+                        <StackLayout  x:Name="G4descripcion" Grid.Row="4">
                             <Label Text="Descripción:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Gray" FontAttributes="Bold"/>
-                            <Entry Placeholder="Escribir aquí" SelectionLength="70" x:Name="EntryInvDescripcion" PlaceholderColor="Green" TextColor="Black" Margin="8,0"/>
+                            <Frame Padding="5" Margin="5" HasShadow="True" CornerRadius="10" BackgroundColor="White">
+                                <Editor Placeholder="Descripción" MaxLength="300" HeightRequest="80" x:Name="EntryInvDescripcion" PlaceholderColor="Black" TextColor="Black"/>
+                            </Frame>
                         </StackLayout>
                     </Grid>
                     <StackLayout>
-                        <Button Text="Actualizar stock" TextTransform="None" Margin="10,0" x:Name="UpdateStock" Clicked="UpdateStock_Clicked" FontSize="18" CornerRadius="5" HorizontalOptions="Start" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                        <Button Text="Actualizar dependencia" TextTransform="None" Margin="10,0" x:Name="UpdateDependencia" Clicked="UpdateDependencia_Clicked" FontSize="18" CornerRadius="5" HorizontalOptions="Start" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                        <Button Text="Actualizar stock" Margin="15,0" WidthRequest="350" TextTransform="None" x:Name="UpdateStock" Clicked="UpdateStock_Clicked" FontSize="18" CornerRadius="10" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BorderColor="Gray" BackgroundColor="White"/>
+                        <Button Text="Actualizar dependencia" Margin="15,0" WidthRequest="350" TextTransform="None" x:Name="UpdateDependencia" Clicked="UpdateDependencia_Clicked" FontSize="18" CornerRadius="10" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BorderColor="Gray" BackgroundColor="White"/>
                     </StackLayout>
-                    <StackLayout>
-                        <Button Text="ACTUALIZAR" HorizontalOptions="Center" Margin="0" x:Name="UpdateElem" Clicked="UpdateElem_Clicked" FontSize="19" CornerRadius="5" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                    </StackLayout>
+                    <Frame BackgroundColor="Green" Padding="0" Margin="15,0" HasShadow="True" CornerRadius="10">
+                        <Button Text="Actualizar" WidthRequest="350" TextTransform="None" HorizontalOptions="Center" Margin="0" x:Name="UpdateElem" Clicked="UpdateElem_Clicked" FontSize="18" CornerRadius="10" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                    </Frame>
                 </StackLayout>
             </Frame>
             <Button Grid.Row="0" Text="&#xf00d;" FontFamily="{StaticResource FontAwesomeSolid}" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35"  x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>

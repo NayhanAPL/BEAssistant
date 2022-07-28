@@ -381,35 +381,8 @@ namespace BEAssistant
                     await App.Database.SaveUpRegExtraordinaria(up);
                 }
             }
-            PopupAlert.PopupLabelTitulo = "ELEMENTO ACTUALIZADO";
-            PopupAlert.PopupLabelText = "El elemento se guardó de manera adecuada. Junto con el se actualizarán todos los datos relacionados.";
-            await Navigation.PushPopupAsync(new PopupAlert());
             MessagingCenter.Send<UpdateInverciones, string>(this, "UpdateInverciones", "x");
             await PopupNavigation.Instance.PopAsync(true);
-        }
-        private void EntryCostoInversion_Focused(object sender, FocusEventArgs e)
-        {
-            EntryCostoInversion.FontSize = 20;
-        }
-        private void EntryCostoInversion_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryCostoInversion.FontSize = 17;
-        }
-        private void EntryNombreInversion_Focused(object sender, FocusEventArgs e)
-        {
-            EntryNombreInversion.FontSize = 20;
-        }
-        private void EntryNombreInversion_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryNombreInversion.FontSize = 17;
-        }
-        private void EntryUnidadesInversion_Focused(object sender, FocusEventArgs e)
-        {
-            EntryUnidadesInversion.FontSize = 20;
-        }
-        private void EntryUnidadesInversion_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryUnidadesInversion.FontSize = 17;
         }
         private async void volver_Clicked(object sender, EventArgs e)
         {

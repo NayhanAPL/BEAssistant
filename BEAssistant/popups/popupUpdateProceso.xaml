@@ -32,7 +32,9 @@
                     </StackLayout>
                     <StackLayout>
                         <Label Text="Descripción:" VerticalOptions="Center" Margin="0,0,15,0" HorizontalOptions="Start" TextColor="Black" FontSize="17" FontAttributes="Bold"/>
-                        <Entry Placeholder="Escribir aquí" WidthRequest="300" Keyboard="Text" VerticalOptions="Start" x:Name="EntryDescripcion" PlaceholderColor="Green" TextColor="Black"/>
+                        <Frame Padding="5" Margin="5" HasShadow="True" CornerRadius="10" BackgroundColor="White">
+                            <Editor Placeholder="Descripción" MaxLength="300" HeightRequest="80" x:Name="EntryDescripcion" PlaceholderColor="Black" TextColor="Black"/>
+                        </Frame>
                     </StackLayout>
                     <Frame CornerRadius="10" Margin="15,10" BackgroundColor="Green" HorizontalOptions="Center" Padding="0" HasShadow="True">
                         <Button Text="Actualizar" TextTransform="None" WidthRequest="400" FontAttributes="Bold" x:Name="Update" CornerRadius="10" Clicked="Update_Clicked" FontSize="17" TextColor="White" BackgroundColor="Green"/>

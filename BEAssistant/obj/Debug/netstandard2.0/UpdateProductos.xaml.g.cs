@@ -95,7 +95,7 @@ namespace BEAssistant {
         private global::BEAssistant.RoundedEntry EntryPrecioPro;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry EntryProDescripcion;
+        private global::Xamarin.Forms.Editor EntryProDescripcion;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Button ButtonActualizarMP;
@@ -135,7 +135,7 @@ namespace BEAssistant {
             EntryDemandaPro = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::BEAssistant.RoundedEntry>(this, "EntryDemandaPro");
             EntryDificultadPro = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::BEAssistant.RoundedEntry>(this, "EntryDificultadPro");
             EntryPrecioPro = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::BEAssistant.RoundedEntry>(this, "EntryPrecioPro");
-            EntryProDescripcion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "EntryProDescripcion");
+            EntryProDescripcion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Editor>(this, "EntryProDescripcion");
             ButtonActualizarMP = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "ButtonActualizarMP");
             ButtonActualizarPro = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "ButtonActualizarPro");
             volver = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "volver");

@@ -10,7 +10,16 @@
                 <RowDefinition Height="70"></RowDefinition>
                 <RowDefinition Height="70"></RowDefinition>
                 <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
             </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal" IsVisible="false" x:Name="SDescripcion" Grid.Row="3">
+                <Button FontSize="23" Text="&#xf06e;" FontFamily="{StaticResource FontAwesomeSolid}" x:Name="Descripcion" WidthRequest="50" HeightRequest="50" Clicked="Descripcion_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Green" BackgroundColor="White" CornerRadius="10"/>
+                <Label Text="Detalles" VerticalOptions="Center" TextColor="White" FontSize="18" HorizontalOptions="Center" FontAttributes="Bold" Margin="10,0,0,0"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" IsVisible="false" x:Name="SActualizar" Grid.Row="2">
+                <Button FontSize="23" Text="&#xf303;" FontFamily="{StaticResource FontAwesomeSolid}" x:Name="Actualizar" WidthRequest="50" HeightRequest="50" Clicked="Actualizar_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Green" BackgroundColor="White" CornerRadius="10"/>
+                <Label Text="Editar" VerticalOptions="Center" TextColor="White" FontSize="18" HorizontalOptions="Center" FontAttributes="Bold" Margin="10,0,0,0"/>
+            </StackLayout>
             <StackLayout Orientation="Horizontal" IsVisible="false" x:Name="SGuardarAlStock" Grid.Row="0">
                 <Button FontSize="23" Text="&#xf6f1;" FontFamily="{StaticResource FontAwesomeSolid}" x:Name="GuardarAlStock" WidthRequest="50" HeightRequest="50" Clicked="GuardarAlStock_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Green" BackgroundColor="White" CornerRadius="10"/>
                 <Label Text="Guardar en el almacen" VerticalOptions="Center" TextColor="White" FontSize="18" HorizontalOptions="Center" FontAttributes="Bold" Margin="10,0,0,0"/>
@@ -18,10 +27,6 @@
             <StackLayout Orientation="Horizontal" IsVisible="false" x:Name="SReportarComoVenta" Grid.Row="1">
                 <Button FontSize="23" Text="&#xf4c0;" FontFamily="{StaticResource FontAwesomeSolid}" x:Name="ReportarComoVenta" WidthRequest="50" HeightRequest="50" Clicked="ReportarComoVenta_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Green" BackgroundColor="White" CornerRadius="10"/>
                 <Label Text="Reportar como venta" VerticalOptions="Center" TextColor="White" FontSize="18" HorizontalOptions="Center" FontAttributes="Bold" Margin="10,0,0,0"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" IsVisible="false" x:Name="SActualizar" Grid.Row="2">
-                <Button FontSize="23" Text="&#xf303;" FontFamily="{StaticResource FontAwesomeSolid}" x:Name="Actualizar" WidthRequest="50" HeightRequest="50" Clicked="Actualizar_Clicked" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Green" BackgroundColor="White" CornerRadius="10"/>
-                <Label Text="Editar" VerticalOptions="Center" TextColor="White" FontSize="18" HorizontalOptions="Center" FontAttributes="Bold" Margin="10,0,0,0"/>
             </StackLayout>
         </Grid>
     </StackLayout>

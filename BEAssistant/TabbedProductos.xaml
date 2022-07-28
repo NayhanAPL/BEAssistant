@@ -11,7 +11,7 @@
                 <StackLayout Margin="10,0" Orientation="Horizontal">
                     <Label Text="Seleccione la denominación:" FontAttributes="Bold" VerticalOptions="Center" TextColor="Black" FontSize="17" Margin="10,0,0,0"/>
                     <Picker x:Name="selectDenominacionPro" Margin="0" SelectedIndexChanged="selectDenominacionPro_SelectedIndexChanged" VerticalOptions="Center" TitleColor="Green" TextColor="Black" Title="  Seleccionar  "/>
-                    <Label Margin="0" FontSize="21" TextColor="Green" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
+                    <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                 </StackLayout>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -143,20 +143,8 @@
                             <StackLayout>
                                 <Label Text="Denominación:" FontSize="17" VerticalOptions="CenterAndExpand" TextColor="Black" FontAttributes="Bold"/>
                                 <StackLayout Orientation="Horizontal">
-                                    <Grid VerticalOptions="CenterAndExpand">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="130"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <Entry Grid.Column="0" SelectionLength="20" x:Name="EntryDenomProducto" FontSize="17" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
-                                        <Button Grid.Column="0" Text="Escribir" x:Name="ButtonDenomEscrbir" Clicked="ButtonDenomEscrbir_Clicked" TextTransform="None" FontSize="18" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                                    </Grid>
-                                    <Grid VerticalOptions="CenterAndExpand">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="130"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <Picker Grid.Column="0" FontSize="17" Title="Seleccione" FontAttributes="Bold" SelectedIndexChanged="PickerDenominacion_SelectedIndexChanged" x:Name="PickerDenominacion" TextColor="Black" TitleColor="Green"/>
-                                        <Button Grid.Column="0" Text="Sugerencia" x:Name="ButtonDenomSeleccionar" Clicked="ButtonDenomSeleccionar_Clicked" TextTransform="None" FontSize="18" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                                    </Grid>
+                                    <Entry SelectionLength="20" x:Name="EntryDenomProducto" FontSize="17" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                                    <Picker FontSize="17" Title="Seleccione" FontAttributes="Bold" SelectedIndexChanged="PickerDenominacion_SelectedIndexChanged" x:Name="PickerDenominacion" TextColor="Black" TitleColor="Green"/>
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>
@@ -177,7 +165,7 @@
                                         <x:String>Alto, ancho y largo</x:String>
                                     </Picker.Items>
                                 </Picker>
-                                <Label Margin="0" FontSize="21" TextColor="Green" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                                 <Label Text="opcional" VerticalOptions="Center" Margin="20,0,0,0"/>
                             </StackLayout>
                             <StackLayout Grid.Row="1" x:Name="Grid1parameter" Orientation="Horizontal">

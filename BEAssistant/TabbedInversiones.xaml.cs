@@ -20,7 +20,7 @@ namespace BEAssistant
             ByDefaultPage1();
             ByDefaultPage2();
             ByDefaultPage3();
-            ByDefaultPage4();         
+            ByDefaultPage4();
         }
 
 
@@ -155,6 +155,13 @@ namespace BEAssistant
                                 Unidades = Convert.ToDouble(EntryUnidadesInversion.Text),
                                 IdInv = objC.Id
                             });
+                            var lastItem = await App.Database.GetLastItemRegConstante();
+                            await App.Database.SaveCaducidad(new Caducidad()
+                            {
+                                IdReg = lastItem[0].IdInv,
+                                Caduco = false,
+                                TipoInv = "C"
+                            });
                             PopupAlert.PopupLabelTitulo = "Inversión registrada";
                             PopupAlert.PopupLabelText = "Se ha guardado correctamente este nuevo reporte de inversión Constante. Usted puede estar al tanto de los efectos que esta haya causado en su negocio en la página (Historial y Estadísticas)";
                             await Navigation.PushPopupAsync(new PopupAlert());
@@ -170,7 +177,14 @@ namespace BEAssistant
                             Costo = Convert.ToDouble(EntryCostoInversion.Text),
                             Unidades = Convert.ToDouble(EntryUnidadesInversion.Text),
                             IdInv = objC.Id
-                        });                        
+                        });
+                        var lastItem = await App.Database.GetLastItemRegConstante();
+                        await App.Database.SaveCaducidad(new Caducidad()
+                        {
+                            IdReg = lastItem[0].IdInv,
+                            Caduco = false,
+                            TipoInv = "C"
+                        });
                     }
                     UpDateCostoMatPri();
                     if (objC.Tipo == TiposConstante.MateriaPrima)
@@ -198,8 +212,16 @@ namespace BEAssistant
                         Unidades = Convert.ToDouble(EntryUnidadesInversion.Text),
                         IdInv = objA.Id
                     });
+                    var lastItem = await App.Database.GetLastItemRegAcumulativa();
+                    await App.Database.SaveCaducidad(new Caducidad()
+                    {
+                        IdReg = lastItem[0].IdInv,
+                        Caduco = false,
+                        TipoInv = "A"
+                    });
                     if (objA.Tipo == TiposAcumulativa.MateriaPrima)
                     {
+                        costoDeuda = Convert.ToDouble(EntryCostoInversion.Text);
                         UpDateCostoMatPri();
                         var stock = await App.Database.GetIdInvAStock(objA.Id);
                         Stocker upStock = new Stocker
@@ -287,23 +309,8 @@ namespace BEAssistant
                 }
             } 
         }
-        private void EntryUnidadesInversion_Focused(object sender, FocusEventArgs e)
-        {
-            EntryUnidadesInversion.FontSize = 20;
-        }
-        private void EntryUnidadesInversion_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryUnidadesInversion.FontSize = 17;
-        }
-        private void EntryCostoInversion_Focused(object sender, FocusEventArgs e)
-        {
-            EntryCostoInversion.FontSize = 20;
-        }
-        private void EntryCostoInversion_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryCostoInversion.FontSize = 17;
-        }
-        public static int costoDeuda = 0;
+
+        public static double costoDeuda = 0;
         public static int unidadesDeuda = 0;
         private async void ButtonComoDeuda_Clicked(object sender, EventArgs e)
         {
@@ -331,7 +338,7 @@ namespace BEAssistant
             }
             if (sepuede)
             {
-                costoDeuda = Convert.ToInt32(EntryCostoInversion.Text);
+                costoDeuda = Convert.ToDouble(EntryCostoInversion.Text);
                 unidadesDeuda = Convert.ToInt32(EntryUnidadesInversion.Text);
                 await Navigation.PushPopupAsync(new ReportarDeuda());
                 ByDefaultPage4();
@@ -370,8 +377,7 @@ namespace BEAssistant
             EntryNombreInversion.Text = "";
             StackByDefault.IsVisible = true;
             PickerMatPriSujerencias.IsVisible = false;
-            ButtonMatPriEscribir.IsVisible = false;
-            ButtonMatPriSugerencia.IsVisible = false;
+            flechita.IsVisible = false;
             StackConstante.IsVisible = false;
             StackAcumulativa.IsVisible = false;
             StackExtraordinaria.IsVisible = false;
@@ -397,12 +403,10 @@ namespace BEAssistant
                             bool depende = false;
                             if (PickerFactorTipoConstante.SelectedIndex != -1)
                             {
-                               
-                                
                                 string nombre = "";
-                                if (boolMatPriByPicker) nombre = PickerMatPriSujerencias.SelectedItem.ToString();
+                                if (PickerMatPriSujerencias.SelectedIndex != -1) nombre = PickerMatPriSujerencias.SelectedItem.ToString();
                                 else nombre = EntryNombreInversion.Text;
-                                if (!String.IsNullOrEmpty(nombre))
+                                if (!string.IsNullOrEmpty(nombre))
                                 {
                                     depende = true;
                                     DateTime TimeActual = DateTime.Now;
@@ -481,7 +485,8 @@ namespace BEAssistant
                     {
                         
                         string nombre = "";
-                        if (boolMatPriByPicker) nombre = PickerMatPriSujerencias.SelectedItem.ToString();
+                        if (PickerMatPriSujerencias.SelectedIndex != -1) 
+                            nombre = PickerMatPriSujerencias.SelectedItem.ToString();
                         else nombre = EntryNombreInversion.Text;
 
                         if (!String.IsNullOrEmpty(nombre))
@@ -663,19 +668,20 @@ namespace BEAssistant
             {
                 EntryNombreInversion.IsVisible = true;
                 PickerMatPriSujerencias.IsVisible = false;
-                ButtonMatPriEscribir.IsVisible = false;
-                ButtonMatPriSugerencia.IsVisible = false;
+                flechita.IsVisible = false;
             }
         }
         private async void MateriasPrimasSelected()
-        {
+        {   
             EntryNombreInversion.IsVisible = true;
-            PickerMatPriSujerencias.IsVisible = false;
-            ButtonMatPriEscribir.IsVisible = false;
-            ButtonMatPriSugerencia.IsVisible = true; 
             var matPri = await App.Database.GetByPrecUniVacioMateriaPrima();
             PickerMatPriSujerencias.Items.Clear();
             matPri.ForEach(x => PickerMatPriSujerencias.Items.Add(x.Nombre));
+            if(PickerMatPriSujerencias.Items.Count > 0)
+            {
+                PickerMatPriSujerencias.IsVisible = true;
+                flechita.IsVisible = true;
+            }           
         }
         private async void PickerFactorTipoConstante_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -688,25 +694,8 @@ namespace BEAssistant
             {
                 EntryNombreInversion.IsVisible = true;
                 PickerMatPriSujerencias.IsVisible = false;
-                ButtonMatPriEscribir.IsVisible = false;
-                ButtonMatPriSugerencia.IsVisible = false;
+                flechita.IsVisible = false;
             }
-        }
-        private void ButtonMatPriSugerencia_Clicked(object sender, EventArgs e)
-        {
-            ButtonMatPriSugerencia.IsVisible = false;
-            ButtonMatPriEscribir.IsVisible = true;
-            EntryNombreInversion.IsVisible = false;
-            PickerMatPriSujerencias.IsVisible = true;
-            boolMatPriByPicker = true;
-        }
-        private void ButtonMatPriEscribir_Clicked(object sender, EventArgs e)
-        {
-            ButtonMatPriEscribir.IsVisible = false;
-            ButtonMatPriSugerencia.IsVisible = true;
-            EntryNombreInversion.IsVisible = true;
-            PickerMatPriSujerencias.IsVisible = false;
-            boolMatPriByPicker = false;
         }
         private async void PickerConstSubCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -714,14 +703,6 @@ namespace BEAssistant
             {
                 await Navigation.PushPopupAsync(new popupConstDepend());
             }
-        }
-        private void EntryNombreInversion_Focused(object sender, FocusEventArgs e)
-        {
-            EntryNombreInversion.FontSize = 20;
-        }
-        private void EntryNombreInversion_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryNombreInversion.FontSize = 17;
         }
 
         //----------------------------------Page 3--------------------------------------
@@ -731,24 +712,30 @@ namespace BEAssistant
         {
             labelNoHayPage3.IsVisible = false;
         }
-        public static int botonSeleccionado = 0;
+        public static int botonSeleccionado = 1;
         public static int pickerSeleccionado = 0;
         private async void Page3Inversion_Clicked(object sender, EventArgs e)
         {
+            ViewPage3Inv.IsVisible = true;
+            ViewPage3Reg.IsVisible = false;
+            if (PickerPage3Deno.SelectedIndex == 0) MostrarTablaPage3("InvC");
+            if (PickerPage3Deno.SelectedIndex == 1) MostrarTablaPage3("InvA");
+            if (PickerPage3Deno.SelectedIndex == 2) MostrarTablaPage3("InvE");
             botonSeleccionado = 1;
-            Page3Inversion.FontSize = 18;
             Page3Inversion.TextColor = Color.Green;
-            Page3Registro.FontSize = 16;
             Page3Registro.TextColor = Color.Black;
             popupSubAlert.TextSubAlert = "Advertencia: Si cambia algún parámetro de un tipo de inversión cambiará la información de todos los registros de inversiones de ese elemento. Se recomienda crear un nuevo elemento.";
             await Navigation.PushPopupAsync(new popupSubAlert());
         }
         private void Page3Registro_Clicked(object sender, EventArgs e)
         {
+            ViewPage3Inv.IsVisible = false;
+            ViewPage3Reg.IsVisible = true;
+            if (PickerPage3Deno.SelectedIndex == 0) MostrarTablaPage3("RegC");
+            if (PickerPage3Deno.SelectedIndex == 1) MostrarTablaPage3("RegA");
+            if (PickerPage3Deno.SelectedIndex == 2) MostrarTablaPage3("RegE");
             botonSeleccionado = 2;
-            Page3Inversion.FontSize = 16;
             Page3Inversion.TextColor = Color.Black;
-            Page3Registro.FontSize = 18;
             Page3Registro.TextColor = Color.Green;
         }
         private void PickerPage3Deno_SelectedIndexChanged(object sender, EventArgs e)
@@ -923,7 +910,12 @@ namespace BEAssistant
                             var res = await DisplayAlert("ELIMINAR INVERSIÓN", "¿Está seguro de que desea eliminar este tipo de inversión?.", "ACEPTAR", "CANCELAR");
                             if (res)
                             {
-                                registros.ForEach(async x => await App.Database.DeleteRegAcumulativa(x));
+                                foreach (var item in registros)
+                                {
+                                    var del = await App.Database.GetByIdRegAcumCaducidad(item.Id);
+                                    await App.Database.DeleteCaducidad(del[0]);
+                                    await App.Database.DeleteRegAcumulativa(item);
+                                }
                                 if (page3InObjA.Tipo == TiposAcumulativa.MateriaPrima)
                                 {
                                     var elemBorrar = await App.Database.GetIdInvAStock(page3InObjA.Id);
@@ -971,6 +963,8 @@ namespace BEAssistant
                         if (res)
                         { 
                             await App.Database.DeleteRegConstante(page3ReObjC);
+                            var del = await App.Database.GetByIdRegConsCaducidad(page3ReObjC.Id);
+                            await App.Database.DeleteCaducidad(del[0]);
                             hecho = true;
                             MostrarTablaPage3("RegC");
                         }
@@ -981,6 +975,8 @@ namespace BEAssistant
                         if (res)
                         {
                             await App.Database.DeleteRegAcumulativa(page3ReObjA);
+                            var del = await App.Database.GetByIdRegAcumCaducidad(page3ReObjA.Id);
+                            await App.Database.DeleteCaducidad(del[0]);
                             hecho = true;
                             MostrarTablaPage3("RegA");
                         }
@@ -1050,7 +1046,22 @@ namespace BEAssistant
                     await Navigation.PushPopupAsync(new UpdateInverciones());
                     MessagingCenter.Subscribe<UpdateInverciones, string>(this, "UpdateInverciones", async (s, arg) =>
                     {
-                        ByDefaultPage3();
+                        if (botonSeleccionado == 1)
+                        {
+                            ViewPage3Inv.IsVisible = true;
+                            ViewPage3Reg.IsVisible = false;
+                            if (PickerPage3Deno.SelectedIndex == 0) MostrarTablaPage3("InvC");
+                            if (PickerPage3Deno.SelectedIndex == 1) MostrarTablaPage3("InvA");
+                            if (PickerPage3Deno.SelectedIndex == 2) MostrarTablaPage3("InvE");
+                        }
+                        if (botonSeleccionado == 2)
+                        {
+                            ViewPage3Inv.IsVisible = false;
+                            ViewPage3Reg.IsVisible = true;
+                            if (PickerPage3Deno.SelectedIndex == 0) MostrarTablaPage3("RegC");
+                            if (PickerPage3Deno.SelectedIndex == 1) MostrarTablaPage3("RegA");
+                            if (PickerPage3Deno.SelectedIndex == 2) MostrarTablaPage3("RegE");
+                        }
                     });
                 }
             }
@@ -1072,15 +1083,14 @@ namespace BEAssistant
             if(PickerPage3Deno.SelectedIndex == 0)
             {
                 page3InObjC = (InConstante)e.SelectedItem;
-                PopupAlert.PopupLabelTitulo = "Detalles de la inversión Constante";
-                PopupAlert.PopupLabelText = $"FRECUENCIA: {page3InObjC.Frecuencia} \nCATEGORÍA: {page3InObjC.Categoria} \nTIPO: {page3InObjC.Tipo} \n";
-                if (!string.IsNullOrEmpty(page3InObjC.Descripcion)) PopupAlert.PopupLabelText += $"Descripción:{page3InObjC.Descripcion}";
-                await Navigation.PushPopupAsync(new PopupAlert());
+                popupMostrarInfoInv.tipeSelected = 1;
+                await Navigation.PushPopupAsync(new popupMostrarInfoInv());
                 
             }
             if (PickerPage3Deno.SelectedIndex == 1)
             {
                 page3InObjA = (InAcumulativa)e.SelectedItem;
+                popupMostrarInfoInv.tipeSelected = 2;
                 PopupAlert.PopupLabelTitulo = "Detalles de la inversión Acumulativa";
                 PopupAlert.PopupLabelText = $"TIPO: {page3InObjA.Tipo} \n";
                 if (!string.IsNullOrEmpty(page3InObjA.Descripcion)) PopupAlert.PopupLabelText += $"Descripción:{page3InObjA.Descripcion}";
@@ -1089,6 +1099,7 @@ namespace BEAssistant
             if (PickerPage3Deno.SelectedIndex == 2)
             {
                 page3InObjE = (InExtraordinaria)e.SelectedItem;
+                popupMostrarInfoInv.tipeSelected = 3;
                 PopupAlert.PopupLabelTitulo = "Detalles de la inversión Extraordinaria";
                 PopupAlert.PopupLabelText = $"CATEGORÍA: {page3InObjE.Categoria} \nTIPO: {page3InObjE.Tipo} \n";
                 if (!string.IsNullOrEmpty(page3InObjE.Descripcion)) PopupAlert.PopupLabelText += $"Descripción:{page3InObjE.Descripcion}";

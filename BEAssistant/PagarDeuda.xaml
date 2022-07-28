@@ -22,7 +22,9 @@
                             <local:RoundedEntry Placeholder="Monto" PlaceholderColor="Green" TextColor="Green" Keyboard="Numeric" x:Name="EntryCanidadPago"/>
                         </StackLayout>
                     </StackLayout>
-                    <Button Text="Guardar Pago" x:Name="ButtonPagarDeuda" Margin="0,10" Clicked="ButtonPagarDeuda_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                    <Frame HasShadow="True" CornerRadius="10" Padding="0" Margin="15,10" BackgroundColor="Green">
+                        <Button Text="Guardar Pago" WidthRequest="300" x:Name="ButtonPagarDeuda" Clicked="ButtonPagarDeuda_Clicked" CornerRadius="10" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                    </Frame>
                 </StackLayout>
             </Frame>
             <Button Grid.Row="0" Text="&#xf00d;" FontFamily="{StaticResource FontAwesomeSolid}" Margin="0" Padding="0" WidthRequest="35" HeightRequest="35"  x:Name="volver" Clicked="volver_Clicked" FontSize="17" CornerRadius="20" VerticalOptions="Start" HorizontalOptions="End" TextColor="White" BackgroundColor="Green"/>

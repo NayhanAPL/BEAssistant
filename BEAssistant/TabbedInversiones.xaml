@@ -6,9 +6,9 @@
   <!--Pages can be added as references or inline-->
     <ContentPage Title="REPORTAR INVERSIÓN">
         <ScrollView>
-            <StackLayout Margin="10,0">
-                <Label Text="¿Desea registrar una inversión?" FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="10,10,0,5"/>
-                <StackLayout Orientation="Horizontal">
+            <StackLayout>
+                <Label Text="¿Desea registrar una inversión?" FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="20,10,10,5"/>
+                <StackLayout Margin="10,0" Orientation="Horizontal">
                     <Label Text="Seleccione la denominación:" VerticalOptions="Center" TextColor="Black" FontSize="17" FontAttributes="Bold" Margin="10,0,0,0"/>
                     <Picker x:Name="selectDenominacion" Margin="0" SelectedIndexChanged="SelectDenominacion_SelectedIndexChanged" VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
                         <Picker.Items>
@@ -17,6 +17,7 @@
                             <x:String>extraordinaria</x:String>
                         </Picker.Items>
                     </Picker>
+                    <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                 </StackLayout>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -25,8 +26,8 @@
                     <Grid Grid.Row="0" x:Name="ContenidoPage1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="250"></RowDefinition>
-                            <RowDefinition Height="180"></RowDefinition>
-                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="140"></RowDefinition>
+                            <RowDefinition Height="80"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Frame  Grid.Row="0" BackgroundColor="White" HasShadow="True" Padding="5" Margin="0">
                             <Grid>
@@ -42,41 +43,43 @@
                                     <Frame CornerRadius="5" BackgroundColor="LightGray" HeightRequest="17" Padding="0" Margin="10,5,230,0"/>
                                     <Frame CornerRadius="5" BackgroundColor="LightGray" HeightRequest="13" Padding="0" Margin="10,5,35,15"/>
                                 </StackLayout>
-                                <ListView Grid.Column="0" x:Name="ViewNombresInv" Margin="0" RowHeight="65" ItemSelected="ViewNombresInv_ItemSelected" SeparatorColor="DarkSlateGray">
+                                <ListView Grid.Column="0" x:Name="ViewNombresInv" Margin="0" RowHeight="75" ItemSelected="ViewNombresInv_ItemSelected" SeparatorVisibility="None">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <StackLayout Orientation="Vertical">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label Text="{Binding Nombre}" Margin="10,0" TextColor="Black" HorizontalOptions="Start" FontSize="19" FontAttributes="Bold"/>
+                                                <Frame Padding="10" Margin="5" CornerRadius="10" HasShadow="True" BackgroundColor="White">
+                                                    <StackLayout Orientation="Vertical">
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="{Binding Nombre}" Margin="10,0" TextColor="Black" HorizontalOptions="Start" FontSize="19" FontAttributes="Bold"/>
+                                                        </StackLayout>
+                                                        <Label Text="{Binding Descripcion}" Margin="10,0" Grid.Row="1" HorizontalOptions="Start" FontSize="14"/>
                                                     </StackLayout>
-                                                    <Label Text="{Binding Descripcion}" Margin="10,0" Grid.Row="1" HorizontalOptions="Start" FontSize="14"/>
-                                                </StackLayout>
+                                                </Frame>
                                             </ViewCell>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </Grid>
                         </Frame>
-                        <StackLayout Grid.Row="1">
+                        <StackLayout Grid.Row="1" Margin="10,0">
                             <StackLayout Orientation="Horizontal" Margin="10">
                                 <Label x:Name="LabelDeCosto" Text="Costo: $" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
-                                <local:RoundedEntry x:Name="EntryCostoInversion" Keyboard="Numeric" Focused="EntryCostoInversion_Focused" Unfocused="EntryCostoInversion_Unfocused" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                                <local:RoundedEntry x:Name="EntryCostoInversion" Keyboard="Numeric" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
                                 <Label x:Name="labelCostoInversionUnidad" Text="Por unidad" VerticalOptions="Center" FontSize="17" Margin="0,0,0,0" TextColor="Black" FontAttributes="Bold"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="10">
                                 <Label x:Name="LabelCantUnid" Text="Cantidad de unidades:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
-                                <local:RoundedEntry x:Name="EntryUnidadesInversion" Keyboard="Numeric" Focused="EntryUnidadesInversion_Focused" Unfocused="EntryUnidadesInversion_Unfocused" VerticalOptions="Center" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                                <local:RoundedEntry x:Name="EntryUnidadesInversion" Keyboard="Numeric" VerticalOptions="Center" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
                             </StackLayout>
                         </StackLayout>
-                        <Grid Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="170"></ColumnDefinition>
-                                <ColumnDefinition Width="230"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Button Grid.Column="1" Text="GUARDAR COMO DEUDA" FontSize="15" TextTransform="None" x:Name="ButtonComoDeuda" Clicked="ButtonComoDeuda_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                            <Button Grid.Column="0" Text="REPORTAR" x:Name="ButtonReportarInv" Margin="0,0,10,0" FontSize="17" Clicked="ButtonReportarInv_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
-                        </Grid>
+                        <StackLayout Grid.Row="2" Margin="10,0">
+                            <Frame BackgroundColor="White" CornerRadius="10" Padding="0" Margin="15,0" HasShadow="True">
+                                <Button Text="Guardar como Deuda" Margin="0" FontSize="17" WidthRequest="400" TextTransform="None" x:Name="ButtonComoDeuda" Clicked="ButtonComoDeuda_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                            </Frame>
+                            <Frame BackgroundColor="Green" CornerRadius="10" Padding="0" Margin="15,0" HasShadow="True">
+                                <Button Text="Reportar" TextTransform="None" x:Name="ButtonReportarInv" WidthRequest="400" Margin="0" FontSize="17" Clicked="ButtonReportarInv_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                            </Frame>
+                        </StackLayout>
                     </Grid>
                 </Grid>
             </StackLayout>
@@ -90,20 +93,9 @@
                         <Label Text="¿Desea registrar un nuevo tipo de inversión?" FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="10,10,0,5"/>
                         <Label Text="Nombre:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
                         <StackLayout Orientation="Horizontal" Margin="0">
-                            <Grid Margin="10,0,0,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Entry Grid.Column="0" VerticalOptions="Center" SelectionLength="30" x:Name="EntryNombreInversion" FontSize="17" Focused="EntryNombreInversion_Focused" Unfocused="EntryNombreInversion_Unfocused" FontAttributes="Bold" Placeholder="Escribir aquí           " PlaceholderColor="Green" TextColor="Green"/>
-                                <Button Grid.Column="0" Text="Escribir" x:Name="ButtonMatPriEscribir" Clicked="ButtonMatPriEscribir_Clicked" TextTransform="None" FontSize="18" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                            </Grid>
-                            <Grid Margin="10,0,0,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Picker Grid.Column="0" FontSize="17" FontAttributes="Bold" VerticalOptions="Start" Title="Seleccione" x:Name="PickerMatPriSujerencias" TextColor="Black" TitleColor="Green"/>
-                                <Button Grid.Column="0" Text="Sugerencia" x:Name="ButtonMatPriSugerencia" Clicked="ButtonMatPriSugerencia_Clicked" TextTransform="None" FontSize="18" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                            </Grid>
+                            <Entry VerticalOptions="Center" Margin="10,0,0,0" SelectionLength="30" WidthRequest="170" x:Name="EntryNombreInversion" FontSize="17" FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green"/>
+                            <Picker FontSize="17" FontAttributes="Bold" WidthRequest="170" VerticalOptions="Start" Title="Seleccione" x:Name="PickerMatPriSujerencias" TextColor="Black" TitleColor="Green"/>
+                            <Label Margin="0" FontSize="21" x:Name="flechita" TextColor="Green" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Denominación de inversión:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Black" FontAttributes="Bold"/>
@@ -114,12 +106,13 @@
                                     <x:String>extraordinaria</x:String>
                                 </Picker.Items>
                             </Picker>
+                            <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="300"></RowDefinition>
+                        <RowDefinition Height="310"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Frame Grid.Row="0" Margin="0" Padding="10,0">
@@ -131,11 +124,12 @@
                                     <RowDefinition Height="Auto"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <StackLayout x:Name="StackByDefault" Orientation="Vertical" Grid.Row="0">
-                                    <Label Text="Debe seleccionar una denominación antes de continuar con la categoría..." Margin="10,0,10,5" FontAttributes="Bold"/>
+                                    <Label Text="Debe seleccionar una denominación antes de continuar con la categoría..." Margin="10,10,10,5" FontAttributes="Bold"/>
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="Catergoría de la inversión:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
                                         <Picker VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
                                         </Picker>
+                                        <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout x:Name="StackConstante" Orientation="Vertical" Grid.Row="0">
@@ -153,6 +147,7 @@
                                                 <x:String>anual</x:String>
                                             </Picker.Items>
                                         </Picker>
+                                        <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout x:Name="StackAcumulativa" Orientation="Vertical" Grid.Row="0">
@@ -169,6 +164,7 @@
                                                 <x:String>otros</x:String>
                                             </Picker.Items>
                                         </Picker>
+                                        <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout x:Name="StackExtraordinaria" Orientation="Vertical" Grid.Row="0">
@@ -181,6 +177,7 @@
                                                 <x:String>imprevista</x:String>
                                             </Picker.Items>
                                         </Picker>
+                                        <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                                     </StackLayout>
                                 </StackLayout>
 
@@ -190,6 +187,7 @@
                                         <Label Text="Subcatergoría de la inversión:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Black" FontAttributes="Bold"/>
                                         <Picker VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
                                         </Picker>
+                                        <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout x:Name="StackSubConstante" Orientation="Vertical" Grid.Row="1">
@@ -202,6 +200,7 @@
                                                 <x:String>proporcional</x:String>
                                             </Picker.Items>
                                         </Picker>
+                                        <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout x:Name="StackExtraBeneficiosa" Orientation="Vertical" Grid.Row="1">
@@ -216,6 +215,7 @@
                                                 <x:String>Rendimiento</x:String>
                                             </Picker.Items>
                                         </Picker>
+                                        <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout x:Name="StackExtraObligatoria" Orientation="Vertical" Grid.Row="1">
@@ -230,6 +230,7 @@
                                                 <x:String>Otros</x:String>
                                             </Picker.Items>
                                         </Picker>
+                                        <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                                     </StackLayout>
                                 </StackLayout>
 
@@ -250,72 +251,76 @@
                                                 <x:String>otros</x:String>
                                             </Picker.Items>
                                         </Picker>
+                                        <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
                                     </StackLayout>
                                 </StackLayout>
                             </Grid>
                         </StackLayout>
                     </Frame>
                     <StackLayout Grid.Row="1">
-                        <Button Text="Agregar una descripción para más detalles" Margin="10,0,0,0" FontSize="17" TextTransform="None" x:Name="ButtonDescripcionInversion" Clicked="ButtonDescripcionInversion_Clicked" HorizontalOptions="Start" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                        <Button Text="Crear" x:Name="ButtonCrearInversion" Clicked="ButtonCrearInversion_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                        <Frame BackgroundColor="White" CornerRadius="10" Padding="0" Margin="15,0" HasShadow="True">
+                            <Button Text="Agregar una descripción para más detalles" CornerRadius="10" FontSize="17" TextTransform="None" x:Name="ButtonDescripcionInversion" Clicked="ButtonDescripcionInversion_Clicked" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                        </Frame>
+                        <Frame BackgroundColor="Green" CornerRadius="10" Padding="0" Margin="15,0" HasShadow="True">
+                            <Button Text="Crear" TextTransform="None" x:Name="ButtonCrearInversion" Clicked="ButtonCrearInversion_Clicked" FontSize="17" CornerRadius="10" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
+                        </Frame>
                     </StackLayout>
                 </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage>
-    <ContentPage Title="ACTUALIZAR Y ELIMINAR">
-        <ScrollView>
-            <Grid >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80"></RowDefinition>
-                    <RowDefinition Height="60"></RowDefinition>
-                    <RowDefinition Height="380"></RowDefinition>
-                    <RowDefinition Height="70"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Margin="10,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Margin="15,0" Text="  TIPO DE   INVERSIÓN" FontSize="16" x:Name="Page3Inversion" Clicked="Page3Inversion_Clicked" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
-                    <Button Grid.Column="1" Margin="15,0" Text="REPORTES DE INVERSIÓN" FontSize="16" x:Name="Page3Registro" Clicked="Page3Registro_Clicked" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
-                </Grid>
-                <StackLayout Grid.Row="1" Margin="10,0" Orientation="Horizontal">
-                    <Label Text="Seleccione la denominación:" VerticalOptions="Center" TextColor="Black" FontSize="17" FontAttributes="Bold" Margin="10,0,0,0"/>
-                    <Picker x:Name="PickerPage3Deno" SelectedIndexChanged="PickerPage3Deno_SelectedIndexChanged" Margin="0" VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
-                        <Picker.Items>
-                            <x:String>constante</x:String>
-                            <x:String>acumulativa</x:String>
-                            <x:String>extraordinaria</x:String>
-                        </Picker.Items>
-                    </Picker>
+    <ContentPage Title="GESTIONAR INVERSIONES">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Margin="0" Padding="0" HasShadow="True" BorderColor="DimGray">
+                <StackLayout>
+                    <Grid Margin="10,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Margin="0,5" CornerRadius="10" Text="&#xf155;&#xf1da;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="20" x:Name="Page3Inversion" Clicked="Page3Inversion_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                        <Button Grid.Column="1" Margin="0,5" CornerRadius="10" Text="&#xf53d;&#xf309;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="20" x:Name="Page3Registro" Clicked="Page3Registro_Clicked" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
+                    </Grid>
+                    <StackLayout Margin="10,0" Orientation="Horizontal">
+                        <Label Text="Seleccione la denominación:" VerticalOptions="Center" TextColor="Black" FontSize="17" FontAttributes="Bold" Margin="10,0,0,0"/>
+                        <Picker x:Name="PickerPage3Deno" SelectedIndexChanged="PickerPage3Deno_SelectedIndexChanged" Margin="0" VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
+                            <Picker.Items>
+                                <x:String>constante</x:String>
+                                <x:String>acumulativa</x:String>
+                                <x:String>extraordinaria</x:String>
+                            </Picker.Items>
+                        </Picker>
+                        <Label Margin="0" FontSize="21" TextColor="Gray" VerticalOptions="Center" Text="&#xf0d7;" FontFamily="{StaticResource FontAwesomeSolid}" />
+                    </StackLayout>
                 </StackLayout>
-                <Frame Grid.Row="2" Margin="0" Padding="0">
-                    <StackLayout>
-                        <Label Grid.Column="0" x:Name="labelNoHayPage3" Text="" TextColor="Gray" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <ListView ItemSelected="ViewPage3Inv_ItemSelected" x:Name="ViewPage3Inv" Margin="10,0" RowHeight="65" SeparatorColor="DarkSlateGray">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
+            </Frame>
+            <StackLayout Grid.Row="1" Margin="0" Padding="0">
+                <StackLayout>
+                    <Label x:Name="labelNoHayPage3" Text="" TextColor="Gray" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <ListView ItemSelected="ViewPage3Inv_ItemSelected" x:Name="ViewPage3Inv" Margin="10,0" RowHeight="85" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame BackgroundColor="White" HasShadow="True" Padding="10" Margin="5" CornerRadius="10">
                                         <StackLayout Orientation="Vertical">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <Label Grid.Column="0" Text="{Binding Nombre}" Margin="10,0,0,0" TextColor="Black" HorizontalOptions="Start" FontSize="19" FontAttributes="Bold"/>
-                                                <Label Grid.Column="1" Text="{Binding Fecha}" Margin="0,0,10,0" TextColor="Green" HorizontalOptions="Fill" FontSize="15"/>
-                                            </Grid>
+                                            <Label Text="{Binding Nombre}" Margin="10,0" TextColor="Black" HorizontalOptions="Start" FontSize="19" FontAttributes="Bold"/>
                                             <Label Text="{Binding Descripcion}" Margin="10,0" Grid.Row="1" HorizontalOptions="Start" FontSize="14"/>
                                         </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <ListView x:Name="ViewPage3Reg" ItemSelected="ViewPage3Reg_ItemSelected" Margin="10,0" RowHeight="55" SeparatorColor="DarkSlateGray">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <ListView x:Name="ViewPage3Reg" ItemSelected="ViewPage3Reg_ItemSelected" Margin="10,0" RowHeight="75" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame BackgroundColor="White" HasShadow="True" Padding="10" Margin="0,5" CornerRadius="10">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -323,93 +328,101 @@
                                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Column="0" Orientation="Horizontal">
-                                                <Label Text="$" Margin="10,0,0,0" TextColor="Black" HorizontalOptions="Start" FontSize="19" FontAttributes="Bold"/>
-                                                <Label Text="{Binding Costo}" Margin="10,0,0,0" TextColor="Green" HorizontalOptions="Fill" FontSize="19" FontAttributes="Bold"/>
+                                                <Label Text="$" Margin="10,0,0,0" TextColor="Black" HorizontalOptions="Start" FontSize="20" FontAttributes="Bold"/>
+                                                <Label Text="{Binding Costo}" Margin="10,0,0,0" TextColor="Green" HorizontalOptions="Fill" FontSize="20" FontAttributes="Bold"/>
                                             </StackLayout>
                                             <StackLayout Grid.Column="1" Orientation="Horizontal">
-                                                <Label Text="{Binding Unidades}" Margin="0" TextColor="Green" HorizontalOptions="Fill" FontSize="19" FontAttributes="Bold"/>
-                                                <Label Text="U" Margin="0" TextColor="Black" HorizontalOptions="Start" FontSize="19" FontAttributes="Bold"/>
+                                                <Label Text="{Binding Unidades}" Margin="0" TextColor="Green" HorizontalOptions="Fill" FontSize="20" FontAttributes="Bold"/>
+                                                <Label Text="U" Margin="0" TextColor="Black" HorizontalOptions="Start" FontSize="20" FontAttributes="Bold"/>
                                             </StackLayout>
                                             <Label Grid.Column="2" Text="{Binding Fecha}" Margin="0,0,10,0" TextColor="Black" HorizontalOptions="Fill" FontSize="15"/>
                                         </Grid>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackLayout>
-                </Frame>
-                <Grid Grid.Row="3" Margin="10,0">
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+            <Frame Grid.Row="2" Padding="0" Margin="0" BorderColor="DimGray">
+                <Grid  Margin="10,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Margin="0,10" FontSize="20" Text="EDITAR" x:Name="ButtonActualizarInv" Clicked="ButtonActualizarInv_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                    <Button Grid.Column="1" Margin="0,10" FontSize="20" Text="ELIMINAR" x:Name="ButtonEliminarInv" Clicked="ButtonEliminarInv_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                    <Button Grid.Column="0" Margin="0,10" FontSize="21" Text="&#xf044;" FontFamily="{StaticResource FontAwesomeSolid}" x:Name="ButtonActualizarInv" CornerRadius="10" Clicked="ButtonActualizarInv_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                    <Button Grid.Column="1" Margin="0,10" FontSize="21" Text="&#xf1f8;" FontFamily="{StaticResource FontAwesomeSolid}"  x:Name="ButtonEliminarInv" CornerRadius="10" Clicked="ButtonEliminarInv_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
                 </Grid>
-            </Grid>
-        </ScrollView>
+            </Frame>
+        </Grid>
     </ContentPage>
     <ContentPage Title="DEUDAS" >
         <ScrollView>
-            <StackLayout Margin="10,0">
+            <StackLayout>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="440"></RowDefinition>
-                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition Height="90"></RowDefinition>
+                        <RowDefinition Height="430"></RowDefinition>
+                        <RowDefinition Height="80"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <StackLayout Grid.Row="0">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Actualmente su deuda total es de " FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="10,10,0,5"/>
-                            <Label Text="$" FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="0,10,10,5"/>
-                            <Label Text="" x:Name="DeudaTotal" FontSize="17" TextColor="Green" FontAttributes="Bold" Margin="0,10,0,5"/>
+                    <Frame Grid.Row="0" Margin="0" BorderColor="Gray" HasShadow="True" Padding="5">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Actualmente su deuda total es de " FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="10,10,0,5"/>
+                                <Label Text="$" FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="0,10,10,5"/>
+                                <Label Text="" x:Name="DeudaTotal" FontSize="17" TextColor="Green" FontAttributes="Bold" Margin="0,10,0,5"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Estas son sus deudas:" Margin="10,0,110,0" FontSize="17" FontAttributes="Bold"/>
+                            </StackLayout>
                         </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Estas son sus deudas:" Margin="10,0,110,0" FontSize="17" FontAttributes="Bold"/>
-                        </StackLayout>
-                    </StackLayout>
-                    <Frame Grid.Row="1" BackgroundColor="White" Padding="10" HasShadow="True">
-                        <ListView x:Name="ListDeudas" ItemSelected="ListDeudas_ItemSelected" SeparatorColor="Black" RowHeight="140" >
+                    </Frame>
+                    <StackLayout Grid.Row="1" BackgroundColor="White" Padding="10">
+                        <ListView x:Name="ListDeudas" ItemSelected="ListDeudas_ItemSelected" SeparatorVisibility="None" RowHeight="150" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <StackLayout>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <Label Grid.Column="0" Text="{Binding Denominacion}" TextColor="Black" FontAttributes="Bold" FontSize="20"/>
-                                                <StackLayout Grid.Column="1" Orientation="Horizontal">
-                                                    <Label Text="{Binding FechaIcicio}" TextColor="Black" FontAttributes="Bold" FontSize="15"/>
-                                                </StackLayout>
-                                            </Grid>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="220"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <StackLayout Grid.Column="0" Orientation="Horizontal">
-                                                    <Label Text="$" TextColor="Green" FontAttributes="Bold" FontSize="19"/>
-                                                    <Label Text="{Binding Costo}" TextColor="Green" FontAttributes="Bold" FontSize="19"/>
-                                                </StackLayout>
-                                            </Grid>
-                                            <Label Text="{Binding Descripcion}" FontSize="15"/>
-                                        </StackLayout>
+                                        <Frame Margin="5" Padding="10" BackgroundColor="White" CornerRadius="10" HasShadow="True">
+                                            <StackLayout>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0" Text="{Binding Denominacion}" TextColor="Black" FontAttributes="Bold" FontSize="20"/>
+                                                    <StackLayout Grid.Column="1" Orientation="Horizontal">
+                                                        <Label Text="{Binding FechaIcicio}" TextColor="Black" FontAttributes="Bold" FontSize="15"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="220"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Column="0" Orientation="Horizontal">
+                                                        <Label Text="$" TextColor="Green" FontAttributes="Bold" FontSize="19"/>
+                                                        <Label Text="{Binding Costo}" TextColor="Green" FontAttributes="Bold" FontSize="19"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                                <Label Text="{Binding Descripcion}" FontSize="15"/>
+                                            </StackLayout>
+                                        </Frame>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                    </StackLayout>
+                    <Frame Grid.Row="2" Padding="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Padding="0" CornerRadius="10" Text="&#xf044;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="20" TextTransform="None" x:Name="ButtonActualizarDeuda" Clicked="ButtonActualizarDeuda_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                            <Button Grid.Column="1" Padding="0" CornerRadius="10" Text="&#xf53d;&#xf30c;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="20" TextTransform="None" x:Name="ButtonPagarDeuda" Clicked="ButtonPagarDeuda_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                            <Button Grid.Column="2" Padding="0" CornerRadius="10" Text="&#xf1f8;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="20" TextTransform="None" x:Name="ButtonBorrarDeuda" Clicked="ButtonBorrarDeuda_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
+                        </Grid>
                     </Frame>
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="140"></ColumnDefinition>
-                            <ColumnDefinition Width="110"></ColumnDefinition>
-                            <ColumnDefinition Width="120"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Text="ACTUALIZAR" FontSize="19" TextTransform="None" x:Name="ButtonActualizarDeuda" Clicked="ButtonActualizarDeuda_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                        <Button Grid.Column="1" Text="PAGAR" FontSize="19" TextTransform="None" x:Name="ButtonPagarDeuda" Clicked="ButtonPagarDeuda_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                        <Button Grid.Column="2" Text="ELIMINAR" FontSize="19" TextTransform="None" x:Name="ButtonBorrarDeuda" Clicked="ButtonBorrarDeuda_Clicked" HorizontalOptions="Center" TextColor="Green" FontAttributes="Bold" BackgroundColor="White"/>
-                    </Grid>
                 </Grid>
             </StackLayout>
         </ScrollView>

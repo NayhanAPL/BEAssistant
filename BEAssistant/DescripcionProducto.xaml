@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BEAssistant.DescripcionProducto">
 
-    <StackLayout Margin="20,50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="370" HeightRequest="470">
+    <StackLayout Margin="20,50,20,0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="370" HeightRequest="470">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -12,7 +12,9 @@
                 <StackLayout>
                     <Label Text="Descripción del producto" Margin="10,15" TextColor="Black" FontSize="23" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                     <Label Text="Hacer una decripción le permite identificar con mayor detalle todos los factores que intervienen en este nuevo producto. En un futuro será de utilidad cuando quiera consultar este elemento..." FontAttributes="Bold" Margin="10"/>
-                    <Entry Placeholder="Descripción" SelectionLength="70" x:Name="EntryProDescripcion" PlaceholderColor="Green" TextColor="Black" Margin="5"/>
+                    <Frame Padding="5" Margin="5" HasShadow="True" CornerRadius="10" BackgroundColor="White">
+                        <Editor Placeholder="Descripción" MaxLength="300" HeightRequest="100" x:Name="EntryProDescripcion" PlaceholderColor="Black" TextColor="Black"/>
+                    </Frame>
                     <Frame Margin="15,5" HorizontalOptions="Center" BackgroundColor="Green" CornerRadius="10" HasShadow="True" Padding="0">
                         <Button Text="AGREGAR" WidthRequest="350" HeightRequest="40" Margin="0" x:Name="ButtonAgregarDescripcion" Clicked="ButtonAgregarDescripcion_Clicked" CornerRadius="10" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
                     </Frame>

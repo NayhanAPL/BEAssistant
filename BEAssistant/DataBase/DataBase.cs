@@ -23,9 +23,9 @@ namespace BEAssistant.DataBase
             _database.CreateTableAsync<MateriasPrimas>().Wait();
             _database.CreateTableAsync<Dimention>().Wait();
             _database.CreateTableAsync<Venta>().Wait();
-            _database.CreateTableAsync<Deudas>().Wait(); 
-            _database.CreateTableAsync<CierresDiarios>().Wait(); 
-            _database.CreateTableAsync<CierresMensual>().Wait(); 
+            _database.CreateTableAsync<Deudas>().Wait();
+            _database.CreateTableAsync<CierresDiarios>().Wait();
+            _database.CreateTableAsync<CierresMensual>().Wait();
             _database.CreateTableAsync<FechaInicio>().Wait();
             _database.CreateTableAsync<DependenciasConstantes>().Wait();
             _database.CreateTableAsync<Stocker>().Wait();
@@ -34,9 +34,10 @@ namespace BEAssistant.DataBase
             _database.CreateTableAsync<Inventario>().Wait();
             _database.CreateTableAsync<Procesos>().Wait();
             _database.CreateTableAsync<StockProductos>().Wait();
-            
+            _database.CreateTableAsync<Caducidad>().Wait();
+
         }
-        
+
         //---------------------------------InvConstante-------------------------------------------
 
         //consulta completa InvConstante----------------------------------------------------------
@@ -927,6 +928,50 @@ namespace BEAssistant.DataBase
         public async Task<List<StockProductos>> GetByIdProStockProductos(int ID)
         {
             return await _database.QueryAsync<StockProductos>($"Select * from StockProductos where IdPro = {ID}");
+        }
+
+
+        //---------------------------------Caducidad-------------------------------------------
+
+        //consulta completa Caducidad----------------------------------------------------------
+        public Task<List<Caducidad>> GetCaducidadad()
+        {
+            return _database.Table<Caducidad>().ToListAsync();
+        }
+        //consulta por id de Caducidad---------------------------------------------------------
+        public Task<Caducidad> GetIdCaducidad(int Id)
+        {
+            return _database.Table<Caducidad>().Where(a => a.Id == Id).FirstOrDefaultAsync();
+        }
+        //annadir el Caducidad en la db--------------------------------------------------------
+        public Task<int> SaveCaducidad(Caducidad U)
+        {
+            if (U.Id == 0)
+                return _database.InsertAsync(U);
+            else return null;
+        }
+        //guardar la actualizacion de el Caducidad en la db------------------------------------
+        public Task<int> SaveUpCaducidad(Caducidad U)
+        {
+            if (U.Id != 0)
+                return _database.UpdateAsync(U);
+            else return _database.InsertAsync(U);
+        }
+        // borrar una fila de la tabla Caducidad-----------------------------------------------
+        public Task<int> DeleteCaducidad(Caducidad Caducidad)
+        {
+            var x = _database.DeleteAsync(Caducidad);
+            return x;
+        }
+        // devuelve por id de registro Constante en Caducidad--------------------------------------------------------
+        public async Task<List<Caducidad>> GetByIdRegConsCaducidad(int IdReg)
+        {
+            return await _database.QueryAsync<Caducidad>($"Select * from Caducidad where IdReg = '{IdReg}' and TipoInv = 'C'");
+        }
+        // devuelve por id de registro Acumulativo en Caducidad--------------------------------------------------------
+        public async Task<List<Caducidad>> GetByIdRegAcumCaducidad(int IdReg)
+        {
+            return await _database.QueryAsync<Caducidad>($"Select * from Caducidad where IdReg = '{IdReg}' and TipoInv = 'A'");
         }
     }
 }

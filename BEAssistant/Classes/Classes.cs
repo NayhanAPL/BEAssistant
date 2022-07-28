@@ -204,6 +204,14 @@ namespace BEAssistant
 
     //-----------------------------------------CIERRES
 
+    public class Caducidad
+    {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        public int IdReg { get; set; }
+        public string TipoInv { get; set; }
+        public bool Caduco { get; set; }
+    }
     public class CierresDiarios
     {
         [PrimaryKey, AutoIncrement]

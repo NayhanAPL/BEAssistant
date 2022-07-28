@@ -11,7 +11,9 @@
                 <StackLayout>
                     <Label Text="Descripción de la venta" Margin="10,15" TextColor="Black" FontSize="23" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                     <Label Text="Hacer una decripción le permite identificar con mayor detalle todos los factores que intervienen en esta venta, puede hablar acerca del cliente o tal vez recordar detalles sobre la producción." FontAttributes="Bold" Margin="10"/>
-                    <Entry Placeholder="Descripción" SelectionLength="70" x:Name="EntryVentaDescripcion" PlaceholderColor="Green" TextColor="Black" Margin="5"/>
+                    <Frame Padding="5" Margin="5" HasShadow="True" CornerRadius="10" BackgroundColor="White">
+                        <Editor Placeholder="Descripción" MaxLength="300" HeightRequest="100" x:Name="EntryVentaDescripcion" PlaceholderColor="Black" TextColor="Black"/>
+                    </Frame>
                     <Frame Margin="15,5" HorizontalOptions="Center" BackgroundColor="Green" CornerRadius="10" HasShadow="True" Padding="0">
                         <Button Text="AGREGAR" HeightRequest="40" Padding="0" WidthRequest="350" x:Name="ButtonAgregarDescripcionVenta" Clicked="ButtonAgregarDescripcionVenta_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
                     </Frame>

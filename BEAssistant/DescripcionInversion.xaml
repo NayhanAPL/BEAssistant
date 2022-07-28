@@ -13,7 +13,9 @@
                 <StackLayout>
                     <Label Text="Descripción de la Inversión" Margin="10,15" TextColor="Black" FontSize="23" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                     <Label Text="Hacer una decripción le permite identificar con mayor detalle todos los factores que intervienen en esta nueva inverción. En un futuro será de utilidad cuando quiera consultar este elemento..." FontAttributes="Bold" Margin="10"/>
-                    <Entry Placeholder="Descripción" SelectionLength="70" x:Name="EntryInvDescripcion" PlaceholderColor="Green" TextColor="Black" Margin="5"/>
+                    <Frame Padding="5" Margin="5" HasShadow="True" CornerRadius="10" BackgroundColor="White">
+                        <Editor Placeholder="Descripción" MaxLength="300" HeightRequest="100" x:Name="EntryInvDescripcion" PlaceholderColor="Black" TextColor="Black"/>
+                    </Frame>
                     <Frame Margin="15,5" HorizontalOptions="Center" BackgroundColor="Green" CornerRadius="10" HasShadow="True" Padding="0">
                         <Button Text="AGREGAR" WidthRequest="350" HeightRequest="40" x:Name="ButtonAgregarDescripcion" Clicked="ButtonAgregarDescripcion_Clicked" CornerRadius="5" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" BackgroundColor="Green"/>
                     </Frame>

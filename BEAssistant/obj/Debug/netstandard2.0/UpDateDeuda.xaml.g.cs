@@ -32,7 +32,7 @@ namespace BEAssistant {
         private global::Xamarin.Forms.Entry EntryFechaFinDeuda;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Entry EntryDeudaDescripcion;
+        private global::Xamarin.Forms.Editor EntryDeudaDescripcion;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Button UpDateDeudas;
@@ -48,7 +48,7 @@ namespace BEAssistant {
             EntryUnidadesDeuda = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::BEAssistant.RoundedEntry>(this, "EntryUnidadesDeuda");
             fechaInicialDeuda = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "fechaInicialDeuda");
             EntryFechaFinDeuda = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "EntryFechaFinDeuda");
-            EntryDeudaDescripcion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Entry>(this, "EntryDeudaDescripcion");
+            EntryDeudaDescripcion = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Editor>(this, "EntryDeudaDescripcion");
             UpDateDeudas = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "UpDateDeudas");
             volver = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "volver");
         }

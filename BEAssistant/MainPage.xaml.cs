@@ -27,6 +27,7 @@ namespace BEAssistant
         private async void Iniciar()
         {
             CrearInventario();
+            listCadusidad.Clear();
             RevisarCaducidad();
             RegistroConstante();
             var d = await App.Database.GetCierreDiario();
@@ -201,17 +202,17 @@ namespace BEAssistant
             }
               
         }
+        public static List<ViewCaducidad> listCadusidad = new List<ViewCaducidad>(); 
         private async void RevisarCaducidad()
         {
             bool Mostrarmensaje = false;
-            string mensaje = "";
             DateTime TimeActual = DateTime.Now;
             TimeActual = TimeActual.ToLocalTime();
             int diaActual = TimeActual.DayOfYear + TimeActual.Year * 365;
+            var listInven = await App.Database.GetInventario();
             var stock = await App.Database.GetStock();
             var regA = await App.Database.GetByTipoReAcumulativa((int)TiposAcumulativa.MateriaPrima);
-            var regC = await App.Database.GetByTipoReConstante((int)TiposConstante.MateriaPrima);
-            var listInven = await App.Database.GetInventario();
+            var regC = await App.Database.GetByTipoReConstante((int)TiposConstante.MateriaPrima);            
             foreach (var item in stock)
             {
                 if(item.TipoInv == "Acumulativa")
@@ -220,53 +221,56 @@ namespace BEAssistant
                     var spesifiA = regA.FindAll(x => x.IdInv == item.IdInv);
                     for (int i = spesifiA.Count - 1; i >= 0; i--)
                     {
-                        int dias = (spesifiA[i].Fecha.DayOfYear + spesifiA[i].Fecha.Year * 365) + item.Duracion;
-                        if (dias <= diaActual)
+                        var caducidad = await App.Database.GetByIdRegAcumCaducidad(spesifiA[i].Id); if (caducidad.Count > 0)
                         {
-                            Stocker upStock = new Stocker
+                            int dias = (spesifiA[i].Fecha.DayOfYear + spesifiA[i].Fecha.Year * 365) + item.Duracion;
+                            if (dias <= diaActual && caducidad[0].Caduco != true)
                             {
-                                Id = item.Id,
-                                IdInv = item.IdInv,
-                                TipoInv = item.TipoInv,
-                                CantActual = unidadesUtiles,
-                                Duracion = item.Duracion,
-                                Categoria = item.Categoria,
-                                UnidadesEstimadas = item.UnidadesEstimadas
-                            };
-                            await App.Database.SaveUpStock(upStock);
-                            // Inventario
-                            var invenDia = listInven.FindAll(x => x.Fecha.DayOfYear == TimeActual.DayOfYear && x.Fecha.Year == TimeActual.Year);
-                            var inversion = await App.Database.GetIdInvAcumulativa(item.IdInv);
-                            int posInven = invenDia.FindIndex(x => x.Materias == inversion.Nombre);
-                            if (posInven != -1)
-                            {
-                                invenDia[posInven].ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles);
-                                await App.Database.SaveUpInventario(invenDia[posInven]);
+                                Caducidad up = caducidad[0]; up.Caduco = true; await App.Database.SaveUpCaducidad(up);
+                                Stocker upStock = new Stocker
+                                {
+                                    Id = item.Id,
+                                    IdInv = item.IdInv,
+                                    TipoInv = item.TipoInv,
+                                    CantActual = unidadesUtiles,
+                                    Duracion = item.Duracion,
+                                    Categoria = item.Categoria,
+                                    UnidadesEstimadas = item.UnidadesEstimadas
+                                };
+                                await App.Database.SaveUpStock(upStock);
+                                // Inventario
+                                var invenDia = listInven.FindAll(x => x.Fecha.DayOfYear == TimeActual.DayOfYear && x.Fecha.Year == TimeActual.Year);
+                                var inversion = await App.Database.GetIdInvAcumulativa(item.IdInv);
+                                int posInven = invenDia.FindIndex(x => x.Materias == inversion.Nombre);
+                                if (posInven != -1)
+                                {
+                                    invenDia[posInven].ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles);
+                                    await App.Database.SaveUpInventario(invenDia[posInven]);
+                                }
+                                else
+                                {
+                                    var fecha = spesifiA[i].Fecha;
+                                    fecha.AddDays(item.Duracion);
+                                    await App.Database.SaveInventario(new Inventario()
+                                    {
+                                        Materias = inversion.Nombre,
+                                        ConsUtil = 0,
+                                        ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles),
+                                        ConsExedente = 0,
+                                        Fecha = fecha
+                                    });
+                                }
+                                Mostrarmensaje = true;
+                                var inv = await App.Database.GetIdInvAcumulativa(item.IdInv);
+                                listCadusidad.Add( new ViewCaducidad() { Nombre = inv.Nombre , Perdida = Convert.ToInt32(spesifiA[i].Unidades - unidadesUtiles), CantidadActual = Convert.ToInt32(unidadesUtiles)});
                             }
                             else
                             {
-                                var fecha = spesifiA[i].Fecha;
-                                fecha.AddDays(item.Duracion);
-                                await App.Database.SaveInventario(new Inventario()
-                                {
-                                    Materias = inversion.Nombre,
-                                    ConsUtil = 0,
-                                    ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles),
-                                    ConsExedente = 0,
-                                    Fecha = fecha
-                                });
+                                unidadesUtiles += spesifiA[i].Unidades;
+                                if (unidadesUtiles >= item.CantActual) break;
                             }
-                           
+                        }
 
-                            Mostrarmensaje = true;
-                            var inv = await App.Database.GetIdInvAcumulativa(item.IdInv);
-                            mensaje = mensaje + $"La compra de {inv.Nombre} el {spesifiA[i].Fecha} caducó. El stock de {inv.Nombre} es de {unidadesUtiles} unidades. Se perdieron {(spesifiA[i].Unidades - unidadesUtiles)} unidades\n";
-                        }
-                        else
-                        {
-                            unidadesUtiles += spesifiA[i].Unidades;
-                            if (unidadesUtiles >= item.CantActual) break;
-                        }
                     }
                 }
                 if (item.TipoInv == "Constante")
@@ -275,63 +279,65 @@ namespace BEAssistant
                     var spesifiC = regC.FindAll(x => x.IdInv == item.IdInv);
                     for (int i = spesifiC.Count - 1; i >= 0; i--)
                     {
-                        int dias = (spesifiC[i].Fecha.DayOfYear + spesifiC[i].Fecha.Year * 365) + item.Duracion;
-                        if (dias <= diaActual)
+                        var caducidad = await App.Database.GetByIdRegConsCaducidad(spesifiC[i].Id); if (caducidad.Count > 0)
                         {
-                            Stocker upStock = new Stocker
+                            int dias = (spesifiC[i].Fecha.DayOfYear + spesifiC[i].Fecha.Year * 365) + item.Duracion;
+                            if (dias <= diaActual && caducidad[0].Caduco != true)
                             {
-                                Id = item.Id,
-                                IdInv = item.IdInv,
-                                TipoInv = item.TipoInv,
-                                CantActual = unidadesUtiles,
-                                Duracion = item.Duracion,
-                                Categoria = item.Categoria,
-                                UnidadesEstimadas = item.UnidadesEstimadas
-                            };
-                            await App.Database.SaveUpStock(upStock);
-                            // Inventario
-                            var invenDia = listInven.FindAll(x => x.Fecha.DayOfYear == TimeActual.DayOfYear && x.Fecha.Year == TimeActual.Year);
-                            var inversion = await App.Database.GetIdInvConstante(item.IdInv);
-                            int posInven = invenDia.FindIndex(x => x.Materias == inversion.Nombre);
-                            if (posInven != -1)
-                            { 
-                                invenDia[posInven].ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles);
-                                await App.Database.SaveUpInventario(invenDia[posInven]);
+                                Caducidad up = caducidad[0]; up.Caduco = true; await App.Database.SaveUpCaducidad(up);
+                                Stocker upStock = new Stocker
+                                {
+                                    Id = item.Id,
+                                    IdInv = item.IdInv,
+                                    TipoInv = item.TipoInv,
+                                    CantActual = unidadesUtiles,
+                                    Duracion = item.Duracion,
+                                    Categoria = item.Categoria,
+                                    UnidadesEstimadas = item.UnidadesEstimadas
+                                };
+                                await App.Database.SaveUpStock(upStock);
+                                // Inventario
+                                var invenDia = listInven.FindAll(x => x.Fecha.DayOfYear == TimeActual.DayOfYear && x.Fecha.Year == TimeActual.Year);
+                                var inversion = await App.Database.GetIdInvConstante(item.IdInv);
+                                int posInven = invenDia.FindIndex(x => x.Materias == inversion.Nombre);
+                                if (posInven != -1)
+                                {
+                                    invenDia[posInven].ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles);
+                                    await App.Database.SaveUpInventario(invenDia[posInven]);
+                                }
+                                else
+                                {
+                                    var fecha = spesifiC[i].Fecha;
+                                    fecha.AddDays(item.Duracion);
+                                    await App.Database.SaveInventario(new Inventario()
+                                    {
+                                        Materias = inversion.Nombre,
+                                        ConsUtil = 0,
+                                        ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles),
+                                        ConsExedente = 0,
+                                        Fecha = fecha
+                                    });
+                                    invenDia[posInven].Materias = inversion.Nombre;
+                                    invenDia[posInven].ConsUtil = 0;
+                                    invenDia[posInven].ConsExedente = 0;
+                                    invenDia[posInven].ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles);
+                                }
+                                Mostrarmensaje = true;
+                                var inv = await App.Database.GetIdInvConstante(item.IdInv);
+                                listCadusidad.Add(new ViewCaducidad() { Nombre = inv.Nombre, Perdida = Convert.ToInt32(spesifiC[i].Unidades - unidadesUtiles), CantidadActual = Convert.ToInt32(unidadesUtiles) });
                             }
                             else
                             {
-                                var fecha = spesifiC[i].Fecha;
-                                fecha.AddDays(item.Duracion);
-                                await App.Database.SaveInventario(new Inventario()
-                                {
-                                    Materias = inversion.Nombre,
-                                    ConsUtil = 0,
-                                    ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles),
-                                    ConsExedente = 0,
-                                    Fecha = fecha
-                                });
-                                invenDia[posInven].Materias = inversion.Nombre;
-                                invenDia[posInven].ConsUtil = 0;
-                                invenDia[posInven].ConsExedente = 0;
-                                invenDia[posInven].ConsCaduco = Convert.ToInt32(item.CantActual - unidadesUtiles);
+                                unidadesUtiles += spesifiC[i].Unidades;
+                                if (unidadesUtiles >= item.CantActual) break;
                             }
-                            Mostrarmensaje = true;
-                            var inv = await App.Database.GetIdInvConstante(item.IdInv);
-                            mensaje = mensaje + $"La compra de {inv.Nombre} el {spesifiC[i].Fecha} caducó. El stock de {inv.Nombre} es de {unidadesUtiles} unidades. Se perdieron {(spesifiC[i].Unidades - unidadesUtiles)} unidades\n";
-                        }
-                        else
-                        {
-                            unidadesUtiles += spesifiC[i].Unidades;
-                            if (unidadesUtiles >= item.CantActual) break;
                         }
                     }
                 }
             }
             if (Mostrarmensaje)
             {
-                popups.PopupAlert.PopupLabelTitulo = "Reporte de caducidad";
-                popups.PopupAlert.PopupLabelText = mensaje;
-                await Navigation.PushPopupAsync(new PopupAlert());
+                await Navigation.PushPopupAsync(new popupReporteCaducidad());
             }
         }
         private async void RegistroConstante()
@@ -419,6 +425,13 @@ namespace BEAssistant
                                     Unidades = 1,
                                     Fecha = new DateTime(year: ultimoReg.Year, month: ultimoReg.Month, day: ultimoReg.Day)
                                 });
+                                var lastItem = await App.Database.GetLastItemRegConstante();
+                                await App.Database.SaveCaducidad(new Caducidad()
+                                {
+                                    IdReg = lastItem[0].IdInv,
+                                    Caduco = false,
+                                    TipoInv = "C"
+                                });
                             }                                    
                             if(elemC.Categoria == ConstCategoria.Independiente)
                             {
@@ -428,6 +441,13 @@ namespace BEAssistant
                                     Costo = listaReg[listaReg.Count - 1].Costo,
                                     Unidades = listaReg[listaReg.Count - 1].Unidades,
                                     Fecha = new DateTime(year: ultimoReg.Year, month: ultimoReg.Month, day: ultimoReg.Day)
+                                });
+                                var lastItem = await App.Database.GetLastItemRegConstante();
+                                await App.Database.SaveCaducidad(new Caducidad()
+                                {
+                                    IdReg = lastItem[0].IdInv,
+                                    Caduco = false,
+                                    TipoInv = "C"
                                 });
                             }
                             if(elemC.Tipo == TiposConstante.MateriaPrima)
