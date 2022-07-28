@@ -158,7 +158,7 @@ namespace BEAssistant
                             var lastItem = await App.Database.GetLastItemRegConstante();
                             await App.Database.SaveCaducidad(new Caducidad()
                             {
-                                IdReg = lastItem[0].IdInv,
+                                IdReg = lastItem[0].Id,
                                 Caduco = false,
                                 TipoInv = "C"
                             });
@@ -181,7 +181,7 @@ namespace BEAssistant
                         var lastItem = await App.Database.GetLastItemRegConstante();
                         await App.Database.SaveCaducidad(new Caducidad()
                         {
-                            IdReg = lastItem[0].IdInv,
+                            IdReg = lastItem[0].Id,
                             Caduco = false,
                             TipoInv = "C"
                         });
@@ -215,7 +215,7 @@ namespace BEAssistant
                     var lastItem = await App.Database.GetLastItemRegAcumulativa();
                     await App.Database.SaveCaducidad(new Caducidad()
                     {
-                        IdReg = lastItem[0].IdInv,
+                        IdReg = lastItem[0].Id,
                         Caduco = false,
                         TipoInv = "A"
                     });
@@ -1091,19 +1091,13 @@ namespace BEAssistant
             {
                 page3InObjA = (InAcumulativa)e.SelectedItem;
                 popupMostrarInfoInv.tipeSelected = 2;
-                PopupAlert.PopupLabelTitulo = "Detalles de la inversión Acumulativa";
-                PopupAlert.PopupLabelText = $"TIPO: {page3InObjA.Tipo} \n";
-                if (!string.IsNullOrEmpty(page3InObjA.Descripcion)) PopupAlert.PopupLabelText += $"Descripción:{page3InObjA.Descripcion}";
-                await Navigation.PushPopupAsync(new PopupAlert());
+                await Navigation.PushPopupAsync(new popupMostrarInfoInv());
             }
             if (PickerPage3Deno.SelectedIndex == 2)
             {
                 page3InObjE = (InExtraordinaria)e.SelectedItem;
                 popupMostrarInfoInv.tipeSelected = 3;
-                PopupAlert.PopupLabelTitulo = "Detalles de la inversión Extraordinaria";
-                PopupAlert.PopupLabelText = $"CATEGORÍA: {page3InObjE.Categoria} \nTIPO: {page3InObjE.Tipo} \n";
-                if (!string.IsNullOrEmpty(page3InObjE.Descripcion)) PopupAlert.PopupLabelText += $"Descripción:{page3InObjE.Descripcion}";
-                await Navigation.PushPopupAsync(new PopupAlert());
+                await Navigation.PushPopupAsync(new popupMostrarInfoInv());
             }
             selectedAny = true;
         }
@@ -1112,26 +1106,20 @@ namespace BEAssistant
             if (PickerPage3Deno.SelectedIndex == 0)
             {
                 page3ReObjC = (ReConstante)e.SelectedItem;
-                var obj = await App.Database.GetIdInvConstante(page3ReObjC.IdInv);
-                PopupAlert.PopupLabelTitulo = "DETALLES DE LA INVERSIÓN CONSTANTE";
-                PopupAlert.PopupLabelText = $"NOMBRE: {obj.Nombre} \nFRECUENCIA: {obj.Frecuencia} \nCATEGORÍA: {obj.Categoria} \nTIPO: {obj.Tipo} \nDESCRIPCIÓN: {obj.Descripcion}";
-                await Navigation.PushPopupAsync(new PopupAlert());
+                popupMostrarInfoReg.regtipeSelected = 1;
+                await Navigation.PushPopupAsync(new popupMostrarInfoReg());
             }
             if (PickerPage3Deno.SelectedIndex == 1)
             {
                 page3ReObjA = (ReAcumulativa)e.SelectedItem;
-                var obj = await App.Database.GetIdInvAcumulativa(page3ReObjA.IdInv);
-                PopupAlert.PopupLabelTitulo = "DETALLES DE LA INVERSIÓN ACUMULATIVA";
-                PopupAlert.PopupLabelText = $"NOMBRE: {obj.Nombre} \nTIPO: {obj.Tipo} \nDESCRIPCIÓN: {obj.Descripcion}";
-                await Navigation.PushPopupAsync(new PopupAlert());
+                popupMostrarInfoReg.regtipeSelected = 2;
+                await Navigation.PushPopupAsync(new popupMostrarInfoReg());
             }
             if (PickerPage3Deno.SelectedIndex == 2)
             {
                 page3ReObjE = (ReExtraordinaria)e.SelectedItem;
-                var obj = await App.Database.GetIdInvExtraordinaria(page3ReObjE.IdInv);
-                PopupAlert.PopupLabelTitulo = "DETALLES DEL TIPO DE INVERSIÓN";
-                PopupAlert.PopupLabelText = $"NOMBRE: {obj.Nombre} \nCATEGORÍA: {obj.Categoria} \nTIPO: {obj.Tipo} \nDESCRIPCIÓN: {obj.Descripcion}";
-                await Navigation.PushPopupAsync(new PopupAlert());
+                popupMostrarInfoReg.regtipeSelected = 3;
+                await Navigation.PushPopupAsync(new popupMostrarInfoReg());
             }
             selectedAny = true;
         }
@@ -1195,9 +1183,9 @@ namespace BEAssistant
         public static Deudas deudaActual = new Deudas();
         private async void ListDeudas_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            deudaActual = (Deudas)e.SelectedItem;
+            var elem = (Deudas)e.SelectedItem;
+            deudaActual = await App.Database.GetIdDeuda(elem.Id);
             string restante = DiferenciaDeTiempo(deudaActual);
-
             DateTime TimeActual = DateTime.Now;
             TimeActual = TimeActual.ToLocalTime();
             string unidadtime = "día";
@@ -1217,13 +1205,15 @@ namespace BEAssistant
             if (timeSpan.Days <= 0)
             {
                 PopupAlert.PopupLabelTitulo = "SUGERENCIAS";
-                PopupAlert.PopupLabelText = $"Esta deuda terminó su plazo de pago, se recomienda pagar cuanto antes.";
+                PopupAlert.PopupLabelText = $"Esta deuda terminó su plazo de pago, se recomienda pagar cuanto antes. \n" +
+                    $"{deudaActual.Descripcion}";
                 await Navigation.PushPopupAsync(new PopupAlert());
             }
             else
             {
                 PopupAlert.PopupLabelTitulo = "SUGERENCIAS";
-                PopupAlert.PopupLabelText = $"Para pagar esta deuda tiene un plazo de {restante}. Se le recomienda pagar {cantidadCadaTime}$ cada {unidadtime}.";
+                PopupAlert.PopupLabelText = $"Para pagar esta deuda tiene un plazo de {restante}. Se le recomienda pagar {cantidadCadaTime}$ cada {unidadtime}, o ir guardando esa cantidad para hacer un pago completo a tiempo.\n" +
+                    $"{deudaActual.Descripcion}";
                 await Navigation.PushPopupAsync(new PopupAlert());
             }
             ButtonActualizarDeuda.IsVisible = true;

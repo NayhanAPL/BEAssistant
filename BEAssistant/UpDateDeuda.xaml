@@ -18,11 +18,11 @@
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Costo: $" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
-                        <local:RoundedEntry x:Name="EntryCostoDeuda" Keyboard="Numeric" Focused="EntryCostoDeuda_Focused" Unfocused="EntryCostoDeuda_Unfocused" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                        <local:RoundedEntry x:Name="EntryCostoDeuda" Keyboard="Numeric" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Unidades:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
-                        <local:RoundedEntry x:Name="EntryUnidadesDeuda" Keyboard="Numeric" Focused="EntryUnidadesDeuda_Focused" Unfocused="EntryUnidadesDeuda_Unfocused" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                        <local:RoundedEntry x:Name="EntryUnidadesDeuda" Keyboard="Numeric" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Fecha inicial:" FontSize="17" TextColor="Black" FontAttributes="Bold" Margin="10,10,0,5"/>
@@ -30,7 +30,7 @@
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Fecha límite:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,0" TextColor="Black" FontAttributes="Bold"/>
-                        <Entry x:Name="EntryFechaFinDeuda" Keyboard="Default" Focused="EntryFechaFinDeuda_Focused" Unfocused="EntryFechaFinDeuda_Unfocused" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
+                        <Entry x:Name="EntryFechaFinDeuda" Keyboard="Default" VerticalOptions="Center"  FontAttributes="Bold" Placeholder="Escribir aquí" PlaceholderColor="Green" TextColor="Green" />
                     </StackLayout>
                     <StackLayout>
                         <Label Text="Descripción del producto:" Margin="10,0" TextColor="Black" FontSize="17" FontAttributes="Bold"/>

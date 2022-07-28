@@ -68,7 +68,7 @@ namespace BEAssistant
                     var lastItem = await App.Database.GetLastItemRegAcumulativa();
                     await App.Database.SaveCaducidad(new Caducidad()
                     {
-                        IdReg = lastItem[0].IdInv,
+                        IdReg = lastItem[0].Id,
                         Caduco = false,
                         TipoInv = "A"
                     });
@@ -85,7 +85,7 @@ namespace BEAssistant
                     var lastItem = await App.Database.GetLastItemRegConstante();
                     await App.Database.SaveCaducidad(new Caducidad()
                     {
-                        IdReg = lastItem[0].IdInv,
+                        IdReg = lastItem[0].Id,
                         Caduco = false,
                         TipoInv = "C"
                     });

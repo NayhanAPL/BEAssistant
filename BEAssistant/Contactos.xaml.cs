@@ -28,7 +28,10 @@ namespace BEAssistant
             var Asociados = contactos.FindAll(x => x.Categoria == "Asociados");
             var Trabajadores = contactos.FindAll(x => x.Categoria == "Trabajadores");
 
-
+            Clientes.ForEach(x => x.Categoria = x.Nombre.Substring(0,1).ToUpper());
+            Proveedores.ForEach(x => x.Categoria = x.Nombre.Substring(0,1).ToUpper());
+            Asociados.ForEach(x => x.Categoria = x.Nombre.Substring(0,1).ToUpper());
+            Trabajadores.ForEach(x => x.Categoria = x.Nombre.Substring(0,1).ToUpper());
             listContactosClientes.ItemsSource = Clientes.OrderBy(x => x.Nombre);
             listContactosProveedores.ItemsSource = Proveedores.OrderBy(x => x.Nombre);
             listContactosAsociados.ItemsSource = Asociados.OrderBy(x => x.Nombre);

@@ -29,11 +29,17 @@
                 </StackLayout>
                 <StackLayout >
                     <Label Text="Descripción:" TextColor="Gray" FontSize="18" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Entry Placeholder="" Keyboard="Email" VerticalOptions="Start" SelectionLength="70" x:Name="EntryDescripcion" PlaceholderColor="Gray" TextColor="Black"/>
+                    <Frame HasShadow="True" BackgroundColor="White" Padding="10" Margin="5" CornerRadius="10">
+                        <Editor Placeholder="" Keyboard="Email" VerticalOptions="Start" HeightRequest="60" x:Name="EntryDescripcion" PlaceholderColor="Gray" TextColor="Black"/>
+                    </Frame>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Cancelar" x:Name="ButtonCancelar" Margin="0,5,25,0" Clicked="ButtonCancelar_Clicked" HorizontalOptions="Start" FontSize="20" CornerRadius="5" BackgroundColor="White" FontAttributes="Bold" TextColor="Green"/>
-                    <Button Text="Aceptar" x:Name="ButtonCrear" Margin="25,5,0,0" Clicked="ButtonCrear_Clicked" HorizontalOptions="End" FontSize="20" CornerRadius="5" BackgroundColor="White" FontAttributes="Bold" TextColor="Green"/>
+                    <Frame CornerRadius="10" HasShadow="True" Margin="5" Padding="0" HorizontalOptions="Start" >
+                        <Button Text="Cancelar" TextTransform="None" WidthRequest="130" CornerRadius="10" x:Name="ButtonCancelar" Clicked="ButtonCancelar_Clicked" FontSize="17" BackgroundColor="White" FontAttributes="Bold" TextColor="Green"/>
+                    </Frame>
+                    <Frame CornerRadius="10" Margin="5" HasShadow="True" Padding="0" HorizontalOptions="End">
+                        <Button Text="Aceptar" TextTransform="None" WidthRequest="130" CornerRadius="10" x:Name="ButtonCrear" Clicked="ButtonCrear_Clicked" FontSize="17" BackgroundColor="White" FontAttributes="Bold" TextColor="Green"/>
+                    </Frame>
                 </StackLayout>
             </StackLayout>
         </Frame>

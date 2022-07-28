@@ -262,7 +262,7 @@ namespace BEAssistant
                                 }
                                 Mostrarmensaje = true;
                                 var inv = await App.Database.GetIdInvAcumulativa(item.IdInv);
-                                listCadusidad.Add( new ViewCaducidad() { Nombre = inv.Nombre , Perdida = Convert.ToInt32(spesifiA[i].Unidades - unidadesUtiles), CantidadActual = Convert.ToInt32(unidadesUtiles)});
+                                listCadusidad.Add( new ViewCaducidad() { Nombre = inv.Nombre , Perdida = Convert.ToInt32(spesifiA[i].Unidades - unidadesUtiles), CantidadActual = Convert.ToInt32(unidadesUtiles), Fecha = spesifiA[i].Fecha});
                             }
                             else
                             {
@@ -324,7 +324,7 @@ namespace BEAssistant
                                 }
                                 Mostrarmensaje = true;
                                 var inv = await App.Database.GetIdInvConstante(item.IdInv);
-                                listCadusidad.Add(new ViewCaducidad() { Nombre = inv.Nombre, Perdida = Convert.ToInt32(spesifiC[i].Unidades - unidadesUtiles), CantidadActual = Convert.ToInt32(unidadesUtiles) });
+                                listCadusidad.Add(new ViewCaducidad() { Nombre = inv.Nombre, Perdida = Convert.ToInt32(spesifiC[i].Unidades - unidadesUtiles), CantidadActual = Convert.ToInt32(unidadesUtiles), Fecha = spesifiC[i].Fecha });
                             }
                             else
                             {
@@ -428,7 +428,7 @@ namespace BEAssistant
                                 var lastItem = await App.Database.GetLastItemRegConstante();
                                 await App.Database.SaveCaducidad(new Caducidad()
                                 {
-                                    IdReg = lastItem[0].IdInv,
+                                    IdReg = lastItem[0].Id,
                                     Caduco = false,
                                     TipoInv = "C"
                                 });
@@ -445,7 +445,7 @@ namespace BEAssistant
                                 var lastItem = await App.Database.GetLastItemRegConstante();
                                 await App.Database.SaveCaducidad(new Caducidad()
                                 {
-                                    IdReg = lastItem[0].IdInv,
+                                    IdReg = lastItem[0].Id,
                                     Caduco = false,
                                     TipoInv = "C"
                                 });

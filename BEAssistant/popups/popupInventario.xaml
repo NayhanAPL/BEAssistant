@@ -63,23 +63,27 @@
                                 </DataTemplate>
                             </CarouselView.ItemTemplate>
                         </CarouselView>
-                        <Button Grid.Row="2" Text="Modificar" x:Name="ModificarInventario" Clicked="ModificarInventario_Clicked" FontSize="18" HorizontalOptions="Center" TextColor="White" CornerRadius="10" BackgroundColor="Green"/>
+                        <Frame Grid.Row="2" HasShadow="True" Padding="0" Margin="15,0" CornerRadius="10" BackgroundColor="Green">
+                            <Button Text="Modificar" WidthRequest="350" TextTransform="None" x:Name="ModificarInventario" Clicked="ModificarInventario_Clicked" FontSize="18" HorizontalOptions="Center" TextColor="White" CornerRadius="10" BackgroundColor="Green"/>
+                        </Frame>
                     </Grid>
                     <StackLayout x:Name="GridUpdate">
                         <StackLayout>
                             <Picker SelectedIndexChanged="selectMateria_SelectedIndexChanged" x:Name="selectMateria" Margin="0" VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  "/>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <local:RoundedEntry Grid.Column="0" x:Name="EntryUtil" FontAttributes="Bold" Placeholder="Util    " VerticalOptions="Center" PlaceholderColor="Black" TextColor="Green" Keyboard="Numeric"/>
                                 <local:RoundedEntry Grid.Column="1" x:Name="EntryCaduco" FontAttributes="Bold" Placeholder="Caduco  " VerticalOptions="Center" PlaceholderColor="Black" TextColor="Green" Keyboard="Numeric"/>
                                 <local:RoundedEntry Grid.Column="2" x:Name="EntryExedente" FontAttributes="Bold" Placeholder="Exedente" VerticalOptions="Center" PlaceholderColor="Black" TextColor="Green" Keyboard="Numeric"/>
                             </Grid>
                         </StackLayout>
-                        <Button Text="guardar" FontAttributes="Bold" x:Name="GuardarCambiosInventario" Clicked="GuardarCambiosInventario_Clicked" FontSize="19" HorizontalOptions="Center" TextColor="Green" CornerRadius="10" BackgroundColor="White"/>
+                        <Frame HasShadow="True" Padding="0" Margin="15,0" CornerRadius="10" BackgroundColor="White">
+                            <Button Text="Guardar" FontAttributes="Bold" TextTransform="None" WidthRequest="350" x:Name="GuardarCambiosInventario" Clicked="GuardarCambiosInventario_Clicked" FontSize="17" HorizontalOptions="Center" TextColor="Green" CornerRadius="10" BackgroundColor="White"/>
+                        </Frame>
                     </StackLayout>
                 </StackLayout>
             </Frame>

@@ -3,19 +3,22 @@
                   xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   x:Class="BEAssistant.popups.OperacionesContacto">
-    <StackLayout Margin="20,50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="340">
+    <StackLayout Margin="20,50" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="400">
         <Frame Margin="0" Padding="10" CornerRadius="15">
             <StackLayout>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="10,15,10,10">
+                    <Label Text="&#xf3c5;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="Black" FontSize="20" Margin="10,0"/>
+                    <Label Text="" x:Name="LabelDireccion" TextColor="Black" FontSize="18" FontAttributes="Italic" Margin="0"/>
+                </StackLayout>
+                <Label Text="" x:Name="LabelDescripcion" TextColor="DarkSlateGray" FontSize="18" Margin="20,0"/>
+                <StackLayout Orientation="Horizontal" Margin="10">
                     <Button x:Name="buttonLlamar" Clicked="buttonLlamar_Clicked" Text="&#xf10b;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="DarkSlateGray" BackgroundColor="White" FontAttributes="Bold" FontSize="19" WidthRequest="50" HorizontalOptions="Center"/>
                     <Button x:Name="buttonLlamarTelefono" Clicked="buttonLlamarTelefono_Clicked" Text="&#xf879;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="DarkSlateGray" BackgroundColor="White" FontAttributes="Bold" WidthRequest="50" FontSize="19" HorizontalOptions="Center"/>
                     <Button x:Name="buttonMensaje" Clicked="buttonMensaje_Clicked" Text="&#xf075;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="DarkSlateGray" BackgroundColor="White" FontAttributes="Bold" FontSize="19" WidthRequest="50" HorizontalOptions="Center"/>
                     <Button x:Name="buttonCorreo" Clicked="buttonCorreo_Clicked" Text="&#xf003;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="DarkSlateGray" BackgroundColor="White" FontAttributes="Bold" FontSize="19" WidthRequest="50" HorizontalOptions="Center"/>
-                    <Button x:Name="buttonResumen" Clicked="buttonResumen_Clicked" Text="&#xf53d;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="DarkSlateGray" BackgroundColor="White" FontAttributes="Bold" FontSize="19" WidthRequest="50" HorizontalOptions="Center"/>
+                    <Button x:Name="buttonResumen" Clicked="buttonResumen_Clicked" Text="&#xf56e;" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="DarkSlateGray" BackgroundColor="White" FontAttributes="Bold" FontSize="19" WidthRequest="50" HorizontalOptions="Center"/>
                     <Button x:Name="buttonEliminar" Text="&#xf2ed;" Clicked="buttonEliminar_Clicked" FontFamily="{StaticResource FontAwesomeSolid}" TextColor="DarkSlateGray" BackgroundColor="White" FontAttributes="Bold" FontSize="19" WidthRequest="50" HorizontalOptions="Center"/>
                 </StackLayout>
-                <Label Text="" x:Name="LabelDireccion" TextColor="Black" FontSize="18" FontAttributes="Italic" Margin="10,0"/>
-                <Label Text="" x:Name="LabelDescripcion" TextColor="DarkSlateGray" FontSize="18" Margin="10,0"/>
             </StackLayout>
         </Frame>
     </StackLayout>

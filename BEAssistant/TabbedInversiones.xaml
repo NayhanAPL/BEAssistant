@@ -206,7 +206,7 @@
                                 <StackLayout x:Name="StackExtraBeneficiosa" Orientation="Vertical" Grid.Row="1">
                                     <Label Text="Hacer una inversión a largo plazo suele proporcionar menor consumo de tiempo o materias primas, como tambien mayor calidad o rendimiento..." Margin="10,0,10,5" FontAttributes="Bold"/>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Razón de inversión beneficiosa:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Black" FontAttributes="Bold"/>
+                                        <Label Text="Razón de inversión:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Black" FontAttributes="Bold"/>
                                         <Picker x:Name="PickerExtraTipoBenef" VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
                                             <Picker.Items>
                                                 <x:String>Productividad</x:String>
@@ -221,7 +221,7 @@
                                 <StackLayout x:Name="StackExtraObligatoria" Orientation="Vertical" Grid.Row="1">
                                     <Label Text="Toda empresa se ve obligada en alguna ocación a hacer un gasto o inversión inprevista..." Margin="10,0,10,5" FontAttributes="Bold"/>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Razón de inversión obligatoria:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Black" FontAttributes="Bold"/>
+                                        <Label Text="Razón de inversión:" VerticalOptions="Center" FontSize="17" Margin="10,0,0,5" TextColor="Black" FontAttributes="Bold"/>
                                         <Picker x:Name="PickerExtraTipoOblig" VerticalOptions="Center" FontAttributes="Bold" TitleColor="Green" TextColor="Black" Title="  Seleccionar  ">
                                             <Picker.Items>
                                                 <x:String>Accidente</x:String>

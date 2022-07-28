@@ -62,7 +62,10 @@ namespace BEAssistant.popups
         {
             if (!string.IsNullOrEmpty(Contactos.contactoSelected.Numero))
             {
-                await Navigation.PushPopupAsync(new popupSMS());
+                var sms = CrossMessaging.Current.SmsMessenger;
+                if (sms.CanSendSms)
+                { sms.SendSms(Contactos.contactoSelected.Numero, ""); }
+                await PopupNavigation.Instance.PopAsync(true);
             }
             else
             {
@@ -75,7 +78,12 @@ namespace BEAssistant.popups
         {
             if (!string.IsNullOrEmpty(Contactos.contactoSelected.Numero))
             {
-                await Navigation.PushPopupAsync(new popupEmail());
+                var Email = CrossMessaging.Current.EmailMessenger;
+                if (Email.CanSendEmail)
+                {
+                    Email.SendEmail(Contactos.contactoSelected.Correo, "", "");
+                    await PopupNavigation.Instance.PopAsync(true);
+                }
             }
             else
             {
@@ -88,7 +96,6 @@ namespace BEAssistant.popups
         {
 
         }
-
         private async void buttonEliminar_Clicked(object sender, EventArgs e)
         {
             await App.Database.DeleteContacts(Contactos.contactoSelected);

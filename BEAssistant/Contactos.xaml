@@ -9,16 +9,17 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <StackLayout Grid.Row="0">
-                    <ListView x:Name="listContactosClientes" Scrolled="listContactosClientes_Scrolled" ItemSelected="listContactosClientes_ItemSelected" RowHeight="100" SeparatorColor="Gray">
+                    <ListView x:Name="listContactosClientes" Scrolled="listContactosClientes_Scrolled" ItemSelected="listContactosClientes_ItemSelected" RowHeight="100" SeparatorVisibility="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal">
-                                        <Button BackgroundColor="DimGray" Text="{Binding Nombre}" TextColor="White" Margin="10,20,0,20" FontSize="35" Padding="10,5,10,10" CornerRadius="30" WidthRequest="60" HeightRequest="60"/>
-                                        <StackLayout>
-                                            <Label Text="{Binding Nombre}" Margin="0" TextColor="Black" FontSize="22" FontAttributes="Bold"/>
-                                            <Label Text="{Binding Numero}" Margin="0" TextColor="DarkSlateGray" FontSize="18" FontAttributes="Bold"/>
-                                            <Label Text="{Binding Correo}" Margin="0" TextColor="DarkSlateGray" FontSize="16" FontAttributes="Italic"/>
+                                        <Frame Padding="0" BackgroundColor="DimGray" Margin="20,20,0,20" HasShadow="True" CornerRadius="30" WidthRequest="60" HeightRequest="60">
+                                            <Label BackgroundColor="DimGray" Text="{Binding Categoria}"  FontSize="35" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White"/>
+                                        </Frame>
+                                        <StackLayout VerticalOptions="Center" Margin="10,0,0,0">
+                                            <Label Text="{Binding Nombre}" Margin="0" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Numero}" Margin="0" TextColor="DarkSlateGray" FontSize="17" FontAttributes="Bold"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell>
@@ -37,16 +38,17 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0">
-                <ListView x:Name="listContactosProveedores" Scrolled="listContactosProveedores_Scrolled" ItemSelected="listContactosProveedores_ItemSelected" RowHeight="100" SeparatorColor="Gray">
+                <ListView x:Name="listContactosProveedores" Scrolled="listContactosProveedores_Scrolled" ItemSelected="listContactosProveedores_ItemSelected" RowHeight="100" SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
-                                    <Button BackgroundColor="DimGray" Text="{Binding Nombre}" TextColor="White" Margin="10,20,0,20" FontSize="35" Padding="10,5,10,10" CornerRadius="30" WidthRequest="60" HeightRequest="60"/>
-                                    <StackLayout>
-                                        <Label Text="{Binding Nombre}" Margin="0" TextColor="Black" FontSize="22" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Numero}" Margin="0" TextColor="DarkSlateGray" FontSize="18" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Correo}" Margin="0" TextColor="DarkSlateGray" FontSize="16" FontAttributes="Italic"/>
+                                    <Frame Padding="0" BackgroundColor="DimGray" Margin="20,20,0,20" HasShadow="True" CornerRadius="30" WidthRequest="60" HeightRequest="60">
+                                        <Label BackgroundColor="DimGray" Text="{Binding Categoria}"  FontSize="35" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White"/>
+                                    </Frame>
+                                    <StackLayout VerticalOptions="Center" Margin="10,0,0,0">
+                                        <Label Text="{Binding Nombre}" Margin="0" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Numero}" Margin="0" TextColor="DarkSlateGray" FontSize="17" FontAttributes="Bold"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -64,16 +66,17 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0">
-                <ListView x:Name="listContactosAsociados" Scrolled="listContactosAsociados_Scrolled" ItemSelected="listContactosAsociados_ItemSelected" RowHeight="100" SeparatorColor="Gray">
+                <ListView x:Name="listContactosAsociados" Scrolled="listContactosAsociados_Scrolled" ItemSelected="listContactosAsociados_ItemSelected" RowHeight="100" SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
-                                    <Button BackgroundColor="DimGray" Text="{Binding Nombre}" TextColor="White" Margin="10,20,0,20" FontSize="35" Padding="10,5,10,10" CornerRadius="30" WidthRequest="60" HeightRequest="60"/>
-                                    <StackLayout>
-                                        <Label Text="{Binding Nombre}" Margin="0" TextColor="Black" FontSize="22" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Numero}" Margin="0" TextColor="DarkSlateGray" FontSize="18" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Correo}" Margin="0" TextColor="DarkSlateGray" FontSize="16" FontAttributes="Italic"/>
+                                    <Frame Padding="0" BackgroundColor="DimGray" Margin="20,20,0,20" HasShadow="True" CornerRadius="30" WidthRequest="60" HeightRequest="60">
+                                        <Label BackgroundColor="DimGray" Text="{Binding Categoria}"  FontSize="35" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White"/>
+                                    </Frame>
+                                    <StackLayout VerticalOptions="Center" Margin="10,0,0,0">
+                                        <Label Text="{Binding Nombre}" Margin="0" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Numero}" Margin="0" TextColor="DarkSlateGray" FontSize="17" FontAttributes="Bold"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -91,16 +94,17 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0">
-                <ListView x:Name="listContactosTrabajadores" Scrolled="listContactosTrabajadores_Scrolled" ItemSelected="listContactosTrabajadores_ItemSelected" RowHeight="100" SeparatorColor="Gray">
+                <ListView x:Name="listContactosTrabajadores" Scrolled="listContactosTrabajadores_Scrolled" ItemSelected="listContactosTrabajadores_ItemSelected" RowHeight="100" SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
-                                    <Button BackgroundColor="DimGray" Text="{Binding Nombre}" TextColor="White" Margin="10,20,0,20" FontSize="35" Padding="10,5,10,10" CornerRadius="30" WidthRequest="60" HeightRequest="60"/>
-                                    <StackLayout>
-                                        <Label Text="{Binding Nombre}" Margin="0" TextColor="Black" FontSize="22" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Numero}" Margin="0" TextColor="DarkSlateGray" FontSize="18" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Correo}" Margin="0" TextColor="DarkSlateGray" FontSize="16" FontAttributes="Italic"/>
+                                    <Frame Padding="0" BackgroundColor="DimGray" Margin="20,20,0,20" HasShadow="True" CornerRadius="30" WidthRequest="60" HeightRequest="60">
+                                        <Label BackgroundColor="DimGray" Text="{Binding Categoria}"  FontSize="35" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White"/>
+                                    </Frame>
+                                    <StackLayout VerticalOptions="Center" Margin="10,0,0,0">
+                                        <Label Text="{Binding Nombre}" Margin="0" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Numero}" Margin="0" TextColor="DarkSlateGray" FontSize="17" FontAttributes="Bold"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>

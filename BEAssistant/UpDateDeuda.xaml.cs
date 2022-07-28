@@ -34,33 +34,17 @@ namespace BEAssistant
 
         }
 
-        private void EntryCostoDeuda_Focused(object sender, FocusEventArgs e)
-        {
-            EntryCostoDeuda.FontSize = 20;
-        }
-        private void EntryCostoDeuda_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryCostoDeuda.FontSize = 17;
-        }
-        private void EntryFechaFinDeuda_Focused(object sender, FocusEventArgs e)
-        {
-            EntryFechaFinDeuda.FontSize = 20;
-        }
-        private void EntryFechaFinDeuda_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryFechaFinDeuda.FontSize = 17;
-        }
-        private void EntryUnidadesDeuda_Focused(object sender, FocusEventArgs e)
-        {
-            EntryUnidadesDeuda.FontSize = 20;
-        }
-        private void EntryUnidadesDeuda_Unfocused(object sender, FocusEventArgs e)
-        {
-            EntryUnidadesDeuda.FontSize = 17;
-        }
-
         private async void UpDateDeudas_Clicked(object sender, EventArgs e)
         {
+            DateTime fecha = new DateTime(); 
+            try
+            {
+                fecha = Convert.ToDateTime(EntryFechaFinDeuda.Text);
+            }
+            catch (Exception)
+            {
+                fecha = TabbedInversiones.deudaActual.FechaFin;
+            }
             var elem = await App.Database.GetIdDeuda(TabbedInversiones.deudaActual.Id);
             if (!string.IsNullOrEmpty(EntryCostoDeuda.Text) && !string.IsNullOrEmpty(EntryFechaFinDeuda.Text) && !string.IsNullOrEmpty(EntryUnidadesDeuda.Text))
             {
@@ -70,24 +54,21 @@ namespace BEAssistant
                     Costo = Convert.ToDouble(EntryCostoDeuda.Text),
                     Unidades = Convert.ToDouble(EntryUnidadesDeuda.Text),
                     Descripcion = EntryDeudaDescripcion.Text,
-                    FechaFin = Convert.ToDateTime(EntryFechaFinDeuda.Text),
+                    FechaFin = fecha,
                     Denominacion = elem.Denominacion,
                     FechaIcicio = TabbedInversiones.deudaActual.FechaIcicio,
                     IdInv = TabbedInversiones.deudaActual.IdInv,
                     Id = TabbedInversiones.deudaActual.Id
                 };
                 await App.Database.SaveUpDeuda(deuda);
-                PopupAlert.PopupLabelTitulo = "ELEMENTO ACTUALIZADO";
-                PopupAlert.PopupLabelText = "Los datos de su deuda fueron actualizados, revise los cambios en la página anterior.";
-                await Navigation.PushPopupAsync(new PopupAlert());
+                MessagingCenter.Send<UpDateDeuda, string>(this, "UpDateDeuda", "UpDeuda");
+                await PopupNavigation.Instance.PopAsync(true);
             }
             else {
                 PopupAlert.PopupLabelTitulo = "ERROR";
                 PopupAlert.PopupLabelText = "No puede dejar ningún dato sin llenar.";
                 await Navigation.PushPopupAsync(new PopupAlert());
-            }
-            MessagingCenter.Send<UpDateDeuda, string>(this, "UpDateDeuda", "UpDeuda");
-            await PopupNavigation.Instance.PopAsync(true);
+            } 
         }
 
         private async void volver_Clicked(object sender, EventArgs e)
